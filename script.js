@@ -155,7 +155,8 @@ const Health = {
       this.current = 40;
       this.render();
       currentLocation = currentHub = currentSubLocation = null;
-      clearSave();
+      // Save progress but at ship with no location — keeps missions/collectibles/Nova tier
+      saveState();
       createButtons(mainDestinations);
       // Post-extraction Nova line — tier aware, fires after a short delay
       setTimeout(() => {
