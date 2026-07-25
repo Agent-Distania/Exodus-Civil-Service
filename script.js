@@ -1141,13 +1141,7 @@ function findByKey(key, list) {
   return null;
 }
 
-function defaultSubs(dest) {
-  return [
-    { name: 'Return to Previous', key: 'Return' },
-    { name: `${dest.name} Core Zone`,    key: `${dest.key}_1` },
-    { name: `${dest.name} Outer Sector`, key: `${dest.key}_2` }
-  ];
-}
+
 
 // ================================================================
 // Click Handler
@@ -1289,9 +1283,11 @@ function travelSub(dest, btn, config) {
     hideOverlay();
     appendLog(`System: Arrived at ${dest.name}.`, 'log-system');
     if (dest.description) appendLog(dest.description, 'log-system');
-    if (!dest.subDestinations) dest.subDestinations = defaultSubs(dest);
+    const subList = dest.subDestinations?.length
+      ? dest.subDestinations
+      : [{ name: 'Return to Previous', key: 'Return' }];
     endTravel(dest.key, currentHub, null);
-    createButtons(dest.subDestinations);
+    createButtons(subList);
     onArrival(dest.key, false, 6000);
   }, type === 'drone' ? 2000 : 3000);
 }
@@ -1304,9 +1300,11 @@ function travelSubSub(dest, btn, parentDest) {
     hideOverlay();
     appendLog(`System: Arrived at ${dest.name}.`, 'log-system');
     if (dest.description) appendLog(dest.description, 'log-system');
-    if (!dest.subDestinations) dest.subDestinations = defaultSubs(dest);
+    const subList = dest.subDestinations?.length
+      ? dest.subDestinations
+      : [{ name: 'Return to Previous', key: 'Return' }];
     endTravel(dest.key, currentHub, parentDest.key);
-    createButtons(dest.subDestinations);
+    createButtons(subList);
     onArrival(dest.key, false, 6000);
   }, 2000);
 }
