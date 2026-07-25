@@ -400,6 +400,7 @@ const COLLECTIBLES = [
 ];
 
 const heardLog = [];
+const transmissionLog = [];
 
 // ================================================================
 // Save / Restore
@@ -413,8 +414,9 @@ function saveState() {
       missions:      MISSIONS.map(m => ({ id: m.id, complete: m.complete })),
       collectibles:  COLLECTIBLES.map(c => ({ id: c.id, found: c.found })),
       novaRel,
-      health:        Health.save(),
-      unlockedFiles: [...unlockedFiles]
+      health:           Health.save(),
+      unlockedFiles:    [...unlockedFiles],
+      transmissionLog:  transmissionLog.slice(0, 50)
     }));
   } catch (_) {}
 }
@@ -430,6 +432,7 @@ function loadState() {
     if (s.novaRel)       Object.assign(novaRel, s.novaRel);
     if (s.health)        Health.load(s.health);
     if (s.unlockedFiles) s.unlockedFiles.forEach(id => unlockedFiles.add(id));
+    if (s.transmissionLog) { transmissionLog.length = 0; s.transmissionLog.forEach(t => transmissionLog.push(t)); }
 
     if (s.currentHub && destinationConfigs[s.currentHub]) {
       currentLocation    = s.currentLocation;
@@ -952,17 +955,25 @@ function clearAmbientTimers() {
 function randomFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
 function fireTransmission() {
-  if (traveling || !currentHub) return;
+  if (traveling) return;
   const sources = ['ECS', 'Government', 'Corporate'];
   const source  = randomFrom(sources);
   const pool    = transmissions[source];
   if (!pool?.length) return;
   const msg = randomFrom(pool);
+  const location = currentHub ? currentLocation || currentHub : 'Deep Space';
   appendLog(`[ INCOMING TRANSMISSION — ${source.toUpperCase()} ]`, 'log-transmission-header');
   appendLog(`FROM: ${msg.from}`, 'log-transmission-from');
   appendLog(msg.body, 'log-transmission-body');
-  heardLog.unshift({ speaker: msg.from, line: msg.body, location: 'Ship Receiver', time: new Date().toLocaleTimeString() });
-  if (heardLog.length > 80) heardLog.pop();
+  // Store in dedicated transmission log
+  transmissionLog.unshift({
+    source,
+    from: msg.from,
+    body: msg.body,
+    location,
+    time: new Date().toLocaleTimeString()
+  });
+  if (transmissionLog.length > 50) transmissionLog.pop();
   if (Math.random() < 0.33) {
     const reactions = transmissions.novaReactions?.[source];
     if (reactions?.length) {
@@ -973,7 +984,8 @@ function fireTransmission() {
 
 function scheduleNextTransmission() {
   clearTimeout(transmissionTimer);
-  const delay = TRANSMISSION_INTERVAL_MIN + Math.random() * (TRANSMISSION_INTERVAL_MAX - TRANSMISSION_INTERVAL_MIN);
+  // 60-90 seconds — frequent enough to feel active
+  const delay = 60000 + Math.random() * 30000;
   transmissionTimer = setTimeout(() => {
     fireTransmission();
     scheduleNextTransmission();
@@ -1012,6 +1024,7 @@ function renderJournal() {
   renderHeardTab();
   renderCollectedTab();
   renderClassifiedTab();
+  renderTransmissionsTab();
   missionLogOverlay.classList.remove('hidden');
 }
 
@@ -1089,6 +1102,29 @@ function renderClassifiedTab() {
   });
 }
 
+function renderTransmissionsTab() {
+  const el = document.getElementById('transmissionsList');
+  if (!el) return;
+  el.innerHTML = '';
+  if (!transmissionLog.length) {
+    el.innerHTML = '<div class="empty-state">No transmissions intercepted yet.</div>';
+    return;
+  }
+  transmissionLog.forEach(t => {
+    const entry = document.createElement('div');
+    entry.className = `transmission-entry transmission-${t.source.toLowerCase()}`;
+    entry.innerHTML = `
+      <div class="transmission-meta">
+        <span class="transmission-source">${t.source.toUpperCase()}</span>
+        <span class="transmission-time">[${t.time}] ${t.location}</span>
+      </div>
+      <div class="transmission-from">${t.from}</div>
+      <div class="transmission-body">${t.body}</div>
+    `;
+    el.appendChild(entry);
+  });
+}
+
 function initJournalTabs() {
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1098,10 +1134,11 @@ function initJournalTabs() {
       const target = document.getElementById(`tab-${btn.dataset.tab}`);
       target.classList.remove('hidden');
       target.classList.add('active');
-      if (btn.dataset.tab === 'missions')    renderMissionsTab();
-      if (btn.dataset.tab === 'heard')       renderHeardTab();
-      if (btn.dataset.tab === 'collected')   renderCollectedTab();
-      if (btn.dataset.tab === 'classified')  renderClassifiedTab();
+      if (btn.dataset.tab === 'missions')       renderMissionsTab();
+      if (btn.dataset.tab === 'heard')          renderHeardTab();
+      if (btn.dataset.tab === 'collected')      renderCollectedTab();
+      if (btn.dataset.tab === 'classified')     renderClassifiedTab();
+      if (btn.dataset.tab === 'transmissions')  renderTransmissionsTab();
     });
   });
 }
@@ -1378,6 +1415,7 @@ function wipeSaveAndRestart() {
   Health.current = Health.max;
   Health.render();
   heardLog.length = 0;
+  transmissionLog.length = 0;
   Object.keys(ambientQueues).forEach(k => delete ambientQueues[k]);
   currentLocation = currentHub = currentSubLocation = null;
   appendLog('System: Save data cleared. Starting fresh.', 'log-system');
