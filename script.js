@@ -823,6 +823,29 @@ function completeMission(m) {
   // Unlock classified file
   unlockClassifiedFile(m.rewardKey);
 
+  // Mark the corresponding collectible as found — mission reward guarantees the item
+  const MISSION_COLLECTIBLE_MAP = {
+    'TORTA_LOGS':    'col_05',
+    'SPECIMEN_7C':   'col_06',
+    'VAULT_FRAGMENT':'col_08',
+    'STORM_DATA':    'col_07',
+    'ICE_CORE':      'col_10',
+    'XENO_INDEX':    'col_02',
+    'CRYSTAL_SHARD': 'col_09'
+  };
+  const colId = MISSION_COLLECTIBLE_MAP[m.rewardKey];
+  if (colId) {
+    const col = COLLECTIBLES.find(c => c.id === colId);
+    if (col && !col.found) {
+      col.found = true;
+      setTimeout(() => {
+        appendLog(`◆ ITEM COLLECTED: ${col.name}`, 'log-collect');
+        appendLog(`  ${col.desc}`, 'log-collect');
+        NovaAI.speak('collectibleFound');
+      }, 1500);
+    }
+  }
+
   updateMissionIndicator();
   rebuildCurrentButtons();
   saveState();
