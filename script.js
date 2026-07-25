@@ -1451,13 +1451,13 @@ function runExtractionSequence(onComplete) {
   style.textContent = EXTRACTION_CSS;
   document.head.appendChild(style);
 
-  // Build overlay
+  // Build overlay — construct elements directly to avoid getElementById timing issues
   const overlay = document.createElement('div');
   overlay.id = 'extractionOverlay';
-  overlay.innerHTML = `<div id="extractionLines"></div>`;
+  const linesEl = document.createElement('div');
+  linesEl.id = 'extractionLines';
+  overlay.appendChild(linesEl);
   document.body.appendChild(overlay);
-
-  const linesEl = document.getElementById('extractionLines');
 
   function addEl(cls, html, delay) {
     setTimeout(() => {
