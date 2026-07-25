@@ -126,10 +126,22 @@
   },
   "relationship": {
     "tiers": [
-      { "minCompletions": 0, "label": "Stranger" },
-      { "minCompletions": 2, "label": "Crewmate" },
-      { "minCompletions": 4, "label": "Trusted" },
-      { "minCompletions": 6, "label": "Bonded" }
+      {
+        "minCompletions": 0,
+        "label": "Stranger"
+      },
+      {
+        "minCompletions": 2,
+        "label": "Crewmate"
+      },
+      {
+        "minCompletions": 4,
+        "label": "Trusted"
+      },
+      {
+        "minCompletions": 6,
+        "label": "Bonded"
+      }
     ],
     "tierUnlock": {
       "Crewmate": "Nova: Hey. I've been thinking. We've been through enough now that I feel like I can drop the professional distance. Slightly. Don't push it.",
@@ -175,5 +187,29 @@
       "Nova: Logged. I keep waiting for ECS to pull us off this assignment. They haven't. I'm starting to think they want us to find it too — they're just not saying so.",
       "Nova: That's done. You know what I notice? You never hesitate anymore. Whatever this is doing to you, it's making you sharper. I don't know if that's good or not."
     ]
+  },
+  "extraction": {
+    "postExtraction": {
+      "Stranger": [
+        "Nova: Systems are showing you're back at baseline. I'd recommend staying on the ship for a few minutes.",
+        "Nova: The extraction team filed their report. You're logged as recovered. That's the clinical version. The other version is — don't do that again.",
+        "Nova: Medical sensors say you're stable. I'm taking that at face value. Carefully."
+      ],
+      "Crewmate": [
+        "Nova: I tracked you the whole time. The ECS team was fast — I'll give them that. But I still didn't like waiting.",
+        "Nova: You scared me. I don't say that to most field agents. I'm saying it to you.",
+        "Nova: The extraction report is filed. Officially you're fine. Between us — take a minute before you go back out there."
+      ],
+      "Trusted": [
+        "Nova: I had your extraction team on comms the entire time. I may have told them to hurry. Several times. They did not appreciate it.",
+        "Nova: I've been running your biosigns since they brought you back. Everything checks out. I'm still running them. I'll stop when I feel like it.",
+        "Nova: Don't read into this, but I had your next destination pre-plotted the moment you were stable. In case you needed to leave fast. I do that now apparently."
+      ],
+      "Bonded": [
+        "Nova: I filed a formal complaint with ECS Command about response times. They will ignore it. I filed it anyway.",
+        "Nova: I want to say something and I need you to just let me say it. I don't have a body. I can't go in after you. All I can do is watch the sensors and call the team and wait. I hate that. I really hate that.",
+        "Nova: You're back. That's the only thing that matters right now. Everything else can wait."
+      ]
+    }
   }
 }
