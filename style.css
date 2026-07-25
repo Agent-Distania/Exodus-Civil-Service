@@ -874,6 +874,62 @@ button.traveling {
 }
 
 /* =========================================================
+   Transmission Journal Entries
+   ========================================================= */
+.transmission-entry {
+  border-left: 2px solid rgba(255,180,48,0.4);
+  padding: 0.6rem 0.85rem;
+  background: rgba(20,12,0,0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.transmission-entry.transmission-ecs        { border-left-color: rgba(141,253,141,0.4); background: rgba(0,12,0,0.4); }
+.transmission-entry.transmission-government  { border-left-color: rgba(100,160,255,0.4); background: rgba(0,5,20,0.4); }
+.transmission-entry.transmission-corporate   { border-left-color: rgba(255,180,48,0.4);  background: rgba(20,12,0,0.4); }
+
+.transmission-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.15rem;
+}
+
+.transmission-source {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.16rem;
+}
+
+.transmission-entry.transmission-ecs       .transmission-source { color: rgba(141,253,141,0.6); }
+.transmission-entry.transmission-government .transmission-source { color: rgba(100,160,255,0.6); }
+.transmission-entry.transmission-corporate  .transmission-source { color: rgba(255,180,48,0.6); }
+
+.transmission-time {
+  font-size: 0.62rem;
+  color: rgba(141,253,141,0.25);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.transmission-from {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.45);
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.04rem;
+}
+
+.transmission-body {
+  font-size: 0.79rem;
+  color: rgba(255,220,160,0.8);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.transmission-entry.transmission-ecs       .transmission-body { color: rgba(200,255,200,0.75); }
+.transmission-entry.transmission-government .transmission-body { color: rgba(180,210,255,0.75); }
+
+/* =========================================================
    Empty State
    ========================================================= */
 .empty-state { font-size: 0.78rem; color: rgba(141,253,141,0.28); font-style: italic; padding: 0.8rem 0; }
