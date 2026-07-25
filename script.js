@@ -148,17 +148,26 @@ const Health = {
   die() {
     this.stopDrain();
     clearAmbientTimers();
+    clearTimeout(dwellTimer);
     NovaAI.stopIdle();
-    appendLog('Nova: Captain! You\'ve gone critical. Initiating emergency extraction.', 'log-nova');
-    appendLog('System: EMERGENCY EXTRACTION — returning to ship.', 'log-system');
-    setTimeout(() => {
+    stopTransmissions();
+    runExtractionSequence(() => {
       this.current = 40;
       this.render();
       currentLocation = currentHub = currentSubLocation = null;
       clearSave();
       createButtons(mainDestinations);
-      appendLog('System: Emergency extraction complete. Rest before your next mission.', 'log-system');
-    }, 2500);
+      // Post-extraction Nova line — tier aware, fires after a short delay
+      setTimeout(() => {
+        const tier = getRelTier();
+        const pool = NovaAI.dialogue.extraction?.postExtraction?.[tier]
+          || NovaAI.dialogue.extraction?.postExtraction?.Stranger;
+        if (pool?.length) {
+          appendLog(pool[Math.floor(Math.random() * pool.length)], 'log-nova');
+        }
+        scheduleNextTransmission();
+      }, 2000);
+    });
   },
 
   render() {
@@ -1350,6 +1359,153 @@ function wipeSaveAndRestart() {
   Object.keys(ambientQueues).forEach(k => delete ambientQueues[k]);
   currentLocation = currentHub = currentSubLocation = null;
   appendLog('System: Save data cleared. Starting fresh.', 'log-system');
+}
+
+// ================================================================
+// Extraction Sequence
+// ================================================================
+
+const EXTRACTION_CSS = `
+  #extractionOverlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 25000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  #extractionOverlay.visible { opacity: 1; }
+  #extractionOverlay.fade-out {
+    opacity: 0;
+    transition: opacity 1.8s ease;
+  }
+  #extractionLines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+  }
+  .ext-system {
+    font-size: 0.7rem;
+    letter-spacing: 0.3rem;
+    color: rgba(255,255,255,0.25);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .ext-system.show { opacity: 1; }
+  .ext-divider {
+    width: 120px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .ext-divider.show { opacity: 1; }
+  .ext-soldier {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    line-height: 1.6;
+  }
+  .ext-soldier.show { opacity: 1; }
+  .ext-soldier .ext-speaker {
+    font-size: 0.65rem;
+    letter-spacing: 0.18rem;
+    color: rgba(255,255,255,0.35);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .ext-nova {
+    font-size: 0.82rem;
+    color: rgba(141,253,141,0.7);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+    font-style: italic;
+    margin-top: 1rem;
+  }
+  .ext-nova.show { opacity: 1; }
+`;
+
+const SOLDIER_LINES = [
+  { speaker: 'HAZMAT TEAM ALPHA', line: 'Agent located. Vitals are weak but stable.' },
+  { speaker: 'HAZMAT TEAM ALPHA', line: 'Secure the suit. Get them to the airlock. Move.' },
+  { speaker: 'HAZMAT TEAM ALPHA', line: 'Command, we have the agent. Extraction in ninety seconds.' }
+];
+
+function runExtractionSequence(onComplete) {
+  // Inject CSS
+  const style = document.createElement('style');
+  style.textContent = EXTRACTION_CSS;
+  document.head.appendChild(style);
+
+  // Build overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'extractionOverlay';
+  overlay.innerHTML = `<div id="extractionLines"></div>`;
+  document.body.appendChild(overlay);
+
+  const linesEl = document.getElementById('extractionLines');
+
+  function addEl(cls, html, delay) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = cls;
+      el.innerHTML = html;
+      linesEl.appendChild(el);
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('show')));
+    }, delay);
+  }
+
+  // Fade overlay in
+  requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('visible')));
+
+  // Sequence
+  addEl('ext-system', 'HAZMAT RECOVERY TEAM — ECS FIELD RESPONSE', 600);
+  addEl('ext-system', 'AGENT LOCATED. INITIATING EXTRACTION PROTOCOL.', 1400);
+  addEl('ext-divider', '', 2200);
+
+  SOLDIER_LINES.forEach((s, i) => {
+    addEl('ext-soldier',
+      `<span class="ext-speaker">${s.speaker}</span>${s.line}`,
+      3000 + i * 2200
+    );
+  });
+
+  // Darkness beat — longer pause after last soldier line
+  const novaDelay = 3000 + SOLDIER_LINES.length * 2200 + 2800;
+
+  // Nova wake-up line (pre-full recovery, so always Stranger-level — warm but brief)
+  const novaWakeLines = [
+    "Hey. You're back on the ship. The extraction team flagged your suit for repair.",
+    "I have you on sensors. You're stable. Take a minute before you move.",
+    "Extraction team got you out. You're aboard. Rest."
+  ];
+  const novaLine = novaWakeLines[Math.floor(Math.random() * novaWakeLines.length)];
+  addEl('ext-nova', `Nova: ${novaLine}`, novaDelay);
+
+  // Fade out and complete
+  const totalDuration = novaDelay + 3500;
+  setTimeout(() => {
+    overlay.classList.add('fade-out');
+    setTimeout(() => {
+      overlay.remove();
+      style.remove();
+      onComplete();
+    }, 1800);
+  }, totalDuration);
 }
 
 // ================================================================
