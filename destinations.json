@@ -12,34 +12,16 @@
       "description": "Orbiting Earth, the fractured home of humanity. The once-beautiful world lies fractured, but humanity persists in the ruins of the Kilko disaster.",
       "travelType": "train",
       "subDestinations": [
-        {
-          "name": "Return to Ship",
-          "key": "Return"
-        },
+        { "name": "Return to Ship", "key": "Return" },
         {
           "name": "New York Sector",
           "key": "NewYork",
           "description": "A massive sprawling city rebuilt after the Kilko disaster. Its modern layout supports trade and excavation.",
           "subDestinations": [
-            {
-              "name": "Return to Previous",
-              "key": "Return"
-            },
-            {
-              "name": "Downtown Core",
-              "key": "NewYork_Downtown",
-              "description": "The center of the rebuilt New York. High-tech skyscrapers meet low-lying housing complexes."
-            },
-            {
-              "name": "Torta Excavation Site",
-              "key": "NewYork_Torta",
-              "description": "Ongoing digs into ancient megastructure debris unearthed beneath New York."
-            },
-            {
-              "name": "Skyline Transit Nexus",
-              "key": "NewYork_Transit",
-              "description": "A massive floating station for vertical transit between layers of the city."
-            }
+            { "name": "Return to Previous", "key": "Return" },
+            { "name": "Downtown Core", "key": "NewYork_Downtown", "description": "The center of the rebuilt New York. High-tech skyscrapers meet low-lying housing complexes." },
+            { "name": "Torta Excavation Site", "key": "NewYork_Torta", "description": "Ongoing digs into ancient megastructure debris unearthed beneath New York." },
+            { "name": "Skyline Transit Nexus", "key": "NewYork_Transit", "description": "A massive floating station for vertical transit between layers of the city." }
           ]
         },
         {
@@ -47,22 +29,193 @@
           "key": "EarthSpacePort",
           "description": "A large cargo and civilian port that once fueled the Red War. Its defenses gather dust as they wait for a war that will never come. Now a hub for mega city trade.",
           "subDestinations": [
-            {
-              "name": "Return to Previous",
-              "key": "Return"
-            },
-            {
-              "name": "Processing",
-              "key": "EarthSpacePort_FrontDesk",
-              "description": "Entry zone for civilian and cargo inspection."
-            },
-            {
-              "name": "Cargo Intake",
-              "key": "EarthSpacePort_Cargo",
-              "description": "Freight and military shipments arrive here for unloading."
-            },
-            {
-              "name": "Docking Bay",
+            { "name": "Return to Previous", "key": "Return" },
+            { "name": "Processing", "key": "EarthSpacePort_FrontDesk", "description": "Entry zone for civilian and cargo inspection." },
+            { "name": "Cargo Intake", "key": "EarthSpacePort_Cargo", "description": "Freight and military shipments arrive here for unloading." },
+            { "name": "Docking Bay", "key": "EarthSpacePort_Docking", "description": "Where ships refuel, dock, and load passengers." }
+          ]
+        },
+        {
+          "name": "Pacific Research Facility",
+          "key": "Pacific",
+          "description": "A massive floating research base investigating Kilko artifacts and deep-sea anomalies.",
+          "subDestinations": [
+            { "name": "Return to Previous", "key": "Return" },
+            { "name": "Kilko Artifact Lab", "key": "Pacific_ArtifactLab", "description": "Secure containment and analysis facility for recovered Kilko debris and energy readings." },
+            { "name": "Deep Sea Observatory", "key": "Pacific_Observatory", "description": "Submersible launch bay and monitoring station tracking anomalous ocean floor activity." },
+            { "name": "Abyssal Research Wing", "key": "Pacific_Abyssal", "description": "Pressurized labs studying life forms and structures found in deep ocean trenches." }
+          ]
+        }
+      ]
+    },
+    "Mars": {
+      "description": "Orbiting Mars Colony Alpha, a sprawling network of habitats and terraforming stations.",
+      "travelType": "shuttle",
+      "subDestinations": [
+        { "name": "Return to Ship", "key": "Return" },
+        {
+          "name": "Colony Core",
+          "key": "ColonyCore",
+          "description": "The heart of Martian habitation and terraforming, full of life and engineering.",
+          "subDestinations": [
+            { "name": "Return to Previous", "key": "Return" },
+            { "name": "Residential Dome", "key": "ColonyCore_Residential", "description": "Living quarters for colonists. Dome-shaped, self-sustaining habitat." },
+            { "name": "Central Market", "key": "ColonyCore_Market", "description": "Bustling commercial hub with local produce, electronics, and black market items." },
+            { "name": "Power Hub", "key": "ColonyCore_Power", "description": "Power station for life support and terraforming systems." }
+          ]
+        },
+        {
+          "name": "Terraforming Fields",
+          "key": "TerraformingFields",
+          "description": "Sprawling fields of atmosphere processors converting Mars into something livable.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Ancient Vault",
+          "key": "AncientVault",
+          "description": "The site of a mysterious pre-human vault unearthed after the Kilko event.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        }
+      ]
+    },
+    "Jupiter": {
+      "description": "Orbiting the Jupiter Orbital Station, a gateway to the planet's storms and gas resources.",
+      "subDestinations": [
+        { "name": "Return to Ship", "key": "Return" },
+        {
+          "name": "Storm Observatory",
+          "key": "StormObservatory",
+          "description": "Observes Jupiter's massive storms and shields orbitals by adjusting their paths.",
+          "subDestinations": [
+            { "name": "Return to Previous", "key": "Return" },
+            { "name": "Sensor Array", "key": "StormObservatory_Sensors", "description": "Measures electromagnetic and particle fields from storms." },
+            { "name": "Atmospheric Lab", "key": "StormObservatory_Lab", "description": "Researchers live here studying Jupiter's impossible weather." }
+          ]
+        },
+        {
+          "name": "Gas Harvesting Platform",
+          "key": "GasHarvester",
+          "description": "Station that siphons valuable gases for fusion fuel and life support.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Research Array",
+          "key": "ResearchArray",
+          "description": "Drone-controlled scientific sensors deployed across Jupiter's upper atmosphere.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Deep Core Relay",
+          "key": "CoreRelay",
+          "description": "Communications hub buried in Jupiter's atmosphere linking all deep exploration teams.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Excavation Platforms",
+          "key": "ExcavationPlatforms",
+          "description": "Structures digging into ancient rings within the gas giant for lost tech.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        }
+      ]
+    },
+    "Europa": {
+      "description": "Orbiting Europa Research Base, a scientific station monitoring the icy moon's hidden ocean.",
+      "travelType": "rover",
+      "subDestinations": [
+        { "name": "Return to Ship", "key": "Return" },
+        {
+          "name": "Research Base",
+          "key": "ResearchBase",
+          "description": "Core base for studying Europa's subsurface ocean and megastructures.",
+          "subDestinations": [
+            { "name": "Return to Previous", "key": "Return" },
+            { "name": "Subsurface Tunnels", "key": "ResearchBase_Tunnels", "description": "Ancient tunnels found beneath the ice. Partly mapped, mostly feared." },
+            { "name": "AI Lab", "key": "ResearchBase_Lab", "description": "Research and development for off-world AI behavior and containment." },
+            { "name": "Core Chamber", "key": "ResearchBase_Core", "description": "A deep, partially flooded cavern where megastructures converge." }
+          ]
+        },
+        {
+          "name": "Ground Camp",
+          "key": "GroundCamp",
+          "description": "Temporary field base for drilling and sample retrieval.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Ruins",
+          "key": "Ruins",
+          "description": "Ancient megastructure buried under kilometers of ice, predating humanity.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        }
+      ]
+    },
+    "Andromeda": {
+      "description": "Orbiting the Andromeda Outpost, a forward base for deep space exploration.",
+      "travelType": "shuttle",
+      "subDestinations": [
+        { "name": "Return to Ship", "key": "Return" },
+        {
+          "name": "Forward Recon Station",
+          "key": "ForwardRecon",
+          "description": "Unmanned outpost tracking deep-space threats and anomalies.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Black Spire Relay",
+          "key": "BlackSpire",
+          "description": "Long-distance quantum signal relay — its origins remain unclear.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Xeno Archives",
+          "key": "XenoArchives",
+          "description": "Vault of alien artifacts and cryptic data recovered from ruins.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Statue Research Wing",
+          "key": "StatueWing",
+          "description": "Massive chamber of alien statues; many researchers claim the statues move.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        }
+      ]
+    },
+    "Vega": {
+      "description": "Orbiting Vega Prime, a vibrant star system hub untouched by disaster.",
+      "subDestinations": [
+        { "name": "Return to Ship", "key": "Return" },
+        {
+          "name": "Capital City",
+          "key": "CapitalCity",
+          "description": "A neon metropolis and trade center thriving beyond Sol.",
+          "subDestinations": [
+            { "name": "Return to Previous", "key": "Return" },
+            { "name": "Tech District", "key": "CapitalCity_Tech", "description": "Startup hubs and AI incubation vaults run by private corps." },
+            { "name": "Underdeck Market", "key": "CapitalCity_Market", "description": "Black market hub for rare parts and unauthorized implants." },
+            { "name": "Central Core", "key": "CapitalCity_Core", "description": "The brain of the city — central processors and energy grid." }
+          ]
+        },
+        {
+          "name": "Orbital Trade Ring",
+          "key": "OrbitalTradeRing",
+          "description": "Ring-shaped station for trade, deals, and occasional piracy.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Stellar Observation Spire",
+          "key": "StellarObservationSpire",
+          "description": "This spire was the first to detect the incoming megastructures.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        },
+        {
+          "name": "Crystal Canyon Outpost",
+          "key": "CrystalCanyonOutpost",
+          "description": "Gem mines deep in Vega's crust — rumored to house alien tech.",
+          "subDestinations": [ { "name": "Return to Previous", "key": "Return" } ]
+        }
+      ]
+    }
+  }
+}              "name": "Docking Bay",
               "key": "EarthSpacePort_Docking",
               "description": "Where ships refuel, dock, and load passengers."
             }
