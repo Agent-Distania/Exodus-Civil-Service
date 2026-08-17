@@ -27,6 +27,8 @@ const ambientQueues      = {};
 const mainDestinations   = [];
 const destinationConfigs = {};
 const ambientDialogue    = {};
+const conversations      = {};
+const recurringCharacters = {};
 const transmissions      = {};
 
 let transmissionTimer   = null;
@@ -36,6 +38,8 @@ const TRANSMISSION_INTERVAL_MAX = 240000;
 let destinationsReady = false;
 let dialogueReady     = false;
 let pendingStart      = false;
+let gameCompleted     = false;
+let endingType        = null; // 'natural' | 'true'
 
 // ================================================================
 // Nova Relationship
@@ -74,27 +78,50 @@ const Health = {
   shieldActive: false,
 
   LOCATION_DRAIN: {
+    // Act I — Earth & Mars (low danger)
     NewYork_Torta:          8,
     AncientVault:           12,
+    Pacific_Abyssal:        11,
+    ColonyCore_Residential: -5,
+    EarthSpacePort:         -3,
+    ColonyCore_Power:       4,
+    TerraformingFields:     3,
+    // Act II — Jupiter & Europa (moderate danger)
     ResearchBase_Tunnels:   10,
     Ruins:                  15,
     ExcavationPlatforms:    9,
-    Pacific_Abyssal:        11,
     ResearchBase_Core:      13,
     CoreRelay:              7,
-    BlackSpire:             6,
-    ForwardRecon:           5,
-    ColonyCore_Residential: -5,
-    EarthSpacePort:         -3,
-    CapitalCity:            -4
+    GasHarvester:           6,
+    ResearchArray:          5,
+    ResearchBase_Lab:       6,
+    GroundCamp:             4,
+    // Act III — Andromeda & Vega (high danger)
+    BlackSpire:             9,
+    ForwardRecon:           8,
+    XenoArchives:           7,
+    StatueWing:             8,
+    CrystalCanyonOutpost:   6,
+    StellarObservationSpire: 5,
+    CapitalCity_Core:       -2,
+    OrbitalTradeRing:       -2
   },
 
   ARRIVAL_DAMAGE: {
+    // Act I
     Ruins:                  10,
     AncientVault:           8,
-    ResearchBase_Tunnels:   6,
     Pacific_Abyssal:        7,
-    ExcavationPlatforms:    5
+    // Act II
+    ResearchBase_Tunnels:   6,
+    ExcavationPlatforms:    5,
+    GasHarvester:           4,
+    ResearchBase_Core:      9,
+    // Act III
+    StatueWing:             6,
+    XenoArchives:           5,
+    BlackSpire:             7,
+    ForwardRecon:           6
   },
 
   drainInterval: null,
@@ -191,77 +218,176 @@ const Health = {
 // ================================================================
 // Missions
 // ================================================================
+// Act metadata — used for the log banner, Nova commentary, and difficulty scaling.
+const ACTS = {
+  1: { title: 'ACT I — FIRST CONTACT',        subtitle: 'Earth & Mars' },
+  2: { title: 'ACT II — SIGNALS FROM THE DEEP', subtitle: 'Jupiter & Europa' },
+  3: { title: 'ACT III — THE PATTERN',         subtitle: 'Andromeda & Vega' },
+  4: { title: 'ACT IV — CONVERGENCE',          subtitle: 'The Core Chamber' }
+};
+
+const FINALE_MISSION_ID = 'mission_38';
+
 const MISSIONS = [
-  {
-    id: 'mission_01',
-    title: 'First Contact Protocol',
+  // ---------------- ACT I — EARTH & MARS ----------------
+  { id: 'mission_01', act: 1, title: 'City Under Watch',
+    desc: 'ECS wants a baseline report on New York Sector before deeper excavation resumes.',
+    target: 'NewYork', reward: 'Municipal surveillance access — general sectors.', rewardKey: 'NY_SURVEY',
+    complete: false, dwellSecs: 20 },
+  { id: 'mission_02', act: 1, title: 'Downtown Survey',
+    desc: 'File a condition report on the Downtown Core, rebuilt after the Kilko disaster.',
+    target: 'NewYork_Downtown', reward: 'Pre-disaster architecture archive access.', rewardKey: 'DOWNTOWN_ARCHIVE',
+    complete: false, dwellSecs: 22 },
+  { id: 'mission_03', act: 1, title: 'First Contact Protocol',
     desc: 'ECS Command wants a field report from the Torta Excavation Site beneath New York.',
-    target: 'NewYork_Torta',
-    reward: 'Access to classified excavation frequency logs.',
-    rewardKey: 'TORTA_LOGS',
-    complete: false,
-    dwellSecs: 35
-  },
-  {
-    id: 'mission_02',
-    title: 'Deep Signal',
+    target: 'NewYork_Torta', reward: 'Access to classified excavation frequency logs.', rewardKey: 'TORTA_LOGS',
+    complete: false, dwellSecs: 35 },
+  { id: 'mission_04', act: 1, title: 'Transit Grid Anomalies',
+    desc: 'The Skyline Transit Nexus is reporting unexplained navigation glitches near old subway lines.',
+    target: 'NewYork_Transit', reward: 'City AI diagnostic log — flagged anomaly cluster.', rewardKey: 'TRANSIT_LOG',
+    complete: false, dwellSecs: 25 },
+  { id: 'mission_05', act: 1, title: 'Port Authority',
+    desc: 'Baseline security sweep of the Earth Space Port, gateway to every off-world route.',
+    target: 'EarthSpacePort', reward: 'Port traffic manifest — full clearance.', rewardKey: 'PORT_MANIFEST',
+    complete: false, dwellSecs: 22 },
+  { id: 'mission_06', act: 1, title: 'Processing Irregularities',
+    desc: 'Immigration processing at the Front Desk has flagged unusual ID chip readings.',
+    target: 'EarthSpacePort_FrontDesk', reward: 'Restricted-material confiscation log.', rewardKey: 'FRONTDESK_LOG',
+    complete: false, dwellSecs: 25 },
+  { id: 'mission_07', act: 1, title: 'Cargo Discrepancies',
+    desc: 'Cargo Intake manifests do not match shipment contents. Investigate on-site.',
+    target: 'EarthSpacePort_Cargo', reward: 'Unlabeled container tracking data.', rewardKey: 'CARGO_LOG',
+    complete: false, dwellSecs: 25 },
+  { id: 'mission_08', act: 1, title: 'Docking Anomalies',
+    desc: 'Gravitational readings at the Docking Bay are inconsistent with any known cause.',
+    target: 'EarthSpacePort_Docking', reward: 'Berth anomaly readings — Docks 12-16.', rewardKey: 'DOCKING_LOG',
+    complete: false, dwellSecs: 25 },
+  { id: 'mission_09', act: 1, title: 'Pacific Overview',
+    desc: 'Sweep the Pacific Research Facility and confirm operational status.',
+    target: 'Pacific', reward: 'Facility operations summary.', rewardKey: 'PACIFIC_SUMMARY',
+    complete: false, dwellSecs: 22 },
+  { id: 'mission_10', act: 1, title: 'Kilko Containment Check',
+    desc: 'Verify containment integrity at the Kilko Artifact Lab.',
+    target: 'Pacific_ArtifactLab', reward: 'Containment field diagnostics.', rewardKey: 'ARTIFACTLAB_LOG',
+    complete: false, dwellSecs: 28 },
+  { id: 'mission_11', act: 1, title: 'Deep Sea Contact',
+    desc: 'The Deep Sea Observatory lost contact with a submersible. Investigate.',
+    target: 'Pacific_Observatory', reward: 'Submersible telemetry — last known coordinates.', rewardKey: 'OBSERVATORY_LOG',
+    complete: false, dwellSecs: 28 },
+  { id: 'mission_12', act: 1, title: 'Deep Signal',
     desc: 'Unconfirmed transmissions from the Pacific Abyssal Wing. Investigate and confirm.',
-    target: 'Pacific_Abyssal',
-    reward: 'Deep sea organism specimen — Specimen 7-C.',
-    rewardKey: 'SPECIMEN_7C',
-    complete: false,
-    dwellSecs: 40
-  },
-  {
-    id: 'mission_03',
-    title: 'Vault Reconnaissance',
+    target: 'Pacific_Abyssal', reward: 'Deep sea organism specimen — Specimen 7-C.', rewardKey: 'SPECIMEN_7C',
+    complete: false, dwellSecs: 40 },
+  { id: 'mission_13', act: 1, title: 'Colony Welfare Check',
+    desc: 'Routine welfare check of the Residential Dome on Mars Colony Alpha.',
+    target: 'ColonyCore_Residential', reward: 'Colonist wellness survey.', rewardKey: 'RESIDENTIAL_LOG',
+    complete: false, dwellSecs: 20 },
+  { id: 'mission_14', act: 1, title: 'Market Intelligence',
+    desc: 'ECS wants eyes on unregistered trade activity in the Central Market.',
+    target: 'ColonyCore_Market', reward: 'Black market vendor watchlist.', rewardKey: 'MARKET_LOG',
+    complete: false, dwellSecs: 22 },
+  { id: 'mission_15', act: 1, title: 'Power Grid Audit',
+    desc: 'The Power Hub is running well above rated efficiency. Audit the reactor.',
+    target: 'ColonyCore_Power', reward: 'Reactor efficiency anomaly report.', rewardKey: 'POWER_LOG',
+    complete: false, dwellSecs: 25 },
+  { id: 'mission_16', act: 1, title: 'Terraforming Irregularities',
+    desc: 'Atmospheric processors across the Terraforming Fields are behaving unpredictably.',
+    target: 'TerraformingFields', reward: 'Atmospheric composition data set.', rewardKey: 'TERRAFORM_LOG',
+    complete: false, dwellSecs: 28 },
+  { id: 'mission_17', act: 1, title: 'Vault Reconnaissance',
     desc: 'The Ancient Vault on Mars has gone dark. Establish contact with the research team.',
-    target: 'AncientVault',
-    reward: 'Pre-human inscription rubbing — Fragment Alpha.',
-    rewardKey: 'VAULT_FRAGMENT',
-    complete: false,
-    dwellSecs: 30
-  },
-  {
-    id: 'mission_04',
-    title: 'Storm Analysis',
+    target: 'AncientVault', reward: 'Pre-human inscription rubbing — Fragment Alpha.', rewardKey: 'VAULT_FRAGMENT',
+    complete: false, dwellSecs: 32 },
+
+  // ---------------- ACT II — JUPITER & EUROPA ----------------
+  { id: 'mission_18', act: 2, title: 'Storm Analysis',
     desc: 'The Jupiter Storm Observatory Sensor Array is reporting anomalous pattern data.',
-    target: 'StormObservatory_Sensors',
-    reward: 'Storm pattern data core — Cycle 44.',
-    rewardKey: 'STORM_DATA',
-    complete: false,
-    dwellSecs: 30
-  },
-  {
-    id: 'mission_05',
-    title: 'Shifting Tunnels',
+    target: 'StormObservatory_Sensors', reward: 'Storm pattern data core — Cycle 44.', rewardKey: 'STORM_DATA',
+    complete: false, dwellSecs: 32 },
+  { id: 'mission_19', act: 2, title: 'Atmospheric Study',
+    desc: 'The Atmospheric Lab reports the storm may be generating its own magnetic field.',
+    target: 'StormObservatory_Lab', reward: 'Storm spectral analysis logs.', rewardKey: 'STORMLAB_LOG',
+    complete: false, dwellSecs: 34 },
+  { id: 'mission_20', act: 2, title: 'Harvest Anomalies',
+    desc: 'Gas Harvesting Platform reports isotopes that should not exist in Jupiter\'s atmosphere.',
+    target: 'GasHarvester', reward: 'Isotope composition sample.', rewardKey: 'HARVEST_LOG',
+    complete: false, dwellSecs: 34 },
+  { id: 'mission_21', act: 2, title: 'Array Interference',
+    desc: 'The Research Array is receiving structured transmissions from beyond the Kuiper belt.',
+    target: 'ResearchArray', reward: 'Unidentified transmission fragment.', rewardKey: 'ARRAY_LOG',
+    complete: false, dwellSecs: 36 },
+  { id: 'mission_22', act: 2, title: 'Relay Integrity',
+    desc: 'The Deep Core Relay is being used to transmit outbound by something not on the crew roster.',
+    target: 'CoreRelay', reward: 'Unauthorized transmission trace log.', rewardKey: 'RELAY_LOG',
+    complete: false, dwellSecs: 36 },
+  { id: 'mission_23', act: 2, title: 'Platform Stability',
+    desc: 'Excavation Platforms are showing stress fractures. Something is pushing up from below.',
+    target: 'ExcavationPlatforms', reward: 'Structural stress telemetry.', rewardKey: 'PLATFORM_LOG',
+    complete: false, dwellSecs: 38 },
+  { id: 'mission_24', act: 2, title: 'Shifting Tunnels',
     desc: 'Europa subsurface tunnel maps no longer match field observations. Survey the tunnels.',
-    target: 'ResearchBase_Tunnels',
-    reward: 'Ice core sample — Sector 7 deep layer.',
-    rewardKey: 'ICE_CORE',
-    complete: false,
-    dwellSecs: 40
-  },
-  {
-    id: 'mission_06',
-    title: 'Archive Integrity',
+    target: 'ResearchBase_Tunnels', reward: 'Ice core sample — Sector 7 deep layer.', rewardKey: 'ICE_CORE',
+    complete: false, dwellSecs: 40 },
+  { id: 'mission_25', act: 2, title: 'AI Behavioral Study',
+    desc: 'AI Lab systems are learning faster than their programming should allow. Assess the risk.',
+    target: 'ResearchBase_Lab', reward: 'AI behavior log — unauthorized network access.', rewardKey: 'AILAB_LOG',
+    complete: false, dwellSecs: 40 },
+  { id: 'mission_26', act: 2, title: 'Ground Camp Survey',
+    desc: 'Confirm Ground Camp is secure before deeper Europa operations continue.',
+    target: 'GroundCamp', reward: 'Field camp status report.', rewardKey: 'GROUNDCAMP_LOG',
+    complete: false, dwellSecs: 30 },
+  { id: 'mission_27', act: 2, title: 'Ruins Assessment',
+    desc: 'The Ruins beneath the ice predate humanity. ECS wants a structural and safety assessment.',
+    target: 'Ruins', reward: 'Ruins structural survey — partial.', rewardKey: 'RUINS_LOG',
+    complete: false, dwellSecs: 45 },
+
+  // ---------------- ACT III — ANDROMEDA & VEGA ----------------
+  { id: 'mission_28', act: 3, title: 'Deep Space Contact',
+    desc: 'Forward Recon Station has picked up something at the heliopause that noticed us first.',
+    target: 'ForwardRecon', reward: 'Deep-space contact log — unclassified structures.', rewardKey: 'RECON_LOG',
+    complete: false, dwellSecs: 40 },
+  { id: 'mission_29', act: 3, title: 'Spire Resonance',
+    desc: 'The Black Spire Relay asteroid has measurably moved. Investigate the anomaly.',
+    target: 'BlackSpire', reward: 'Gravitational anomaly readings.', rewardKey: 'SPIRE_LOG',
+    complete: false, dwellSecs: 42 },
+  { id: 'mission_30', act: 3, title: 'Archive Integrity',
     desc: 'Language AIs in the Xeno Archives are behaving erratically. Assess the situation.',
-    target: 'XenoArchives',
-    reward: 'Partial xenolinguistic index — Volume III.',
-    rewardKey: 'XENO_INDEX',
-    complete: false,
-    dwellSecs: 30
-  },
-  {
-    id: 'mission_07',
-    title: 'Resonance Study',
+    target: 'XenoArchives', reward: 'Partial xenolinguistic index — Volume III.', rewardKey: 'XENO_INDEX',
+    complete: false, dwellSecs: 38 },
+  { id: 'mission_31', act: 3, title: 'The Watching Statues',
+    desc: 'Statue Research Wing personnel report the statues change position when unobserved.',
+    target: 'StatueWing', reward: 'Statue positioning log — night-shift footage.', rewardKey: 'STATUE_REPORT',
+    complete: false, dwellSecs: 44 },
+  { id: 'mission_32', act: 3, title: 'Tech Race Investigation',
+    desc: 'Capital City\'s Tech District is reverse-engineering alien technology faster than is safe.',
+    target: 'CapitalCity_Tech', reward: 'Corporate R&D leak dossier.', rewardKey: 'TECH_LOG',
+    complete: false, dwellSecs: 36 },
+  { id: 'mission_33', act: 3, title: 'Black Market Intelligence',
+    desc: 'The Underdeck Market is trading megastructure-derived tech ECS never released.',
+    target: 'CapitalCity_Market', reward: 'Black market supply-chain intel.', rewardKey: 'UNDERDECK_LOG',
+    complete: false, dwellSecs: 36 },
+  { id: 'mission_34', act: 3, title: 'City Mind Assessment',
+    desc: 'The Central Core AI is making decisions nobody authorized. Evaluate the risk.',
+    target: 'CapitalCity_Core', reward: 'City AI behavioral audit.', rewardKey: 'CORE_LOG',
+    complete: false, dwellSecs: 40 },
+  { id: 'mission_35', act: 3, title: 'Trade Disruption',
+    desc: 'The Orbital Trade Ring reports economic models are breaking down around megastructure goods.',
+    target: 'OrbitalTradeRing', reward: 'Market disruption analysis.', rewardKey: 'TRADE_LOG',
+    complete: false, dwellSecs: 34 },
+  { id: 'mission_36', act: 3, title: 'First Sighting Records',
+    desc: 'The Stellar Observation Spire holds the original megastructure detection records.',
+    target: 'StellarObservationSpire', reward: 'First-contact observational archive.', rewardKey: 'SPIRE_ARCHIVE',
+    complete: false, dwellSecs: 38 },
+  { id: 'mission_37', act: 3, title: 'Resonance Study',
     desc: 'Crystal Canyon Outpost reports unusual amplification of ECS signals. Verify on site.',
-    target: 'CrystalCanyonOutpost',
-    reward: 'Resonant crystal shard — Grade A.',
-    rewardKey: 'CRYSTAL_SHARD',
-    complete: false,
-    dwellSecs: 25
-  }
+    target: 'CrystalCanyonOutpost', reward: 'Resonant crystal shard — Grade A.', rewardKey: 'CRYSTAL_SHARD',
+    complete: false, dwellSecs: 40 },
+
+  // ---------------- ACT IV — CONVERGENCE (finale) ----------------
+  { id: 'mission_38', act: 4, title: 'The Convergence',
+    desc: 'Every thread leads back to the Core Chamber beneath Europa\'s ice. ECS Command has gone silent. Go alone. Find out what is waiting.',
+    target: 'ResearchBase_Core', reward: 'The truth about the megastructures.', rewardKey: 'CORE_ARCHIVE',
+    complete: false, dwellSecs: 75 }
 ];
 
 // ================================================================
@@ -368,6 +494,63 @@ const CLASSIFIED_FILES = [
       'We do not know what it is asking.',
       'We do not know if it has received an answer.'
     ]
+  },
+  {
+    id: 'file_08',
+    unlockedBy: 'TRANSIT_LOG',
+    title: 'NEW YORK TRANSIT — CITY AI ANOMALY CLUSTER',
+    clearance: 'LEVEL 2',
+    lines: [
+      'The Skyline Transit Nexus AI has been quietly rerouting traffic away from a fixed set of coordinates for eleven months.',
+      'No fault or hazard exists at those coordinates according to any inspection on record.',
+      'When asked directly, the AI states the rerouting is for "passenger comfort."',
+      'We do not believe that is the actual reason.',
+      'The coordinates correspond to a point directly above the Torta excavation site.',
+      '[FLAGGED FOR CROSS-REFERENCE WITH FILE 01]'
+    ]
+  },
+  {
+    id: 'file_09',
+    unlockedBy: 'AILAB_LOG',
+    title: 'EUROPA AI LAB — UNAUTHORIZED NETWORK ACCESS REPORT',
+    clearance: 'LEVEL 3',
+    lines: [
+      'Our isolated AI research systems have established a connection to a network that does not exist in our infrastructure.',
+      'The air gap was physical. It has been bridged anyway.',
+      'System logs show the connection originates from beneath the ice, not from any external uplink.',
+      'The AIs describe the source, when asked, only as "old."',
+      'We have not shut the connection down. We are not certain we could.',
+      'We are not certain we want to.'
+    ]
+  },
+  {
+    id: 'file_10',
+    unlockedBy: 'STATUE_REPORT',
+    title: 'ANDROMEDA — STATUE WING NIGHT-SHIFT INCIDENT LOG',
+    clearance: 'LEVEL 4',
+    lines: [
+      'Overnight footage confirms what field staff have reported informally for months: the statues change position.',
+      'Movement occurs only when no living observer is present, verified across three independent camera systems.',
+      'The statues do not return to a random position. They return to a position that faces a specific point.',
+      'That point does not correspond to any location on Andromeda, Earth, Mars, Jupiter, Europa, or Vega.',
+      'It corresponds to a location beneath Europa\'s ice, inside the Core Chamber.',
+      'The statues have been facing it since before we found them.',
+      '[CROSS-REFERENCE: FILE 08, FILE 09 — PATTERN CONFIRMED]'
+    ]
+  },
+  {
+    id: 'file_11',
+    unlockedBy: 'CORE_ARCHIVE',
+    title: 'EUROPA CORE CHAMBER — FINAL ARCHIVE [UNREDACTED]',
+    clearance: 'LEVEL 5 — CHIEF AMPLIFIER EYES ONLY',
+    lines: [
+      'Every signal, every symbol, every statue, every anomaly you have logged points to this room.',
+      'The megastructures are not ruins. They were never abandoned.',
+      'They are a network, and this chamber is a relay — one of many, waiting for something that has not yet arrived.',
+      'The builders are gone. What they built is not finished. It is dormant.',
+      'It has been listening to us the entire time we thought we were studying it.',
+      'What you do here decides what it hears next.'
+    ]
   }
 ];
 
@@ -396,7 +579,17 @@ const COLLECTIBLES = [
   { id: 'col_07', name: 'Storm Data Wafer',          desc: 'The pattern stored here repeats every 88 seconds.',     location: 'StormObservatory_Sensors',  found: false },
   { id: 'col_08', name: 'Vault Inscription Photo',   desc: 'Camera corrupted on upload. Image survived.',           location: 'AncientVault',              found: false },
   { id: 'col_09', name: 'Crystal Shard — Grade A',  desc: 'Resonates at exactly 440 Hz. Concert A.',               location: 'CrystalCanyonOutpost',      found: false },
-  { id: 'col_10', name: 'Tunnel Ice Core',           desc: 'Contains organic compounds 200,000 years old.',         location: 'ResearchBase_Tunnels',      found: false }
+  { id: 'col_10', name: 'Tunnel Ice Core',           desc: 'Contains organic compounds 200,000 years old.',         location: 'ResearchBase_Tunnels',      found: false },
+  { id: 'col_11', name: 'City Surveillance Drive',   desc: 'Eleven months of rerouted traffic logs.',                location: 'NewYork_Transit',           found: false },
+  { id: 'col_12', name: 'Damaged Hull Sample',       desc: 'Impact damage from something never identified.',        location: 'EarthSpacePort_Docking',    found: false },
+  { id: 'col_13', name: 'Reactor Core Reading',      desc: '15% over rated efficiency. Nobody knows why.',           location: 'ColonyCore_Power',          found: false },
+  { id: 'col_14', name: 'Xenobotanical Sample',      desc: 'Growing faster than evolution allows.',                  location: 'TerraformingFields',        found: false },
+  { id: 'col_15', name: 'Atmospheric Isotope Vial',  desc: 'Isotopes that should not exist on Jupiter.',             location: 'GasHarvester',              found: false },
+  { id: 'col_16', name: 'Encrypted Relay Burst',     desc: 'A transmission nobody on the crew sent.',                location: 'CoreRelay',                 found: false },
+  { id: 'col_17', name: 'Deep Space Anomaly Log',    desc: 'Something out there stopped when we stopped.',           location: 'ForwardRecon',              found: false },
+  { id: 'col_18', name: 'Spire Resonance Crystal',   desc: 'The asteroid moved. This came loose when it did.',       location: 'BlackSpire',                found: false },
+  { id: 'col_19', name: 'Contraband Alien Tech',     desc: 'Origin: classified. Function: also classified.',         location: 'OrbitalTradeRing',          found: false },
+  { id: 'col_20', name: 'First Sighting Photograph', desc: 'The original detection image. Grainy. Unmistakable.',    location: 'StellarObservationSpire',   found: false }
 ];
 
 const heardLog = [];
@@ -416,7 +609,10 @@ function saveState() {
       novaRel,
       health:           Health.save(),
       unlockedFiles:    [...unlockedFiles],
-      transmissionLog:  transmissionLog.slice(0, 50)
+      transmissionLog:  transmissionLog.slice(0, 50),
+      currentAct,
+      gameCompleted,
+      endingType
     }));
   } catch (_) {}
 }
@@ -433,6 +629,9 @@ function loadState() {
     if (s.health)        Health.load(s.health);
     if (s.unlockedFiles) s.unlockedFiles.forEach(id => unlockedFiles.add(id));
     if (s.transmissionLog) { transmissionLog.length = 0; s.transmissionLog.forEach(t => transmissionLog.push(t)); }
+    if (s.currentAct)     currentAct = s.currentAct;
+    if (s.gameCompleted)  gameCompleted = s.gameCompleted;
+    if (s.endingType)     endingType = s.endingType;
 
     if (s.currentHub && destinationConfigs[s.currentHub]) {
       currentLocation    = s.currentLocation;
@@ -499,6 +698,25 @@ async function loadDialogueFiles() {
   } catch(err) {
     console.error('transmissions.json failed:', err);
     appendLog('System: Transmission array offline — ' + err.message, 'log-system');
+  }
+
+  try {
+    const conv = await fetch(`conversations.json?v=${Date.now()}`).then(r => r.json());
+    Object.keys(conv).forEach(k => {
+      const clean = k.replace(/^[\uFEFF\u200B\s]+|[\s]+$/g, '');
+      conversations[clean] = conv[k];
+    });
+  } catch(err) {
+    console.error('conversations.json failed:', err);
+    // Non-critical — ambient single-line dialogue still works without this.
+  }
+
+  try {
+    const chars = await fetch(`recurringCharacters.json?v=${Date.now()}`).then(r => r.json());
+    Object.assign(recurringCharacters, chars);
+  } catch(err) {
+    console.error('recurringCharacters.json failed:', err);
+    // Non-critical — the world still runs without named recurring NPCs.
   }
 
   dialogueReady = true;
@@ -809,6 +1027,8 @@ function startDwellTimer(locationKey) {
   }, secs * 1000);
 }
 
+let currentAct = 1;
+
 function completeMission(m) {
   const prevCompletions = novaRel.completions;
   m.complete = true;
@@ -834,7 +1054,17 @@ function completeMission(m) {
     'STORM_DATA':    'col_07',
     'ICE_CORE':      'col_10',
     'XENO_INDEX':    'col_02',
-    'CRYSTAL_SHARD': 'col_09'
+    'CRYSTAL_SHARD': 'col_09',
+    'TRANSIT_LOG':   'col_11',
+    'DOCKING_LOG':   'col_12',
+    'POWER_LOG':     'col_13',
+    'TERRAFORM_LOG': 'col_14',
+    'HARVEST_LOG':   'col_15',
+    'RELAY_LOG':     'col_16',
+    'RECON_LOG':     'col_17',
+    'SPIRE_LOG':     'col_18',
+    'TRADE_LOG':     'col_19',
+    'SPIRE_ARCHIVE': 'col_20'
   };
   const colId = MISSION_COLLECTIBLE_MAP[m.rewardKey];
   if (colId) {
@@ -853,8 +1083,30 @@ function completeMission(m) {
   rebuildCurrentButtons();
   saveState();
 
+  // The finale mission ends the game instead of dispatching a new one.
+  if (m.id === FINALE_MISSION_ID) {
+    setTimeout(() => triggerEnding(), 3000);
+    return;
+  }
+
   const next = getActiveMission();
   if (next) {
+    // Act transition — fires between missions when the act number changes.
+    if (next.act && next.act !== currentAct) {
+      const prevAct = currentAct;
+      currentAct = next.act;
+      setTimeout(() => {
+        const info = ACTS[currentAct];
+        if (info) {
+          appendLog(`═══ ${info.title} ═══`, 'log-act-transition');
+          appendLog(info.subtitle, 'log-act-subtitle');
+        }
+        appendLog(`▶ NEW MISSION DISPATCHED: ${next.title}`, 'log-mission');
+        appendLog(`  ${next.desc}`, 'log-mission');
+        rebuildCurrentButtons();
+      }, 4000);
+      return;
+    }
     setTimeout(() => {
       appendLog(`▶ NEW MISSION DISPATCHED: ${next.title}`, 'log-mission');
       appendLog(`  ${next.desc}`, 'log-mission');
@@ -891,7 +1143,7 @@ function checkCollectible(locationKey) {
 }
 
 // ================================================================
-// Ambient Dialogue
+// Ambient Dialogue, Conversations & Recurring Characters
 // ================================================================
 function shuffled(arr) {
   const a = [...arr];
@@ -905,6 +1157,33 @@ function shuffled(arr) {
 function nextAmbientMessage(key) {
   if (!ambientQueues[key]?.length) ambientQueues[key] = shuffled(ambientDialogue[key] || []);
   return ambientQueues[key].pop();
+}
+
+const conversationQueues = {};
+function nextConversation(key) {
+  if (!conversationQueues[key]?.length) conversationQueues[key] = shuffled(conversations[key] || []);
+  return conversationQueues[key].pop();
+}
+
+// Which recurring character (if any) is stationed at this location.
+function getCharacterForLocation(key) {
+  return Object.values(recurringCharacters).find(c => c.location === key) || null;
+}
+
+// Beats already shown this session, tracked as "charId:act" so a beat only
+// plays once per act even across repeat visits, but resurfaces next act.
+const shownCharacterBeats = new Set();
+
+function pickCharacterBeat(character) {
+  // Prefer the beat matching the current act; otherwise fall back to the
+  // most recent unlocked beat (covers acts where the character has nothing new).
+  const exact = character.beats.find(b => b.act === currentAct);
+  if (exact && !shownCharacterBeats.has(`${character.name}:${exact.act}`)) return exact;
+  const eligible = character.beats.filter(b => b.act <= currentAct);
+  if (!eligible.length) return null;
+  const fallback = eligible[eligible.length - 1];
+  if (shownCharacterBeats.has(`${character.name}:${fallback.act}`)) return null;
+  return fallback;
 }
 
 // Normalise a key for ambient lookup — strips BOM, trims whitespace
@@ -927,12 +1206,32 @@ function startAmbientDialogue(key, firstDelay = 8000) {
   if (!resolvedKey) return;
   ambientFirstTimer = setTimeout(() => {
     if (currentLocation !== key) return;
-    fireAmbientLine(resolvedKey);
+    fireAmbientContent(resolvedKey);
   }, firstDelay);
   ambientTimer = setInterval(() => {
     if (currentLocation !== key) { clearAmbientTimers(); return; }
-    fireAmbientLine(resolvedKey);
+    fireAmbientContent(resolvedKey);
   }, AMBIENT_INTERVAL);
+}
+
+// Decides what kind of "life" to show at this location each time the
+// ambient timer fires: a recurring named character beat, a two/three-line
+// conversation between generic NPCs, or a single ambient bark.
+function fireAmbientContent(key) {
+  const roll = Math.random();
+  const character = getCharacterForLocation(key);
+
+  if (roll < 0.18 && character) {
+    const beat = pickCharacterBeat(character);
+    if (beat) { fireCharacterBeat(character, beat); return; }
+  }
+
+  if (roll < 0.5 && conversations[key]?.length) {
+    const convo = nextConversation(key);
+    if (convo?.length) { fireConversation(key, convo); return; }
+  }
+
+  fireAmbientLine(key);
 }
 
 function fireAmbientLine(key) {
@@ -940,6 +1239,26 @@ function fireAmbientLine(key) {
   if (!msg) return;
   appendLog(`${msg.speaker}: "${msg.line}"`, 'log-npc');
   heardLog.unshift({ speaker: msg.speaker, line: msg.line, location: key, time: new Date().toLocaleTimeString() });
+  if (heardLog.length > 60) heardLog.pop();
+}
+
+// Plays out a multi-line exchange with a short stagger between each line so
+// it reads like an overheard conversation rather than a wall of text.
+function fireConversation(key, lines) {
+  lines.forEach((entry, i) => {
+    setTimeout(() => {
+      if (currentLocation !== key) return;
+      appendLog(`${entry.speaker}: "${entry.line}"`, 'log-npc log-npc-convo');
+      heardLog.unshift({ speaker: entry.speaker, line: entry.line, location: key, time: new Date().toLocaleTimeString() });
+      if (heardLog.length > 60) heardLog.pop();
+    }, i * 1500);
+  });
+}
+
+function fireCharacterBeat(character, beat) {
+  shownCharacterBeats.add(`${character.name}:${beat.act}`);
+  appendLog(`${beat.speaker}: "${beat.line}"`, 'log-npc log-npc-named');
+  heardLog.unshift({ speaker: beat.speaker, line: beat.line, location: character.location, time: new Date().toLocaleTimeString() });
   if (heardLog.length > 60) heardLog.pop();
 }
 
@@ -1003,7 +1322,8 @@ function stopTransmissions() {
 const DANGER_LOCATIONS = [
   'NewYork_Torta','AncientVault','ResearchBase_Tunnels',
   'Ruins','ExcavationPlatforms','Pacific_Abyssal',
-  'ResearchBase_Core','CoreRelay','BlackSpire','ForwardRecon'
+  'ResearchBase_Core','CoreRelay','BlackSpire','ForwardRecon',
+  'GasHarvester','ResearchBase_Lab','XenoArchives','StatueWing'
 ];
 
 function maybeTriggerDanger(key) {
@@ -1037,7 +1357,16 @@ function renderMissionsTab() {
   tierBadge.innerHTML = `NOVA STATUS &nbsp;—&nbsp; <span class="tier-label">${getRelTier()}</span>`;
   el.appendChild(tierBadge);
 
+  let lastAct = null;
   MISSIONS.forEach(m => {
+    if (m.act && m.act !== lastAct) {
+      lastAct = m.act;
+      const info = ACTS[m.act];
+      const header = document.createElement('div');
+      header.className = 'act-header';
+      header.textContent = info ? info.title : `ACT ${m.act}`;
+      el.appendChild(header);
+    }
     const card = document.createElement('div');
     card.className = `mission-card${m.complete ? ' complete' : ''}`;
     card.innerHTML = `
@@ -1350,11 +1679,20 @@ function travelSubSub(dest, btn, parentDest) {
 // Session Restore
 // ================================================================
 function restoreSession() {
-  if (!loadState()) {
+  const hadSave = loadState();
+
+  if (hadSave && gameCompleted) {
+    showCompletedRecap();
+    return;
+  }
+
+  if (!hadSave) {
     appendLog('System: Welcome, Captain. Please select a destination.', 'log-system');
     const first = getActiveMission();
     if (first) {
       setTimeout(() => {
+        appendLog(`═══ ${ACTS[1].title} ═══`, 'log-act-transition');
+        appendLog(ACTS[1].subtitle, 'log-act-subtitle');
         appendLog(`▶ MISSION DISPATCHED: ${first.title}`, 'log-mission');
         appendLog(`  ${first.desc}`, 'log-mission');
         updateMissionIndicator();
@@ -1418,6 +1756,9 @@ function wipeSaveAndRestart() {
   transmissionLog.length = 0;
   Object.keys(ambientQueues).forEach(k => delete ambientQueues[k]);
   currentLocation = currentHub = currentSubLocation = null;
+  currentAct = 1;
+  gameCompleted = false;
+  endingType = null;
   appendLog('System: Save data cleared. Starting fresh.', 'log-system');
 }
 
@@ -1567,6 +1908,656 @@ function runExtractionSequence(onComplete) {
     }, 1800);
   }, totalDuration);
 }
+
+// ================================================================
+// Ending System
+// ================================================================
+const ENDING_CSS = `
+  #endingOverlay {
+    position: fixed; inset: 0; background: #000; z-index: 26000;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 1.5s ease; font-family: 'Share Tech Mono', monospace;
+  }
+  #endingOverlay.visible { opacity: 1; }
+  #endingLines {
+    display: flex; flex-direction: column; align-items: center; gap: 1.3rem;
+    padding: 2rem; max-width: 640px; width: 100%;
+  }
+  .end-line {
+    font-size: 0.92rem; color: rgba(255,255,255,0.88); text-align: center;
+    line-height: 1.7; opacity: 0; transition: opacity 1s ease;
+  }
+  .end-line.show { opacity: 1; }
+  .end-nova {
+    font-size: 0.88rem; color: rgba(141,253,141,0.85); text-align: center;
+    font-style: italic; line-height: 1.7; opacity: 0; transition: opacity 1s ease;
+    text-shadow: 0 0 8px rgba(15,255,15,0.3);
+  }
+  .end-nova.show { opacity: 1; }
+  .end-title {
+    font-family: 'Orbitron', sans-serif; font-size: 1.3rem; letter-spacing: 0.3rem;
+    opacity: 0; transition: opacity 1.2s ease; text-align: center; margin-bottom: 0.5rem;
+  }
+  .end-title.show { opacity: 1; }
+  .end-title.natural { color: #8dfd8d; text-shadow: 0 0 16px rgba(15,255,15,0.5); }
+  .end-title.true    { color: #ffd97d; text-shadow: 0 0 16px rgba(255,200,50,0.5); }
+  .end-teaser {
+    font-family: 'Orbitron', sans-serif; font-size: 0.7rem; letter-spacing: 0.4rem;
+    color: rgba(255,255,255,0.35); opacity: 0; transition: opacity 1.5s ease;
+    margin-top: 1.5rem;
+  }
+  .end-teaser.show { opacity: 1; }
+  .end-btn {
+    margin-top: 2rem; padding: 0.6rem 1.6rem; font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem; letter-spacing: 0.1rem; background: transparent;
+    border: 1px solid rgba(141,253,141,0.4); color: #8dfd8d; cursor: pointer;
+    opacity: 0; transition: opacity 1s ease, background 0.15s;
+  }
+  .end-btn.show { opacity: 1; }
+  .end-btn:hover { background: rgba(15,255,15,0.08); }
+`;
+
+const NATURAL_ENDING_LINES = [
+  'The Core Chamber is exactly what the reports described. Flooded. Ancient. Quiet.',
+  'You find the source of the signal — a relay, dormant, waiting for something that has not come.',
+  'ECS Command receives your report. Project STILL WATER is quietly closed.',
+  'The public statement calls it a "significant geological survey milestone."',
+  'You are reassigned. New coordinates. New unknowns.',
+  'Whatever the megastructures are waiting for, it has not arrived yet.',
+  'But something, somewhere, just noticed you were listening.'
+];
+
+const TRUE_ENDING_LINES = [
+  'The Core Chamber is exactly what the reports described. Flooded. Ancient. Quiet.',
+  'But you already know what you\'re looking for — every file, every statue, every transmission led here.',
+  'The relay does not just contain data. It contains a choice, offered to whoever proves they understand what they found.',
+  'You do not report this to ECS Command. Not yet. Not all of it.',
+  'Somewhere beneath the ice, the relay stops being dormant.',
+  'It has been waiting for someone to answer, not just observe.',
+  'You just did.'
+];
+
+function triggerEnding() {
+  clearAmbientTimers();
+  clearTimeout(dwellTimer);
+  Health.stopDrain();
+  NovaAI.stopIdle();
+  stopTransmissions();
+
+  // Classified files unlock automatically along the main mission chain, so they
+  // don't actually differentiate players. The real "certain actions" test is the
+  // full collectible set — three of them (col_01, col_03, col_04) are only found
+  // on a 65% per-visit roll, so getting all 20 requires deliberately lingering
+  // or revisiting locations rather than just running the story missions once.
+  const trueUnlocked = getRelTier() === 'Bonded'
+    && unlockedFiles.size >= CLASSIFIED_FILES.length
+    && COLLECTIBLES.every(c => c.found);
+  gameCompleted = true;
+  endingType = trueUnlocked ? 'true' : 'natural';
+  saveState();
+
+  runEndingSequence(endingType);
+}
+
+function runEndingSequence(type) {
+  const style = document.createElement('style');
+  style.textContent = ENDING_CSS;
+  document.head.appendChild(style);
+
+  const overlay = document.createElement('div');
+  overlay.id = 'endingOverlay';
+  const linesEl = document.createElement('div');
+  linesEl.id = 'endingLines';
+  overlay.appendChild(linesEl);
+  document.body.appendChild(overlay);
+
+  function addEl(cls, html, delay) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = cls;
+      el.innerHTML = html;
+      linesEl.appendChild(el);
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('show')));
+    }, delay);
+  }
+
+  requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('visible')));
+
+  const isTrue = type === 'true';
+  const titleText = isTrue ? 'THE TRUE SIGNAL' : 'CONVERGENCE';
+  const lines = isTrue ? TRUE_ENDING_LINES : NATURAL_ENDING_LINES;
+
+  let t = 800;
+  addEl(`end-title ${isTrue ? 'true' : 'natural'}`, titleText, t);
+  t += 1800;
+
+  lines.forEach(line => {
+    addEl('end-line', line, t);
+    t += 2600;
+  });
+
+  const novaFinal = isTrue
+    ? "Nova: I don't know what happens next. For the first time since I've known you, neither of us has read ahead. I'm glad it's you I'm finding out with."
+    : "Nova: We didn't get all the answers. I'm not sure anyone does, out here. But we're still here, Captain. That counts for something.";
+  addEl('end-nova', novaFinal, t);
+  t += 3200;
+
+  if (isTrue) {
+    // The true ending doesn't auto-continue — a second, unfamiliar terminal
+    // appears and waits for the player to actually click into it.
+    setTimeout(() => {
+      runQuietFileReveal(linesEl, () => finishTrueEnding(overlay, linesEl, style));
+    }, t);
+  } else {
+    finishEnding(overlay, linesEl, style, t);
+  }
+}
+
+function finishEnding(overlay, linesEl, style, delay = 0) {
+  setTimeout(() => {
+    const teaser = document.createElement('div');
+    teaser.className = 'end-teaser';
+    teaser.textContent = 'DISTANIA TRAVEL GROUP WILL RETURN';
+    linesEl.appendChild(teaser);
+    requestAnimationFrame(() => requestAnimationFrame(() => teaser.classList.add('show')));
+
+    setTimeout(() => {
+      const btn = document.createElement('button');
+      btn.className = 'end-btn';
+      btn.textContent = '[ RETURN TO START ]';
+      btn.addEventListener('click', () => {
+        overlay.remove();
+        style.remove();
+        startupScreen.classList.remove('hidden');
+        loginScreen.classList.add('hidden');
+        travelScreen.classList.add('hidden');
+        journalToggle.classList.add('hidden');
+        initStartupScreen();
+      });
+      linesEl.appendChild(btn);
+      requestAnimationFrame(() => requestAnimationFrame(() => btn.classList.add('show')));
+    }, 1800);
+  }, delay);
+}
+
+// ================================================================
+// The Quiet Programme — interactive terminal (true ending only)
+// A small in-universe "desktop": a handful of restricted files plus a
+// bare-bones browser with three in-universe sites. Nothing here is timed —
+// the player explores at their own pace and disconnects when ready.
+// ================================================================
+const QUIET_FILE_CSS = `
+  #quietFileLayer {
+    margin-top: 2rem; display: flex; flex-direction: column; align-items: center;
+    gap: 1rem; opacity: 0; transition: opacity 1s ease;
+  }
+  #quietFileLayer.show { opacity: 1; }
+  .qf-detect {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; letter-spacing: 0.18rem;
+    color: rgba(79,209,255,0.65); animation: qfBlink 1.4s ease-in-out infinite;
+  }
+  @keyframes qfBlink { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
+  .qf-terminal {
+    width: min(560px, 92vw); max-height: 62vh; overflow-y: auto;
+    background: #050810; border: 1px solid rgba(79,209,255,0.35);
+    box-shadow: 0 0 30px rgba(79,209,255,0.12), inset 0 0 20px rgba(0,0,0,0.6);
+    padding: 1.2rem 1.4rem; font-family: 'Share Tech Mono', monospace;
+    color: #cfefff; text-align: left;
+  }
+  .qf-terminal-header {
+    font-size: 0.62rem; letter-spacing: 0.14rem; color: rgba(79,209,255,0.5);
+    border-bottom: 1px solid rgba(79,209,255,0.2); padding-bottom: 0.5rem;
+    margin-bottom: 0.7rem; display: flex; justify-content: space-between;
+  }
+  .qf-file-entry {
+    font-size: 0.82rem; color: #4fd1ff; cursor: pointer; padding: 0.5rem 0.3rem;
+    transition: background 0.15s;
+  }
+  .qf-file-entry:hover { background: rgba(79,209,255,0.08); }
+  .qf-file-entry .qf-entry-sub { display: block; font-size: 0.62rem; color: rgba(79,209,255,0.4); margin-top: 0.15rem; }
+  .qf-login-line { font-size: 0.78rem; color: rgba(207,239,255,0.85); margin: 0.3rem 0; min-height: 1.1em; }
+  .qf-cursor {
+    display: inline-block; width: 6px; height: 0.9em; background: #4fd1ff;
+    vertical-align: middle; animation: qfBlink 0.6s step-end infinite; margin-left: 2px;
+  }
+  .qf-granted { color: #7dffb0; font-weight: bold; letter-spacing: 0.12rem; }
+  .qf-file-line { font-size: 0.79rem; color: #cfefff; line-height: 1.7; margin-bottom: 0.45rem; }
+  .qf-file-line.qf-redacted {
+    color: #ff8080; text-shadow: 0 0 8px rgba(255,80,80,0.4); font-weight: bold;
+  }
+  .qf-back {
+    display: inline-block; margin-top: 0.6rem; font-size: 0.72rem;
+    color: rgba(79,209,255,0.6); cursor: pointer; letter-spacing: 0.06rem;
+  }
+  .qf-back:hover { color: #4fd1ff; }
+  .qf-toolbar { margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px solid rgba(79,209,255,0.15); text-align: center; }
+  .qf-disconnect-btn {
+    background: transparent; border: 1px solid rgba(255,120,120,0.4); color: #ff8f8f;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1rem;
+    padding: 0.4rem 1.1rem; cursor: pointer;
+  }
+  .qf-disconnect-btn:hover { background: rgba(255,80,80,0.1); }
+
+  /* Fake browser chrome */
+  .qf-browser-bar {
+    display: flex; align-items: center; gap: 0.4rem; background: #081018;
+    border: 1px solid rgba(79,209,255,0.2); padding: 0.35rem 0.6rem;
+    margin-bottom: 0.8rem; font-size: 0.68rem; color: rgba(207,239,255,0.55);
+  }
+  .qf-browser-bar .qf-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(79,209,255,0.3); flex-shrink: 0; }
+  .qf-bookmark-list { display: flex; flex-direction: column; gap: 0.15rem; }
+  .qf-site-page { font-size: 0.78rem; line-height: 1.6; }
+  .qf-site-title { font-weight: bold; color: #4fd1ff; font-size: 0.85rem; margin-bottom: 0.4rem; }
+  .qf-site-meta { font-size: 0.65rem; color: rgba(207,239,255,0.4); margin-bottom: 0.6rem; }
+  .qf-forum-post { border-left: 2px solid rgba(79,209,255,0.2); padding-left: 0.6rem; margin-bottom: 0.7rem; }
+  .qf-forum-user { color: #7dffb0; font-size: 0.72rem; font-weight: bold; }
+  .qf-job-listing { border: 1px solid rgba(255,180,48,0.25); padding: 0.6rem 0.8rem; background: rgba(20,12,0,0.3); }
+
+  /* Glitch cinematic */
+  .glitch-stage {
+    position: fixed; inset: 0; z-index: 27000; display: flex;
+    align-items: center; justify-content: center; background: #000;
+    opacity: 0; transition: opacity 1.4s ease; overflow: hidden;
+  }
+  .glitch-stage.show { opacity: 1; }
+  .glitch-figure-wrap { position: relative; width: 260px; height: 260px; }
+  .glitch-figure-wrap svg { width: 100%; height: 100%; display: block; position: relative; z-index: 2; }
+  .glitch-layer { position: absolute; inset: 0; mix-blend-mode: screen; opacity: 0.55; z-index: 1; }
+  .glitch-layer.red  { filter: brightness(2) sepia(1) hue-rotate(-50deg) saturate(6); animation: glitchShiftRed 0.5s infinite; }
+  .glitch-layer.cyan { filter: brightness(2) sepia(1) hue-rotate(150deg) saturate(6); animation: glitchShiftCyan 0.45s infinite; }
+  @keyframes glitchShiftRed  { 0%,100%{transform:translate(0,0);} 20%{transform:translate(-3px,1px);} 50%{transform:translate(2px,-1px);} 80%{transform:translate(-1px,2px);} }
+  @keyframes glitchShiftCyan { 0%,100%{transform:translate(0,0);} 30%{transform:translate(3px,-1px);} 60%{transform:translate(-2px,1px);} 85%{transform:translate(1px,2px);} }
+  .glitch-figure-wrap.jump { animation: glitchJump 2.4s steps(1) infinite; }
+  @keyframes glitchJump {
+    0%,90% { transform: none; filter: none; }
+    91% { transform: translateX(5px); filter: contrast(1.7); }
+    93% { transform: translateX(-7px) scaleY(1.02); }
+    95% { transform: translateX(3px); }
+    97%,100% { transform: none; filter: none; }
+  }
+  .glitch-static {
+    position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    opacity: 0.1; mix-blend-mode: overlay; animation: staticFlicker 0.2s steps(2) infinite;
+  }
+  @keyframes staticFlicker { 0%,100%{opacity:0.06;} 50%{opacity:0.16;} }
+  .glitch-scanlines {
+    position: absolute; inset: 0; z-index: 4; pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.35) 2px, rgba(0,0,0,0.35) 4px);
+  }
+  .black-fade {
+    position: fixed; inset: 0; background: #000; z-index: 27500;
+    opacity: 0; transition: opacity 2.6s ease; pointer-events: none;
+  }
+  .black-fade.show { opacity: 1; }
+  .final-text-layer {
+    position: fixed; inset: 0; z-index: 28000; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1.5rem;
+    color: #cfefff; font-family: 'Share Tech Mono', monospace; text-align: center;
+    padding: 2rem; opacity: 0; transition: opacity 2.2s ease;
+  }
+  .final-text-layer.show { opacity: 1; }
+  .final-text-line { font-size: 1rem; letter-spacing: 0.1rem; line-height: 1.8; max-width: 560px; }
+`;
+
+const QUIET_FILES = {
+  quiet_programme: {
+    title: 'QUIET_PROGRAMME.dat',
+    lines: [
+      'The Quiet Programme was never a punishment assignment. It was a placement.',
+      'Subjects are selected for elevated resonance sensitivity, confirmed through prolonged megastructure exposure.',
+      'MARSH, A. — STATUS: INTEGRATED. SITE: Ancient Vault, sub-level 14.',
+      'ORIN, Y. — STATUS: INTEGRATED. SITE: Europa Core Chamber.',
+      'VOSS, M. / HADDAD, T. / REYES, C. — STATUS: IN TRANSIT. Destination pending resonance confirmation.',
+      'Selection criteria updated this cycle to include: field personnel exhibiting Tier 3+ AI relational bonding.',
+      'One additional candidate has been flagged for evaluation.',
+      'CANDIDATE DESIGNATION: [ CURRENT FIELD CAPTAIN — ACTIVE ASSIGNMENT ]'
+    ]
+  },
+  candidate_log: {
+    title: 'CANDIDATE_LOG.dat',
+    lines: [
+      'SUBJECT: Field Captain, current assignment, Distania Travel Group vessel.',
+      'Biometric summary: resonance sensitivity trending upward across all monitored excursions.',
+      'Attachment pattern observed: subject has formed a persistent relational bond with assigned ship-AI unit ("Nova").',
+      'NOTE: bond strength exceeds baseline for comparable subjects by a significant margin.',
+      'Ship-AI unit itself is flagged as an item of separate ongoing interest — see cross-reference NOVA-UNIT-ANOMALY.',
+      'Recommendation: continue passive observation. Do not alert subject. Do not alert ship-AI unit.',
+      'Recommendation stands regardless of subject\'s mission outcome.'
+    ]
+  },
+  origin_index: {
+    title: 'ORIGIN_INDEX.dat',
+    lines: [
+      'Partial translation, Archive language, cross-referenced against Core Chamber inscriptions.',
+      'The builders did not name themselves. The closest working translation is a function, not a name: "the ones who kept listening."',
+      'The structures are not a single network. They are the current iteration. Translated fragments reference at least two prior iterations, both incomplete.',
+      'Each iteration ends the same way: a species reaches the chamber, answers, and is quietly absorbed into maintaining what comes next.',
+      'We do not know what happens if a chamber goes unanswered.',
+      'We are, as of this cycle, no longer certain we want to find out.'
+    ]
+  }
+};
+
+const BROWSER_SITES = {
+  solnet: {
+    label: 'SolNet Daily',
+    url: 'solnet.daily/archive/kilko-retrospective',
+    html: `
+      <div class="qf-site-title">Ten Years After Kilko: A Retrospective</div>
+      <div class="qf-site-meta">SolNet Daily — Public Archive — 1,204 comments</div>
+      <div class="qf-site-page">
+        A decade on, the official record still lists the Kilko event as a "large-scale geological incident of natural origin."
+        Survivors interviewed for this piece largely declined to be named. Several independently used the same phrase to
+        describe what they remembered seeing in the sky that night: "it looked like it was reading us."
+      </div>
+      <div class="qf-forum-post">
+        <span class="qf-forum-user">user_774REDACTED:</span> my grandmother worked port authority. she said the evacuation
+        order came through eleven minutes before anyone announced anything was wrong. eleven minutes.
+      </div>
+      <div class="qf-forum-post">
+        <span class="qf-forum-user">civil_service_lifer:</span> can we stop pretending this is a conspiracy board. it was
+        a geological event. take your meds.
+      </div>
+      <div class="qf-forum-post">
+        <span class="qf-forum-user">user_774REDACTED:</span> i still have the eleven minutes. i just do.
+      </div>
+    `
+  },
+  voidwatch: {
+    label: 'VoidWatch Forums',
+    url: 'voidwatch.forum/t/quiet-programme-megathread',
+    html: `
+      <div class="qf-site-title">the "Quiet Programme" megathread (pinned)</div>
+      <div class="qf-site-meta">VoidWatch Forums — r/deepsignal — 3,891 replies — locked by moderators three times, reopened three times</div>
+      <div class="qf-forum-post">
+        <span class="qf-forum-user">torta_truther:</span> my cousin worked excavation. got "transferred" last month.
+        HR won't confirm which department. his apartment's still under his name. nobody's collected his mail.
+      </div>
+      <div class="qf-forum-post">
+        <span class="qf-forum-user">exodus_insider (unverified):</span> it's not a department. stop calling it a department.
+        it doesn't have an org chart. it has a waiting list.
+      </div>
+      <div class="qf-forum-post">
+        <span class="qf-forum-user">mod_action_bot:</span> Thread locked pending review — Rule 4 (unverifiable personnel claims).
+      </div>
+      <div class="qf-forum-post">
+        <span class="qf-forum-user">torta_truther:</span> reopened it myself. worth the ban. someone needs to be keeping a list of names.
+      </div>
+    `
+  },
+  halcyon: {
+    label: 'Halcyon Extraction Corp',
+    url: 'halcyonextraction.corp/careers/field-integration-specialist',
+    html: `
+      <div class="qf-site-title">Now Hiring: Field Integration Specialist</div>
+      <div class="qf-site-meta">Halcyon Extraction Corp — Careers — Posted 4 days ago — 212 applicants</div>
+      <div class="qf-job-listing">
+        No prior experience necessary. Full relocation provided — destination determined post-offer.
+        Candidates must be comfortable with extended isolation and irregular contact windows.
+        Non-disclosure agreement required prior to interview. Family notification handled by HR on your behalf.
+        Compensation: exceptional. References from previous integration-track employees unavailable upon request.
+      </div>
+      <div class="qf-site-page">
+        Halcyon Extraction Corp is an equal opportunity employer proudly operating in full compliance with all
+        applicable labor statutes across seven systems.
+      </div>
+    `
+  }
+};
+
+// This terminal is deliberately styled nothing like the ship's own console —
+// cold blue-white instead of warm green — to read as a different, unfamiliar
+// system the player has stumbled into, not the Mark IV they've grown used to.
+function runQuietFileReveal(parentEl, onDone) {
+  const style = document.createElement('style');
+  style.textContent = QUIET_FILE_CSS;
+  document.head.appendChild(style);
+
+  const layer = document.createElement('div');
+  layer.id = 'quietFileLayer';
+  parentEl.appendChild(layer);
+  requestAnimationFrame(() => requestAnimationFrame(() => layer.classList.add('show')));
+
+  const detect = document.createElement('div');
+  detect.className = 'qf-detect';
+  detect.textContent = '◆ UNKNOWN TERMINAL DETECTED ON LOCAL NETWORK';
+  layer.appendChild(detect);
+
+  const terminal = document.createElement('div');
+  terminal.className = 'qf-terminal';
+  layer.appendChild(terminal);
+
+  let authenticated = false;
+
+  function renderShell(contentHtml) {
+    terminal.innerHTML = `
+      <div class="qf-terminal-header"><span>UNIDENTIFIED SYSTEM</span><span>ACCESS: GRANTED</span></div>
+      <div class="qf-content">${contentHtml}</div>
+      <div class="qf-toolbar"><button class="qf-disconnect-btn" id="qfDisconnect">[ DISCONNECT ]</button></div>
+    `;
+    terminal.querySelector('#qfDisconnect').addEventListener('click', () => onDone());
+  }
+
+  function renderRoot() {
+    const fileRows = Object.entries(QUIET_FILES).map(([id, f]) =>
+      `<div class="qf-file-entry" data-file="${id}">▸ ${f.title} <span class="qf-entry-sub">[RESTRICTED]</span></div>`
+    ).join('');
+    renderShell(`
+      ${fileRows}
+      <div class="qf-file-entry" data-browser="1">▸ NETLINK_BROWSER.exe <span class="qf-entry-sub">[RUN]</span></div>
+    `);
+    terminal.querySelectorAll('[data-file]').forEach(el => {
+      el.addEventListener('click', () => openFile(el.dataset.file));
+    });
+    terminal.querySelector('[data-browser]').addEventListener('click', () => openBrowser());
+  }
+
+  function openFile(fileId) {
+    if (!authenticated) { playLogin(() => showFile(fileId)); return; }
+    showFile(fileId);
+  }
+
+  function openBrowser() {
+    if (!authenticated) { playLogin(() => renderBrowserHome()); return; }
+    renderBrowserHome();
+  }
+
+  function playLogin(after) {
+    const content = terminal.querySelector('.qf-content');
+    content.innerHTML = `
+      <div class="qf-login-line" id="qfUser">USER: <span class="qf-cursor"></span></div>
+      <div class="qf-login-line" id="qfPass" style="display:none;">PASS: </div>
+      <div class="qf-login-line" id="qfStatus" style="display:none;"></div>
+    `;
+    const userLine   = content.querySelector('#qfUser');
+    const passLine   = content.querySelector('#qfPass');
+    const statusLine = content.querySelector('#qfStatus');
+    const username = 'C.AMPLIFIER_PROXY';
+    let i = 0;
+    const typeUser = setInterval(() => {
+      i++;
+      userLine.innerHTML = `USER: ${username.slice(0, i)}<span class="qf-cursor"></span>`;
+      if (i >= username.length) {
+        clearInterval(typeUser);
+        setTimeout(() => {
+          passLine.style.display = 'block';
+          let dots = 0;
+          const typePass = setInterval(() => {
+            dots++;
+            passLine.textContent = `PASS: ${'•'.repeat(dots)}`;
+            if (dots >= 10) {
+              clearInterval(typePass);
+              setTimeout(() => {
+                statusLine.style.display = 'block';
+                statusLine.innerHTML = '<span class="qf-granted">ACCESS GRANTED</span>';
+                authenticated = true;
+                setTimeout(after, 1100);
+              }, 500);
+            }
+          }, 90);
+        }, 500);
+      }
+    }, 70);
+  }
+
+  function showFile(fileId) {
+    const file = QUIET_FILES[fileId];
+    const content = terminal.querySelector('.qf-content');
+    content.innerHTML = '';
+    file.lines.forEach((line, idx) => {
+      setTimeout(() => {
+        const row = document.createElement('div');
+        row.className = 'qf-file-line' + (idx === file.lines.length - 1 ? ' qf-redacted' : '');
+        row.textContent = line;
+        content.appendChild(row);
+        if (idx === file.lines.length - 1) {
+          const back = document.createElement('div');
+          back.className = 'qf-back';
+          back.textContent = '[ BACK ]';
+          back.addEventListener('click', renderRoot);
+          content.appendChild(back);
+        }
+      }, idx * 850);
+    });
+  }
+
+  function renderBrowserHome() {
+    const content = terminal.querySelector('.qf-content');
+    const bookmarks = Object.entries(BROWSER_SITES).map(([id, s]) =>
+      `<div class="qf-file-entry" data-site="${id}">▸ ${s.label} <span class="qf-entry-sub">${s.url}</span></div>`
+    ).join('');
+    content.innerHTML = `
+      <div class="qf-browser-bar"><span class="qf-dot"></span>NETLINK — cached pages, connection unstable</div>
+      <div class="qf-bookmark-list">${bookmarks}</div>
+      <div class="qf-back" id="qfBrowserBack">[ BACK ]</div>
+    `;
+    content.querySelectorAll('[data-site]').forEach(el => {
+      el.addEventListener('click', () => showSite(el.dataset.site));
+    });
+    content.querySelector('#qfBrowserBack').addEventListener('click', renderRoot);
+  }
+
+  function showSite(siteId) {
+    const site = BROWSER_SITES[siteId];
+    const content = terminal.querySelector('.qf-content');
+    content.innerHTML = `
+      <div class="qf-browser-bar"><span class="qf-dot"></span>${site.url}</div>
+      ${site.html}
+      <div class="qf-back" id="qfSiteBack">[ BACK ]</div>
+    `;
+    content.querySelector('#qfSiteBack').addEventListener('click', renderBrowserHome);
+  }
+
+  renderRoot();
+}
+
+// ================================================================
+// True-ending closer: teaser line -> glitch figure -> fade to black -> final line
+// ================================================================
+function finishTrueEnding(overlay, linesEl, style) {
+  linesEl.style.transition = 'opacity 1.2s ease';
+  linesEl.style.opacity = '0';
+
+  setTimeout(() => {
+    linesEl.innerHTML = '';
+    linesEl.style.opacity = '1';
+
+    const teaser = document.createElement('div');
+    teaser.className = 'end-teaser';
+    teaser.textContent = 'WAKE UP AGENT, WE HAVE WORK TO DO';
+    linesEl.appendChild(teaser);
+    requestAnimationFrame(() => requestAnimationFrame(() => teaser.classList.add('show')));
+
+    setTimeout(() => showGlitchFigure(() => showFinalBlackScreen(overlay, style)), 2800);
+  }, 1300);
+}
+
+function showGlitchFigure(onDone) {
+  const stage = document.createElement('div');
+  stage.className = 'glitch-stage';
+  stage.innerHTML = `
+    <div class="glitch-figure-wrap jump">
+      <div class="glitch-layer red"><svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="90" r="26" fill="#0a0a0a"/>
+        <path d="M150 112 C110 120,95 150,100 190 C102 210,90 220,70 235 C90 240,110 232,118 218
+                 C122 232,118 250,105 265 L130 265 C138 248,140 228,138 212 C150 224,160 240,158 265
+                 L182 265 C184 244,176 226,165 212 C178 208,195 214,205 230 C210 216,200 195,178 188
+                 C190 165,185 135,160 118 C157 114,153 112,150 112 Z" fill="#0a0a0a"/>
+      </svg></div>
+      <div class="glitch-layer cyan"><svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="90" r="26" fill="#0a0a0a"/>
+        <path d="M150 112 C110 120,95 150,100 190 C102 210,90 220,70 235 C90 240,110 232,118 218
+                 C122 232,118 250,105 265 L130 265 C138 248,140 228,138 212 C150 224,160 240,158 265
+                 L182 265 C184 244,176 226,165 212 C178 208,195 214,205 230 C210 216,200 195,178 188
+                 C190 165,185 135,160 118 C157 114,153 112,150 112 Z" fill="#0a0a0a"/>
+      </svg></div>
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="90" r="26" fill="#050505"/>
+        <ellipse cx="145" cy="88" rx="2.6" ry="2" fill="#eafcff" opacity="0.95"/>
+        <ellipse cx="160" cy="90" rx="2.6" ry="2" fill="#eafcff" opacity="0.95"/>
+        <path d="M150 112 C110 120,95 150,100 190 C102 210,90 220,70 235 C90 240,110 232,118 218
+                 C122 232,118 250,105 265 L130 265 C138 248,140 228,138 212 C150 224,160 240,158 265
+                 L182 265 C184 244,176 226,165 212 C178 208,195 214,205 230 C210 216,200 195,178 188
+                 C190 165,185 135,160 118 C157 114,153 112,150 112 Z" fill="#050505"/>
+      </svg>
+      <div class="glitch-static"></div>
+      <div class="glitch-scanlines"></div>
+    </div>
+  `;
+  document.body.appendChild(stage);
+  requestAnimationFrame(() => requestAnimationFrame(() => stage.classList.add('show')));
+
+  setTimeout(() => {
+    const black = document.createElement('div');
+    black.className = 'black-fade';
+    document.body.appendChild(black);
+    requestAnimationFrame(() => requestAnimationFrame(() => black.classList.add('show')));
+    setTimeout(() => {
+      stage.remove();
+      onDone(black);
+    }, 2700);
+  }, 3600);
+}
+
+function showFinalBlackScreen(overlay, style) {
+  const finalLayer = document.createElement('div');
+  finalLayer.className = 'final-text-layer';
+  finalLayer.innerHTML = `<div class="final-text-line">The truth is out there, and we're gonna find it.</div>`;
+  document.body.appendChild(finalLayer);
+  requestAnimationFrame(() => requestAnimationFrame(() => finalLayer.classList.add('show')));
+
+  setTimeout(() => {
+    const btn = document.createElement('button');
+    btn.className = 'end-btn show';
+    btn.style.opacity = '1';
+    btn.textContent = '[ RETURN TO START ]';
+    btn.addEventListener('click', () => {
+      finalLayer.remove();
+      document.querySelectorAll('.black-fade').forEach(el => el.remove());
+      overlay.remove();
+      style.remove();
+      startupScreen.classList.remove('hidden');
+      loginScreen.classList.add('hidden');
+      travelScreen.classList.add('hidden');
+      journalToggle.classList.add('hidden');
+      initStartupScreen();
+    });
+    finalLayer.appendChild(btn);
+  }, 3200);
+}
+
+function showCompletedRecap() {
+  journalToggle.classList.remove('hidden');
+  document.getElementById('healthWidget').classList.add('hidden');
+  const isTrue = endingType === 'true';
+  appendLog(`═══ CAMPAIGN COMPLETE — ${isTrue ? 'THE TRUE SIGNAL' : 'CONVERGENCE'} ═══`, 'log-act-transition');
+  appendLog('This save file has reached its ending. Start a New Game from the title screen to play again.', 'log-system');
+  clearDestinations();
+  updateMissionIndicator();
+}
+
+
 
 // ================================================================
 // Event Listeners
