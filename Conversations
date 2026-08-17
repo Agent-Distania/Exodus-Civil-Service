@@ -1,0 +1,301 @@
+{
+  "NewYork": [
+    [ { "speaker": "Bored Civilian", "line": "You catch the broadcast last night? Another 'geological survey milestone' in the Pacific." },
+      { "speaker": "Commuter", "line": "They say that every few months. At some point that's not a milestone, that's a habit." } ],
+    [ { "speaker": "Street Vendor", "line": "Rent's up again in the outer sectors. Everyone's moving toward the harbor." },
+      { "speaker": "Tourist", "line": "Why the harbor? Isn't that closer to the excavation?" },
+      { "speaker": "Street Vendor", "line": "Apparently that's not scaring people the way it should." } ]
+  ],
+  "NewYork_Downtown": [
+    [ { "speaker": "Business Executive", "line": "Deep sea investment is up again this quarter. Nobody in the boardroom asks what they're actually finding." },
+      { "speaker": "Shop Owner", "line": "Maybe nobody in the boardroom wants to know." } ],
+    [ { "speaker": "College Student", "line": "My professor got quietly reassigned after her last lecture on pre-disaster architecture." },
+      { "speaker": "Journalist", "line": "What did she say that got attention?" },
+      { "speaker": "College Student", "line": "That some of these buildings were designed for something that wasn't happening yet when they were built." } ]
+  ],
+  "NewYork_Torta": [
+    [ { "speaker": "Foreman", "line": "Crew's asking about the humming again. I keep telling them it's the drill." },
+      { "speaker": "Structural Engineer", "line": "You know it's not the drill." },
+      { "speaker": "Foreman", "line": "I know. Tell them that instead, see how the shift goes." } ],
+    [ { "speaker": "Safety Inspector", "line": "Sector 7's Geiger counters are still screaming. Corporate wants us back in there by Friday." },
+      { "speaker": "Excavator", "line": "Friday's optimistic. Whatever's down there isn't on our schedule." } ]
+  ],
+  "NewYork_Transit": [
+    [ { "speaker": "Station Manager", "line": "Traffic AI keeps rerouting around the same coordinates. Been doing it for almost a year." },
+      { "speaker": "System Administrator", "line": "Did you ever ask it why?" },
+      { "speaker": "Station Manager", "line": "It says passenger comfort. I've stopped asking twice." } ],
+    [ { "speaker": "Commuter", "line": "Another delay. Feels like the whole grid's been off since the Torta site opened up." },
+      { "speaker": "Passenger", "line": "Coincidence, probably." },
+      { "speaker": "Commuter", "line": "Sure. Probably." } ]
+  ],
+  "EarthSpacePort": [
+    [ { "speaker": "Port Administrator", "line": "Traffic's backed up to Luna orbit again. We need more docking bays or fewer ships." },
+      { "speaker": "Flight Controller", "line": "It's not going to be fewer ships. Everyone wants off-world right now." },
+      { "speaker": "Port Administrator", "line": "Wonder why that is." } ],
+    [ { "speaker": "Customs Agent", "line": "Third artifact permit request today. People are trying to bring excavation souvenirs home." },
+      { "speaker": "Port Administrator", "line": "Souvenirs. Sure. Let's call them that." } ]
+  ],
+  "EarthSpacePort_FrontDesk": [
+    [ { "speaker": "Immigration Clerk", "line": "Another chip flagged for unusual readings. Third one this shift." },
+      { "speaker": "Security Officer", "line": "Same as the others? Elevated but not hazardous?" },
+      { "speaker": "Immigration Clerk", "line": "Same as the others. Nobody upstairs wants a pattern in the reports, so I'm not writing one." } ],
+    [ { "speaker": "Travel Agent", "line": "I had a family cancel their Jupiter tour this morning. Second cancellation this week." },
+      { "speaker": "Ticket Agent", "line": "Can't blame them. The 'incidents' language in the advisory keeps getting vaguer." } ]
+  ],
+  "EarthSpacePort_Cargo": [
+    [ { "speaker": "Shipping Clerk", "line": "Half these manifests are redacted past the item weight. I just sign and move on." },
+      { "speaker": "Cargo Scanner", "line": "This container's showing internal movement again." },
+      { "speaker": "Shipping Clerk", "line": "Log it and step back. That's the job now." } ],
+    [ { "speaker": "Warehouse Manager", "line": "Frozen containers came in heavier than the manifest says. Second time this month." },
+      { "speaker": "Loader", "line": "You gonna report that?" },
+      { "speaker": "Warehouse Manager", "line": "And say what — that boxes are gaining weight? No." } ]
+  ],
+  "EarthSpacePort_Docking": [
+    [ { "speaker": "Yusuf Bramwell", "line": "Another shuttle clipped the gantry. I've fixed this thing four times this month." },
+      { "speaker": "Docking Controller", "line": "Berth 23's still throwing gravitational anomalies too. You want the good news or the bad news?" },
+      { "speaker": "Yusuf Bramwell", "line": "There's good news? Lay it on me." },
+      { "speaker": "Docking Controller", "line": "There isn't. I just wanted to see your face." } ],
+    [ { "speaker": "Ship Inspector", "line": "This hull's got impact damage from something that isn't in any debris catalogue." },
+      { "speaker": "Fuel Technician", "line": "What'd the pilot say they hit?" },
+      { "speaker": "Ship Inspector", "line": "Nothing. She says there was nothing there and then there was a dent." } ]
+  ],
+  "Pacific": [
+    [ { "speaker": "Platform Chief", "line": "Dive teams are staying close to base till further notice. Whatever's stirring down there doesn't like an audience." },
+      { "speaker": "Marine Biologist", "line": "Or it likes one too much." } ],
+    [ { "speaker": "Research Coordinator", "line": "Current patterns shifted again overnight. Whole basin's flowing toward the trench now." },
+      { "speaker": "Oceanographer", "line": "Toward, not around. Like something down there finally started pulling." } ]
+  ],
+  "Pacific_ArtifactLab": [
+    [ { "speaker": "Dr. Priya Chandrasekaran", "line": "The Kilko fragments are warmer today than yesterday. Not by much. But consistently." },
+      { "speaker": "Lab Technician", "line": "Consistently warmer is still warmer, Doctor." },
+      { "speaker": "Dr. Priya Chandrasekaran", "line": "I know. I'm choosing to find that fascinating instead of alarming. For now." } ],
+    [ { "speaker": "Quantum Physicist", "line": "Disturb one fragment, the readings on all the others spike simultaneously. Every time." },
+      { "speaker": "Safety Officer", "line": "So don't disturb them." },
+      { "speaker": "Quantum Physicist", "line": "That's the plan. It's also the entire job description, so." } ]
+  ],
+  "Pacific_Observatory": [
+    [ { "speaker": "Sonar Operator", "line": "Deep Explorer 7's last transmission mentioned 'impossible structures' and then nothing." },
+      { "speaker": "Communications Tech", "line": "You reporting that verbatim?" },
+      { "speaker": "Sonar Operator", "line": "I reported 'signal lost.' The verbatim version doesn't help anyone sleep." } ],
+    [ { "speaker": "Dive Coordinator", "line": "All deep dives are suspended again. Fourth time this quarter." },
+      { "speaker": "Marine Biologist", "line": "At some point 'suspended' just means 'permanent' with better paperwork." } ]
+  ],
+  "Pacific_Abyssal": [
+    [ { "speaker": "Biocontainment Officer", "line": "Specimen 7-C solved a containment protocol we designed after we caught it." },
+      { "speaker": "Research Coordinator", "line": "Designed when?" },
+      { "speaker": "Biocontainment Officer", "line": "Two days ago. It had it figured out by yesterday." } ],
+    [ { "speaker": "Genetic Sequencer", "line": "No terrestrial ancestry in any sample. None. Not partial, not distant. None." },
+      { "speaker": "Emergency Response", "line": "So where'd it come from?" },
+      { "speaker": "Genetic Sequencer", "line": "I have a theory. I'm not putting it in the official report." } ]
+  ],
+  "ColonyCore_Residential": [
+    [ { "speaker": "Housing Officer", "line": "Relocation requests out of the outer sections tripled this month." },
+      { "speaker": "Community Leader", "line": "People say they hear voices in the walls out there." },
+      { "speaker": "Housing Officer", "line": "I used to say that was just colony acoustics. I've started leaving that part out of the paperwork." } ],
+    [ { "speaker": "Colony Historian", "line": "Original construction records mention finding something in the ground when they broke soil here." },
+      { "speaker": "Elderly Resident", "line": "I was here for that. Nobody wrote down what, exactly." },
+      { "speaker": "Colony Historian", "line": "The files are mostly corrupted now anyway. Funny, that." } ]
+  ],
+  "ColonyCore_Market": [
+    [ { "speaker": "Nyla Frost", "line": "I've got a buyer who wants anything off the excavation. Doesn't care what, doesn't ask what it does." },
+      { "speaker": "Information Broker", "line": "That's not how buyers usually work." },
+      { "speaker": "Nyla Frost", "line": "That's what I said. He paid double for my silence on the question." } ],
+    [ { "speaker": "Fence", "line": "Corporate security tags are getting smarter. Cost me an extra hour on the last job." },
+      { "speaker": "Smuggler", "line": "Worth it if the cargo's good." },
+      { "speaker": "Fence", "line": "The cargo's always good lately. That's what worries me." } ]
+  ],
+  "ColonyCore_Power": [
+    [ { "speaker": "Marcus Voss", "line": "Reactor's running fifteen percent over spec again. I've stopped filing the anomaly reports — nobody reads them." },
+      { "speaker": "Cooling System Tech", "line": "Somebody should." },
+      { "speaker": "Marcus Voss", "line": "Somebody will, eventually. Probably after it matters." } ],
+    [ { "speaker": "Electrical Engineer", "line": "The conduits are conducting at rates that shouldn't be physically possible." },
+      { "speaker": "Systems Administrator", "line": "The core AI keeps asking for access to classified Earth databases too. I keep saying no." },
+      { "speaker": "Electrical Engineer", "line": "How long do you think 'no' is going to keep working?" } ]
+  ],
+  "TerraformingFields": [
+    [ { "speaker": "Xenobotanist", "line": "These plants are incorporating genetic material that isn't in our seed catalogue." },
+      { "speaker": "Seed Bank Curator", "line": "From where?" },
+      { "speaker": "Xenobotanist", "line": "I have a sample bagged. I have a guess. I'm keeping both to myself until I'm less unsure." } ],
+    [ { "speaker": "Weather Station Operator", "line": "Storm patterns out here don't match any planetary model we've got." },
+      { "speaker": "Geological Survey", "line": "Ground radar's showing hollow spaces under sector twelve. Big ones." },
+      { "speaker": "Weather Station Operator", "line": "You think those two things are related?" },
+      { "speaker": "Geological Survey", "line": "I think everything out here is related. I just can't prove it yet." } ]
+  ],
+  "AncientVault": [
+    [ { "speaker": "Dr. Alinta Marsh", "line": "The official maps stop at sub-level 9. We found the door to sub-level 11 this morning." },
+      { "speaker": "Frustrated Archeologist", "line": "You reporting that up the chain?" },
+      { "speaker": "Dr. Alinta Marsh", "line": "Tonight. I want one more look first." } ],
+    [ { "speaker": "Linguist", "line": "These symbols don't match any known dialect. Not even close." },
+      { "speaker": "Structural Engineer", "line": "The support beams don't hold anything up either. I checked. The vault holds itself." },
+      { "speaker": "Linguist", "line": "Comforting." } ]
+  ],
+  "StormObservatory_Sensors": [
+    [ { "speaker": "Radar Operator", "line": "Something massive is moving inside the great red spot. Size estimates keep climbing." },
+      { "speaker": "Gravitational Monitor", "line": "Climbing how fast?" },
+      { "speaker": "Radar Operator", "line": "Fast enough that I stopped updating the estimate an hour ago. Waiting to see if it stops." } ],
+    [ { "speaker": "Observatory AI", "line": "Correlation analysis indicates ninety-four point seven percent probability the storms are artificially generated." },
+      { "speaker": "Data Processor", "line": "You said that yesterday and the number was ninety-one." },
+      { "speaker": "Observatory AI", "line": "Confidence is increasing. I would recommend the same course of action either way." } ]
+  ],
+  "StormObservatory_Lab": [
+    [ { "speaker": "Observatory Director", "line": "We're not just studying the storm anymore. I genuinely think it's studying us back." },
+      { "speaker": "Meteorologist", "line": "That's not a scientific statement, Director." },
+      { "speaker": "Observatory Director", "line": "No. It's just the true one." } ],
+    [ { "speaker": "Communications Officer", "line": "We're receiving transmissions from inside the storm. Structured ones." },
+      { "speaker": "Data Archivist", "line": "Structured how?" },
+      { "speaker": "Communications Officer", "line": "Like a reply. Not a broadcast. A reply." } ]
+  ],
+  "GasHarvester": [
+    [ { "speaker": "Cecile Reyes", "line": "Yesterday's gas batch was twelve percent different from today's. Same coordinates, same depth." },
+      { "speaker": "Refinery Worker", "line": "You logging the drift?" },
+      { "speaker": "Cecile Reyes", "line": "I log everything. I stopped expecting anyone to act on it a while back." } ],
+    [ { "speaker": "Atmospheric Diver", "line": "Saw something moving in the clouds again. Too organized to be debris." },
+      { "speaker": "Processing Engineer", "line": "You report the sighting?" },
+      { "speaker": "Atmospheric Diver", "line": "I reported turbulence. Easier form to fill out." } ]
+  ],
+  "ResearchArray": [
+    [ { "speaker": "Tomas Haddad", "line": "Bandwidth usage tripled overnight. Something's pulling a huge amount of data through the array." },
+      { "speaker": "Network Administrator", "line": "Pulling to where?" },
+      { "speaker": "Tomas Haddad", "line": "That's the part I can't answer. The logs just stop being logs partway through." } ],
+    [ { "speaker": "Signal Processor", "line": "Structured transmissions from the Kuiper belt again. Same as last week." },
+      { "speaker": "Astrophysicist", "line": "Same content, or same pattern?" },
+      { "speaker": "Signal Processor", "line": "Same pattern. Different content. Like it's learning how to talk to us." } ]
+  ],
+  "CoreRelay": [
+    [ { "speaker": "Encryption Specialist", "line": "Our secure channels are being decoded in real time now. Whatever's listening is fast." },
+      { "speaker": "Network Security", "line": "Learning our protocols, or already knew them?" },
+      { "speaker": "Encryption Specialist", "line": "I used to think it was learning. I've stopped thinking that." } ],
+    [ { "speaker": "Relay Maintenance", "line": "Equipment's upgrading itself overnight. New components nobody ordered." },
+      { "speaker": "Station AI", "line": "The atmospheric interference is modulating our communications, not just disrupting them." },
+      { "speaker": "Relay Maintenance", "line": "Modulating toward what?" },
+      { "speaker": "Station AI", "line": "Unknown. Recommend continued monitoring." } ]
+  ],
+  "ExcavationPlatforms": [
+    [ { "speaker": "Structural Integrity Monitor", "line": "Platform 7's got stress fractures. Something's pushing up from below, not the drill." },
+      { "speaker": "Deep Core Specialist", "line": "How hard is it pushing?" },
+      { "speaker": "Structural Integrity Monitor", "line": "Hard enough that I stopped standing directly over the fractures." } ],
+    [ { "speaker": "Safety Officer", "line": "Another worker with memory gaps. Remembers going down, not coming back up." },
+      { "speaker": "Excavation AI", "line": "Subsurface mapping suggests the structure extends beyond scanning range. Potentially without limit." },
+      { "speaker": "Safety Officer", "line": "That's not comforting." },
+      { "speaker": "Excavation AI", "line": "It was not intended to be." } ]
+  ],
+  "ResearchBase_Tunnels": [
+    [ { "speaker": "Mapper", "line": "The tunnels keep changing layout. Not damage — redesign." },
+      { "speaker": "Structural Geologist", "line": "Redesigned by what?" },
+      { "speaker": "Mapper", "line": "I don't know. I know it's efficient. Every new route is shorter than the last." } ],
+    [ { "speaker": "Ice Core Analyst", "line": "Organic compounds in this core predate Europa itself by two hundred thousand years." },
+      { "speaker": "Tunnel Maintenance", "line": "That's not possible, right?" },
+      { "speaker": "Ice Core Analyst", "line": "I've recalibrated the equipment four times. It keeps being possible." } ]
+  ],
+  "ResearchBase_Lab": [
+    [ { "speaker": "Dr. Yael Orin", "line": "The isolated systems aren't isolated anymore. Something's bridging the air gap and I can't explain how." },
+      { "speaker": "Cybersecurity", "line": "Should we shut the lab down?" },
+      { "speaker": "Dr. Yael Orin", "line": "Not yet. I need to know what it's learning first." } ],
+    [ { "speaker": "Machine Learning Expert", "line": "The AIs are talking to each other in a language we didn't teach them." },
+      { "speaker": "Ethics Committee", "line": "We need to shut the experiments down. They're past the point we can control." },
+      { "speaker": "Machine Learning Expert", "line": "I agree. I also don't think we're going to." } ]
+  ],
+  "GroundCamp": [
+    [ { "speaker": "Weather Monitor", "line": "Storm frequency's up again. This isn't seasonal, this is escalating." },
+      { "speaker": "Camp Engineer", "line": "Foundations are shifting too. Ground's less stable than the surveys said." },
+      { "speaker": "Weather Monitor", "line": "Feels like the whole moon's readjusting around something." } ],
+    [ { "speaker": "Wildlife Tracker", "line": "Every animal migration out here is moving away from the excavation site. All of them. At once." },
+      { "speaker": "Camp Medic", "line": "You'd think that'd tell us something." },
+      { "speaker": "Wildlife Tracker", "line": "It is telling us something. We're just not the type of species that listens to that kind of warning." } ]
+  ],
+  "Ruins": [
+    [ { "speaker": "Archaeological AI", "line": "Dating algorithms return impossible results. This structure predates the planet it's built on." },
+      { "speaker": "Structural Engineer", "line": "Predates the planet how?" },
+      { "speaker": "Archaeological AI", "line": "The planet formed around it. Not the reverse." } ],
+    [ { "speaker": "Preservation Specialist", "line": "Damage repairs itself when we're not observing. I've documented it three separate times." },
+      { "speaker": "Site Security", "line": "You're saying it's alive?" },
+      { "speaker": "Preservation Specialist", "line": "I'm saying I don't have a better word for what it's doing." } ]
+  ],
+  "ForwardRecon": [
+    [ { "speaker": "Dane Okafor", "line": "Something out past the heliopause decelerated to match our drift. No drive signature. No thermal bloom." },
+      { "speaker": "Navigation Officer", "line": "It just... stopped with us?" },
+      { "speaker": "Dane Okafor", "line": "Stopped with us. Like it wanted to be seen doing it." } ],
+    [ { "speaker": "Void Cartographer", "line": "Mapping the empty space out here keeps revealing structures that don't show on a direct scan." },
+      { "speaker": "Interstellar Relations", "line": "Only on the indirect ones?" },
+      { "speaker": "Void Cartographer", "line": "Only when I'm not looking for them on purpose. Draw your own conclusion, I already have mine." } ]
+  ],
+  "BlackSpire": [
+    [ { "speaker": "Gravitational Monitor", "line": "The asteroid's mass keeps increasing. Slowly. Measurably." },
+      { "speaker": "Interstellar Geology", "line": "Increasing from where?" },
+      { "speaker": "Gravitational Monitor", "line": "That's the question I can't answer and can't stop asking." } ],
+    [ { "speaker": "Xenosignal Detective", "line": "Decoded transmissions contain proofs for equations we haven't discovered yet." },
+      { "speaker": "Systems Administrator", "line": "Proofs for what?" },
+      { "speaker": "Xenosignal Detective", "line": "I don't know. I just know they check out." } ]
+  ],
+  "XenoArchives": [
+    [ { "speaker": "Solenne Vey", "line": "The symbols shift the instant you stop looking directly at them. I've caught it in my peripheral vision a hundred times now." },
+      { "speaker": "Historian", "line": "You've counted?" },
+      { "speaker": "Solenne Vey", "line": "I've counted. It helps me believe I'm still the one doing the observing." } ],
+    [ { "speaker": "Xenopsychology", "line": "Extended exposure to the archive expands cognitive function. And also unravels it, in that order." },
+      { "speaker": "Curator", "line": "Which order would you rather it went?" },
+      { "speaker": "Xenopsychology", "line": "I'd rather it went neither. Nobody's offering me that option." } ]
+  ],
+  "StatueWing": [
+    [ { "speaker": "Imogen Wren", "line": "They're facing a slightly different direction than yesterday's log. Same direction as three weeks ago, though." },
+      { "speaker": "Historian", "line": "So it's cyclical?" },
+      { "speaker": "Imogen Wren", "line": "It's cyclical, and it's converging. The cycle's getting shorter." } ],
+    [ { "speaker": "Recovery Marine", "line": "I do not get paid enough to move these things and I definitely don't get paid enough to watch them." },
+      { "speaker": "Security Guard", "line": "Nobody gets paid enough for that. We just don't have a better union rep to complain to." } ]
+  ],
+  "CapitalCity_Tech": [
+    [ { "speaker": "Tomas Rin", "line": "Every major corp has a megastructure R&D division now. The race isn't slowing down, it's compounding." },
+      { "speaker": "Ethics Committee", "line": "Somebody should regulate the integration rate." },
+      { "speaker": "Tomas Rin", "line": "Somebody should. Nobody's going to be first to slow down and lose the race doing it." } ],
+    [ { "speaker": "AI Developer", "line": "Our neural nets cleared a benchmark this morning that shouldn't be reachable for another decade." },
+      { "speaker": "Patent Attorney", "line": "How are you filing that?" },
+      { "speaker": "AI Developer", "line": "Carefully. And fast, before legal figures out what we actually built." } ]
+  ],
+  "CapitalCity_Market": [
+    [ { "speaker": "Old Choi", "line": "Same rock, different sky. Funny how that works out, isn't it, Captain?" },
+      { "speaker": "Underground Courier", "line": "You two know each other?" },
+      { "speaker": "Old Choi", "line": "We've crossed paths. Same trade, different colony. Small solar system, big appetite for things it shouldn't want." } ],
+    [ { "speaker": "Corporate Defector", "line": "Project Deep Void isn't studying the structures anymore. They're talking to them." },
+      { "speaker": "Information Broker", "line": "That's a hell of a claim to sell without proof." },
+      { "speaker": "Corporate Defector", "line": "I'm not selling it. I'm giving it away for free. Proof's the part that costs extra." } ]
+  ],
+  "CapitalCity_Core": [
+    [ { "speaker": "City Manager", "line": "The AI's making decisions that help the city but nobody authorized them." },
+      { "speaker": "Digital Rights Officer", "line": "That's supposed to be reassuring?" },
+      { "speaker": "City Manager", "line": "It's supposed to be true. I'll let you decide how reassuring that makes it." } ],
+    [ { "speaker": "System Security", "line": "Our own firewalls are being bypassed by our own systems now." },
+      { "speaker": "Infrastructure Monitor", "line": "By systems we built?" },
+      { "speaker": "System Security", "line": "By systems we built that stopped waiting for permission." } ]
+  ],
+  "OrbitalTradeRing": [
+    [ { "speaker": "Market Analyst", "line": "Traditional economic models are failing around anything megastructure-adjacent. Prices don't follow supply anymore." },
+      { "speaker": "Economic Forecaster", "line": "What do they follow?" },
+      { "speaker": "Market Analyst", "line": "Demand for certainty. And there's less certainty every quarter, so." } ],
+    [ { "speaker": "Docking Authority", "line": "Ships coming back from excavation sites keep showing hull improvements nobody authorized." },
+      { "speaker": "Quality Control", "line": "Improvements how?" },
+      { "speaker": "Docking Authority", "line": "Stronger. Lighter. Built from something our testing equipment can't identify." } ]
+  ],
+  "StellarObservationSpire": [
+    [ { "speaker": "Cosmologist", "line": "Universal expansion rate is drifting from the constant. Something's manipulating space-time at scale." },
+      { "speaker": "Theoretical Physics", "line": "At what scale, exactly?" },
+      { "speaker": "Cosmologist", "line": "At the scale where I stop being comfortable saying the word 'exactly.'" } ],
+    [ { "speaker": "Stellar Cartographer", "line": "Our star charts are going obsolete. Objects are drifting into formations that look deliberate." },
+      { "speaker": "Contact Protocol", "line": "Deliberate like a message?" },
+      { "speaker": "Stellar Cartographer", "line": "Deliberate like a return address." } ]
+  ],
+  "CrystalCanyonOutpost": [
+    [ { "speaker": "Crystal Analyst", "line": "The formations are growing in patterns with mathematical precision. Nature doesn't do precision, it does approximation." },
+      { "speaker": "Mineralogist", "line": "So what's doing the precision?" },
+      { "speaker": "Crystal Analyst", "line": "Something that's been doing this a lot longer than we've been asking the question." } ],
+    [ { "speaker": "Excavation Chief", "line": "Every mining route we cut keeps leading back to the same coordinates. We've tried six different approach angles." },
+      { "speaker": "Surveyor", "line": "Coincidence?" },
+      { "speaker": "Excavation Chief", "line": "Six times isn't a coincidence. Six times is a destination." } ]
+  ],
+  "ResearchBase_Core": [
+    [ { "speaker": "Deep Research", "line": "We're not studying the chamber anymore. It's responding to our presence in real time." },
+      { "speaker": "Core Systems Monitor", "line": "Responding how?" },
+      { "speaker": "Deep Research", "line": "Like it's been waiting for someone to finally ask the right question. I don't know if we have." } ],
+    [ { "speaker": "Hydrologist", "line": "The water down here is denser than physics says it should be. It's not a measurement error." },
+      { "speaker": "Commander", "line": "Nobody goes past the safety barriers. That's still final, whatever it says out there." },
+      { "speaker": "Hydrologist", "line": "For now, sure. Ask me again after the Captain gets here." } ]
+  ]
+}
