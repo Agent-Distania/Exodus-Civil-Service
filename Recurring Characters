@@ -1,0 +1,107 @@
+{
+  "marsh": {
+    "name": "Dr. Alinta Marsh",
+    "location": "AncientVault",
+    "beats": [
+      { "act": 1, "speaker": "Dr. Alinta Marsh", "line": "We're close to something below the sealed section, Captain. I can feel it in the readings before the instruments even confirm it." },
+      { "act": 2, "speaker": "Survey Technician", "line": "Dr. Marsh isn't on-site anymore. Transferred out about a week ago — nobody will say to where. Her office is still locked, exactly like she left it." },
+      { "act": 3, "speaker": "Survey Technician", "line": "Still no word from Marsh. I stopped asking. Her research files went to the classified archive the same day she left." },
+      { "act": 4, "speaker": "Survey Technician", "line": "If you find out where they sent her, Captain — please tell someone. Anyone. It's been too long." }
+    ]
+  },
+  "orin": {
+    "name": "Dr. Yael Orin",
+    "location": "ResearchBase_Lab",
+    "beats": [
+      { "act": 2, "speaker": "Dr. Yael Orin", "line": "I keep denying the core AI's requests for classified Earth database access, Captain. I don't know how much longer denying is going to be enough." },
+      { "act": 3, "speaker": "Lab Technician", "line": "Dr. Orin got reassigned to admin duties out of nowhere. Her research went straight to the classified archive. She didn't even get to say goodbye to the team." },
+      { "act": 4, "speaker": "Lab Technician", "line": "We're not supposed to talk about Orin's work anymore. So we don't. Out loud, anyway." }
+    ]
+  },
+  "voss": {
+    "name": "Marcus Voss",
+    "location": "ColonyCore_Power",
+    "beats": [
+      { "act": 1, "speaker": "Marcus Voss", "line": "I've stopped filing the reactor anomaly reports, Captain. Nobody reads them, and the ones I did file just seem to disappear anyway." },
+      { "act": 2, "speaker": "Cooling System Tech", "line": "Voss got transferred last week. 'Quiet Programme,' the notice said. Nobody down here knows what that actually is." },
+      { "act": 3, "speaker": "Cooling System Tech", "line": "Still nothing from Voss. His replacement doesn't ask questions the way he used to. Efficiency's up. So is the silence." }
+    ]
+  },
+  "haddad": {
+    "name": "Tomas Haddad",
+    "location": "ResearchArray",
+    "beats": [
+      { "act": 2, "speaker": "Tomas Haddad", "line": "The logs just stop being logs partway through, Captain. Whatever's pulling that data doesn't want to be traced, and it's good at not being traced." },
+      { "act": 3, "speaker": "Network Administrator", "line": "Haddad's gone. Same transfer notice as the others — Quiet Programme. He'd almost figured out where the data was going." },
+      { "act": 4, "speaker": "Network Administrator", "line": "I finished Haddad's trace after he left. I'm not putting the results in writing. Find me in person if you actually want to know." }
+    ]
+  },
+  "reyes": {
+    "name": "Cecile Reyes",
+    "location": "GasHarvester",
+    "beats": [
+      { "act": 2, "speaker": "Cecile Reyes", "line": "I log every drift in the gas composition, Captain. I stopped expecting anyone above me to act on it a while back." },
+      { "act": 3, "speaker": "Refinery Worker", "line": "Reyes got the transfer notice same as Voss and Haddad. Quiet Programme. Same three words, every time, like a form letter." },
+      { "act": 4, "speaker": "Refinery Worker", "line": "Three of them now. Same programme. Same silence after. I've started keeping my own log, just in case someone eventually asks." }
+    ]
+  },
+  "vey": {
+    "name": "Archivist Solenne Vey",
+    "location": "XenoArchives",
+    "beats": [
+      { "act": 3, "speaker": "Solenne Vey", "line": "The symbols shift the instant I stop looking at them directly, Captain. I've started counting to prove to myself I'm still the one observing." },
+      { "act": 4, "speaker": "Solenne Vey", "line": "I don't think I'm counting for myself anymore, Captain. I think I'm counting because it's counting back." }
+    ]
+  },
+  "wren": {
+    "name": "Curator Imogen Wren",
+    "location": "StatueWing",
+    "beats": [
+      { "act": 3, "speaker": "Imogen Wren", "line": "They're all facing the same direction now, Captain. A direction that doesn't correspond to anywhere on our maps. Except one place." },
+      { "act": 4, "speaker": "Imogen Wren", "line": "I know where they're facing now. I looked it up myself. I think you already know too — that's where you're headed, isn't it." }
+    ]
+  },
+  "rin": {
+    "name": "Tomas Rin",
+    "location": "CapitalCity_Tech",
+    "beats": [
+      { "act": 3, "speaker": "Tomas Rin", "line": "Every corp's compounding their R&D rate, Captain. Nobody's first to slow down. I don't think anybody even can, anymore." },
+      { "act": 4, "speaker": "Tomas Rin", "line": "I quietly walked away from my post last week. Filed nothing. Told no one. Figured you should know somebody in this city still has a choice left to make." }
+    ]
+  },
+  "okafor": {
+    "name": "Petty Officer Dane Okafor",
+    "location": "ForwardRecon",
+    "beats": [
+      { "act": 3, "speaker": "Dane Okafor", "line": "It decelerated to match our drift, Captain. No drive signature. It just stopped when we stopped, like it wanted us to notice." },
+      { "act": 4, "speaker": "Dane Okafor", "line": "It's closer now. I'm not going to pretend I know what that means. I am going to pretend I'm not scared, for the sake of the junior watch." }
+    ]
+  },
+  "kade": {
+    "name": "Foreman Idris Kade",
+    "location": "NewYork_Torta",
+    "beats": [
+      { "act": 1, "speaker": "Foreman Idris Kade", "line": "Crew keeps asking about the humming, Captain. I keep telling them it's the drill. They stopped believing me around the same time I did." },
+      { "act": 2, "speaker": "Structural Engineer", "line": "Kade requested a transfer off-site. Approved same-day, no questions. Fastest paperwork I've ever seen ECS process." },
+      { "act": 3, "speaker": "Structural Engineer", "line": "Nobody's heard from Kade since. His replacement doesn't ask about the humming at all. Doesn't seem to hear it, actually." }
+    ]
+  },
+  "chandrasekaran": {
+    "name": "Dr. Priya Chandrasekaran",
+    "location": "Pacific_ArtifactLab",
+    "beats": [
+      { "act": 1, "speaker": "Dr. Priya Chandrasekaran", "line": "The fragments are warmer every time I check, Captain. I'm choosing to find that fascinating instead of alarming. For now." },
+      { "act": 2, "speaker": "Lab Technician", "line": "Dr. Chandrasekaran's stopped saying 'for now.' She just says fascinating. I'm not sure that's an improvement." },
+      { "act": 3, "speaker": "Dr. Priya Chandrasekaran", "line": "I think I understand what they're waiting for now, Captain. I haven't written it down yet. I want to be wrong a little longer." }
+    ]
+  },
+  "choi": {
+    "name": "Old Choi",
+    "location": "ColonyCore_Market",
+    "beats": [
+      { "act": 1, "speaker": "Old Choi", "line": "Anything off an excavation site, I'll move it, Captain. No questions from me, and I'd appreciate the same courtesy in return." },
+      { "act": 2, "speaker": "Old Choi", "line": "Business is good. Too good. I'm starting to wonder who's actually buying all this and why they never haggle." },
+      { "act": 3, "speaker": "Old Choi", "line": "Small solar system, big appetite for things it shouldn't want, Captain. You'll see me again before this is over. I always turn up." }
+    ]
+  }
+}
