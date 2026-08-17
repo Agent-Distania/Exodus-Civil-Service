@@ -477,6 +477,24 @@ button.traveling {
 #log > div.log-system       { color: rgba(141,253,141,0.45); font-size: 0.77rem; }
 #log > div.log-nova         { color: #d4ffd4; text-shadow: 0 0 6px rgba(15,255,15,0.35); }
 #log > div.log-npc          { color: #7de8e8; text-shadow: 0 0 4px rgba(0,200,200,0.25); }
+
+/* Conversation exchanges — same NPC-teal but slightly indented and tighter
+   spacing so consecutive lines read as one connected exchange. */
+#log > div.log-npc-convo {
+  margin-bottom: 0.35rem !important;
+  padding-left: 0.6rem;
+  border-left: 1px solid rgba(125,232,232,0.15);
+}
+#log > div.log-npc-convo + div.log-npc-convo { margin-top: -0.35rem; }
+
+/* Named recurring characters — warmer, slightly brighter, stands apart
+   from generic ambient barks so returning faces feel distinct. */
+#log > div.log-npc-named {
+  color: #ffcf9e;
+  text-shadow: 0 0 6px rgba(255,180,100,0.3);
+  border-left: 2px solid rgba(255,180,100,0.35);
+  padding-left: 0.6rem;
+}
 #log > div.log-mission      { color: #ffd97d; text-shadow: 0 0 6px rgba(255,200,50,0.35); }
 #log > div.log-collect      { color: #ffffff; text-shadow: 0 0 10px rgba(200,255,200,0.5); }
 
@@ -529,6 +547,26 @@ button.traveling {
   padding-left: 0.5rem;
   font-style: italic;
   margin-bottom: 0.8rem !important;
+}
+
+/* Act transitions */
+#log > div.log-act-transition {
+  color: #ffd97d;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.18rem;
+  text-align: center;
+  text-shadow: 0 0 12px rgba(255,200,50,0.5);
+  margin-top: 1rem !important;
+  margin-bottom: 0.2rem !important;
+}
+#log > div.log-act-subtitle {
+  color: rgba(255,217,125,0.55);
+  font-size: 0.72rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 0.9rem !important;
 }
 
 /* =========================================================
@@ -760,6 +798,17 @@ button.traveling {
   align-self: flex-start;
 }
 .mission-card.complete .mission-status-badge { color: rgba(141,253,141,0.35); }
+
+.act-header {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2rem;
+  color: rgba(255,217,125,0.7);
+  margin: 0.8rem 0 0.2rem 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(255,217,125,0.2);
+  align-self: stretch;
+}
 
 /* =========================================================
    Nova Relationship Tier Badge (in Missions tab)
