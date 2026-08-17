@@ -1,2314 +1,637 @@
 {
   "NewYork": [
-    {
-      "speaker": "Bored Civilian",
-      "line": "You ever seen those old holo movies? The one with the killer robot from the future with a shotgun is my favorite."
-    },
-    {
-      "speaker": "ECM Soldier",
-      "line": "They say the old aircraft carrier, Midway I think? Used to be the best ship in the world, kinda hard to believe we had water fleets at one point"
-    },
-    {
-      "speaker": "Market Worker",
-      "line": "I've never even heard of the ortho mega structure till those nerds at the PRS talked about it, some underwater mega structure I think?"
-    },
-    {
-      "speaker": "ECM Officer",
-      "line": "Don't loiter here please, the street cleaners will be here soon"
-    },
-    {
-      "speaker": "Street Vendor",
-      "line": "Fresh synth-bread! Made with real imported grain from the colony farms!"
-    },
-    {
-      "speaker": "Commuter",
-      "line": "Another power brownout last night. When are they fixing the grid?"
-    },
-    {
-      "speaker": "News Anchor",
-      "line": "...reports of strange signals from the Jupiter research stations continue to worry officials..."
-    },
-    {
-      "speaker": "Child",
-      "line": "Mom, why can't we go swimming in the real ocean like in the old vids?"
-    },
-    {
-      "speaker": "Tourist",
-      "line": "I heard they found something big under the Pacific. Government's keeping it quiet though."
-    },
-    {
-      "speaker": "Construction Worker",
-      "line": "These new buildings are weird, all these electromagnetic shielding requirements since the Kolki disaster."
-    },
-    {
-      "speaker": "Elderly Man",
-      "line": "Back in my day, we didn't need atmosphere suits just to go outside during storm season."
-    },
-    {
-      "speaker": "Student",
-      "line": "Professor says the mega structures are older than human civilization. That's impossible, right?"
-    },
-    {
-      "speaker": "Police Officer",
-      "line": "Keep the crowds moving. We don't need another stampede like last month."
-    },
-    {
-      "speaker": "Maintenance Tech",
-      "line": "These old subway tunnels keep flooding. Something's wrong with the water table."
-    },
-    {
-      "speaker": "Bartender",
-      "line": "Another round for the excavation crew? You guys look like you've seen some things."
-    }
+    { "speaker": "Bored Civilian", "line": "You ever seen those old holo movies? The one with the killer robot from the future with a shotgun is my favorite." },
+    { "speaker": "ECM Soldier", "line": "They say the old aircraft carrier, Midway I think? Used to be the best ship in the world, kinda hard to believe we had water fleets at one point" },
+    { "speaker": "Market Worker", "line": "I've never even heard of the ortho mega structure till those nerds at the PRS talked about it, some underwater mega structure I think?" },
+    { "speaker": "ECM Officer", "line": "Don't loiter here please, the street cleaners will be here soon" },
+    { "speaker": "Street Vendor", "line": "Fresh synth-bread! Made with real imported grain from the colony farms!" },
+    { "speaker": "Commuter", "line": "Another power brownout last night. When are they fixing the grid?" },
+    { "speaker": "News Anchor", "line": "...reports of strange signals from the Jupiter research stations continue to worry officials..." },
+    { "speaker": "Child", "line": "Mom, why can't we go swimming in the real ocean like in the old vids?" },
+    { "speaker": "Tourist", "line": "I heard they found something big under the Pacific. Government's keeping it quiet though." },
+    { "speaker": "Construction Worker", "line": "These new buildings are weird, all these electromagnetic shielding requirements since the Kolki disaster." },
+    { "speaker": "Elderly Man", "line": "Back in my day, we didn't need atmosphere suits just to go outside during storm season." },
+    { "speaker": "Student", "line": "Professor says the mega structures are older than human civilization. That's impossible, right?" },
+    { "speaker": "Police Officer", "line": "Keep the crowds moving. We don't need another stampede like last month." },
+    { "speaker": "Maintenance Tech", "line": "These old subway tunnels keep flooding. Something's wrong with the water table." },
+    { "speaker": "Bartender", "line": "Another round for the excavation crew? You guys look like you've seen some things." }
   ],
   "NewYork_Downtown": [
-    {
-      "speaker": "Transit Officer",
-      "line": "All lanes clear. Metro 5 is delayed due to power reroute, it'll be back in a few minutes."
-    },
-    {
-      "speaker": "Vendor",
-      "line": "Get your synth-tacos! Grown under real UV!"
-    },
-    {
-      "speaker": "Courier",
-      "line": "Skylift was stuck again. I'm climbing that thing next time."
-    },
-    {
-      "speaker": "Civilian",
-      "line": "They say the archives are haunted — like real ghosts from the Red War."
-    },
-    {
-      "speaker": "Business Executive",
-      "line": "The quarterly reports show massive investment in deep sea operations. What are they really looking for?"
-    },
-    {
-      "speaker": "Street Musician",
-      "line": "This old guitar survived the Kolki disaster. Still plays like a dream."
-    },
-    {
-      "speaker": "Security Guard",
-      "line": "Another blackout drill today. Third one this month, getting suspicious."
-    },
-    {
-      "speaker": "Delivery Driver",
-      "line": "Traffic's backed up all the way to the harbor. Some kind of military convoy."
-    },
-    {
-      "speaker": "Homeless Veteran",
-      "line": "I was there when the first mega structure was discovered. Nobody believed the reports."
-    },
-    {
-      "speaker": "Shop Owner",
-      "line": "Business has been slow since they started the deep excavations. People are nervous."
-    },
-    {
-      "speaker": "Emergency Responder",
-      "line": "Radiation levels are slightly elevated near the old district. Probably nothing to worry about."
-    },
-    {
-      "speaker": "College Student",
-      "line": "My thesis is on pre-disaster architecture. These buildings weren't designed for what we're seeing now."
-    },
-    {
-      "speaker": "Corporate Spy",
-      "line": "The ECS is moving a lot of equipment through here. Big operation starting up."
-    },
-    {
-      "speaker": "City Planner",
-      "line": "We need to redesign the entire grid. These power fluctuations are getting worse."
-    },
-    {
-      "speaker": "Journalist",
-      "line": "Sources say there's been contact with something down there. Officials deny everything."
-    }
+    { "speaker": "Transit Officer", "line": "All lanes clear. Metro 5 is delayed due to power reroute, it'll be back in a few minutes." },
+    { "speaker": "Vendor", "line": "Get your synth-tacos! Grown under real UV!" },
+    { "speaker": "Courier", "line": "Skylift was stuck again. I'm climbing that thing next time." },
+    { "speaker": "Civilian", "line": "They say the archives are haunted — like real ghosts from the Red War." },
+    { "speaker": "Business Executive", "line": "The quarterly reports show massive investment in deep sea operations. What are they really looking for?" },
+    { "speaker": "Street Musician", "line": "This old guitar survived the Kolki disaster. Still plays like a dream." },
+    { "speaker": "Security Guard", "line": "Another blackout drill today. Third one this month, getting suspicious." },
+    { "speaker": "Delivery Driver", "line": "Traffic's backed up all the way to the harbor. Some kind of military convoy." },
+    { "speaker": "Homeless Veteran", "line": "I was there when the first mega structure was discovered. Nobody believed the reports." },
+    { "speaker": "Shop Owner", "line": "Business has been slow since they started the deep excavations. People are nervous." },
+    { "speaker": "Emergency Responder", "line": "Radiation levels are slightly elevated near the old district. Probably nothing to worry about." },
+    { "speaker": "College Student", "line": "My thesis is on pre-disaster architecture. These buildings weren't designed for what we're seeing now." },
+    { "speaker": "Corporate Spy", "line": "The ECS is moving a lot of equipment through here. Big operation starting up." },
+    { "speaker": "City Planner", "line": "We need to redesign the entire grid. These power fluctuations are getting worse." },
+    { "speaker": "Journalist", "line": "Sources say there's been contact with something down there. Officials deny everything." }
   ],
   "NewYork_Torta": [
-    {
-      "speaker": "Excavator",
-      "line": "Torta shell's denser than we thought. Plasma cutters barely scratch it."
-    },
-    {
-      "speaker": "ECS Engineer",
-      "line": "Stay off the red-marked zones. Last week one just... collapsed."
-    },
-    {
-      "speaker": "Research AI",
-      "line": "Caution: ambient radiation near node six exceeds safe levels, you'll get radiation poisoning."
-    },
-    {
-      "speaker": "Foreman",
-      "line": "Get that drone out of the dig trench or we lose it again. The boss will kill us if we lose it."
-    },
-    {
-      "speaker": "Geology Specialist",
-      "line": "These material compositions don't match anything in our databases. It's like it's from another world."
-    },
-    {
-      "speaker": "Safety Inspector",
-      "line": "I'm shutting down sector 7 until we figure out why the Geiger counters keep screaming."
-    },
-    {
-      "speaker": "Heavy Equipment Operator",
-      "line": "The drill bits are wearing out faster than usual. This stuff is harder than diamond."
-    },
-    {
-      "speaker": "Site Medic",
-      "line": "Another worker with severe headaches. That's the fifth one this week."
-    },
-    {
-      "speaker": "Structural Engineer",
-      "line": "The whole excavation site is vibrating at a frequency that shouldn't be possible."
-    },
-    {
-      "speaker": "Security Chief",
-      "line": "No unauthorized personnel past checkpoint alpha. We've had too many incidents."
-    },
-    {
-      "speaker": "Environmental Monitor",
-      "line": "Air quality readings are... unusual. I've never seen atmospheric composition like this."
-    },
-    {
-      "speaker": "Deep Core Technician",
-      "line": "We hit another chamber today. The walls are covered in symbols that hurt to look at."
-    },
-    {
-      "speaker": "Communications Officer",
-      "line": "Radio interference is getting worse the deeper we go. Something's jamming our signals."
-    },
-    {
-      "speaker": "Research Assistant",
-      "line": "The artifacts we're pulling up are still warm. They've been buried for centuries, how is that possible?"
-    },
-    {
-      "speaker": "Crane Operator",
-      "line": "That last piece we hauled up... I swear it was humming. Gave me chills."
-    }
+    { "speaker": "Excavator", "line": "Torta shell's denser than we thought. Plasma cutters barely scratch it." },
+    { "speaker": "ECS Engineer", "line": "Stay off the red-marked zones. Last week one just... collapsed." },
+    { "speaker": "Research AI", "line": "Caution: ambient radiation near node six exceeds safe levels, you'll get radiation poisoning." },
+    { "speaker": "Foreman", "line": "Get that drone out of the dig trench or we lose it again. The boss will kill us if we lose it." },
+    { "speaker": "Geology Specialist", "line": "These material compositions don't match anything in our databases. It's like it's from another world." },
+    { "speaker": "Safety Inspector", "line": "I'm shutting down sector 7 until we figure out why the Geiger counters keep screaming." },
+    { "speaker": "Heavy Equipment Operator", "line": "The drill bits are wearing out faster than usual. This stuff is harder than diamond." },
+    { "speaker": "Site Medic", "line": "Another worker with severe headaches. That's the fifth one this week." },
+    { "speaker": "Structural Engineer", "line": "The whole excavation site is vibrating at a frequency that shouldn't be possible." },
+    { "speaker": "Security Chief", "line": "No unauthorized personnel past checkpoint alpha. We've had too many incidents." },
+    { "speaker": "Environmental Monitor", "line": "Air quality readings are... unusual. I've never seen atmospheric composition like this." },
+    { "speaker": "Deep Core Technician", "line": "We hit another chamber today. The walls are covered in symbols that hurt to look at." },
+    { "speaker": "Communications Officer", "line": "Radio interference is getting worse the deeper we go. Something's jamming our signals." },
+    { "speaker": "Research Assistant", "line": "The artifacts we're pulling up are still warm. They've been buried for centuries, how is that possible?" },
+    { "speaker": "Crane Operator", "line": "That last piece we hauled up... I swear it was humming. Gave me chills." }
   ],
   "NewYork_Transit": [
-    {
-      "speaker": "Nexus Operator",
-      "line": "Shuttle seven rerouted. Atmospheric traffic dense over Tier 4."
-    },
-    {
-      "speaker": "Security Guard",
-      "line": "Scan complete. You're clean. Move."
-    },
-    {
-      "speaker": "Announcer",
-      "line": "Please keep limbs inside transit cars during ascension, we do not need any traumatic injuries."
-    },
-    {
-      "speaker": "Technician",
-      "line": "Mag-lift coils just burned out — again. We need replacements from Mars, the consequences of not upgrading since the kolki disaster."
-    },
-    {
-      "speaker": "Traffic Controller",
-      "line": "Aerial lanes 3 through 8 are closed due to electromagnetic interference. Use ground routes."
-    },
-    {
-      "speaker": "Maintenance Worker",
-      "line": "These new transit pods have weird shielding. What are they protecting us from?"
-    },
-    {
-      "speaker": "Passenger",
-      "line": "My commute used to take 20 minutes. Now with all these detours and security checks, it's over an hour."
-    },
-    {
-      "speaker": "Transit AI",
-      "line": "Warning: unusual energy readings detected in tunnel section 12. Rerouting traffic."
-    },
-    {
-      "speaker": "Emergency Responder",
-      "line": "Another medical emergency on platform 6. These dizzy spells are becoming too common."
-    },
-    {
-      "speaker": "Station Manager",
-      "line": "Corporate wants us to install more radiation detectors. They're not telling us why."
-    },
-    {
-      "speaker": "Engineer",
-      "line": "The new maglev systems keep getting interference from somewhere underground."
-    },
-    {
-      "speaker": "Commuter",
-      "line": "Did you feel that rumble? That's not normal for a transit station."
-    },
-    {
-      "speaker": "Security Supervisor",
-      "line": "Increase patrols near the lower levels. There have been reports of strange sounds."
-    },
-    {
-      "speaker": "System Administrator",
-      "line": "Navigation computers keep glitching near the old subway connections. Something's interfering."
-    },
-    {
-      "speaker": "Public Relations Officer",
-      "line": "Remember, any unusual experiences should be reported to management immediately. For everyone's safety."
-    }
+    { "speaker": "Nexus Operator", "line": "Shuttle seven rerouted. Atmospheric traffic dense over Tier 4." },
+    { "speaker": "Security Guard", "line": "Scan complete. You're clean. Move." },
+    { "speaker": "Announcer", "line": "Please keep limbs inside transit cars during ascension, we do not need any traumatic injuries." },
+    { "speaker": "Technician", "line": "Mag-lift coils just burned out — again. We need replacements from Mars, the consequences of not upgrading since the kolki disaster." },
+    { "speaker": "Traffic Controller", "line": "Aerial lanes 3 through 8 are closed due to electromagnetic interference. Use ground routes." },
+    { "speaker": "Maintenance Worker", "line": "These new transit pods have weird shielding. What are they protecting us from?" },
+    { "speaker": "Passenger", "line": "My commute used to take 20 minutes. Now with all these detours and security checks, it's over an hour." },
+    { "speaker": "Transit AI", "line": "Warning: unusual energy readings detected in tunnel section 12. Rerouting traffic." },
+    { "speaker": "Emergency Responder", "line": "Another medical emergency on platform 6. These dizzy spells are becoming too common." },
+    { "speaker": "Station Manager", "line": "Corporate wants us to install more radiation detectors. They're not telling us why." },
+    { "speaker": "Engineer", "line": "The new maglev systems keep getting interference from somewhere underground." },
+    { "speaker": "Commuter", "line": "Did you feel that rumble? That's not normal for a transit station." },
+    { "speaker": "Security Supervisor", "line": "Increase patrols near the lower levels. There have been reports of strange sounds." },
+    { "speaker": "System Administrator", "line": "Navigation computers keep glitching near the old subway connections. Something's interfering." },
+    { "speaker": "Public Relations Officer", "line": "Remember, any unusual experiences should be reported to management immediately. For everyone's safety." }
   ],
   "EarthSpacePort": [
-    {
-      "speaker": "Sleep deprived worker",
-      "line": "So many crates and vehicles to load and unload..."
-    },
-    {
-      "speaker": "Process Officer",
-      "line": "All immigrants please fill out the file before you so we can begin processing"
-    },
-    {
-      "speaker": "PCS Officer",
-      "line": "The port civil service is a easier job, its basically just the coast guard but re-named, you know, those pre kilko disaster guys?"
-    },
-    {
-      "speaker": "Cargo Inspector",
-      "line": "This shipment's manifest doesn't match the contents. Someone's smuggling again."
-    },
-    {
-      "speaker": "Flight Controller",
-      "line": "Departure window for Europa is closing in 30 minutes. All passengers board now."
-    },
-    {
-      "speaker": "Customs Agent",
-      "line": "Sir, you'll need a special permit for that artifact. No exceptions."
-    },
-    {
-      "speaker": "Port Administrator",
-      "line": "Traffic is backed up to Luna orbit. We need more docking bays."
-    },
-    {
-      "speaker": "Baggage Handler",
-      "line": "This crate is heavier than it should be. And it's warm to the touch."
-    },
-    {
-      "speaker": "Immigration Officer",
-      "line": "Another wave of refugees from the outer colonies. They all have the same haunted look."
-    },
-    {
-      "speaker": "Maintenance Chief",
-      "line": "The gravitational stabilizers are acting up again. Something's pulling at them."
-    },
-    {
-      "speaker": "Security Scanner",
-      "line": "Unknown energy signature detected in cargo bay 12. Initiating lockdown."
-    },
-    {
-      "speaker": "Passenger",
-      "line": "My family's been waiting three days for clearance to Mars. What's the holdup?"
-    },
-    {
-      "speaker": "Freight Coordinator",
-      "line": "Another ship from the deep space stations. Their crew looks... different."
-    },
-    {
-      "speaker": "Medical Officer",
-      "line": "We're seeing more cases of what they're calling 'void sickness.' Symptoms are troubling."
-    },
-    {
-      "speaker": "Communications Tech",
-      "line": "We're getting strange transmissions from the Jupiter system. Should we report this?"
-    }
+    { "speaker": "Sleep deprived worker", "line": "So many crates and vehicles to load and unload..." },
+    { "speaker": "Process Officer", "line": "All immigrants please fill out the file before you so we can begin processing" },
+    { "speaker": "PCS Officer", "line": "The port civil service is a easier job, its basically just the coast guard but re-named, you know, those pre kilko disaster guys?" },
+    { "speaker": "Cargo Inspector", "line": "This shipment's manifest doesn't match the contents. Someone's smuggling again." },
+    { "speaker": "Flight Controller", "line": "Departure window for Europa is closing in 30 minutes. All passengers board now." },
+    { "speaker": "Customs Agent", "line": "Sir, you'll need a special permit for that artifact. No exceptions." },
+    { "speaker": "Port Administrator", "line": "Traffic is backed up to Luna orbit. We need more docking bays." },
+    { "speaker": "Baggage Handler", "line": "This crate is heavier than it should be. And it's warm to the touch." },
+    { "speaker": "Immigration Officer", "line": "Another wave of refugees from the outer colonies. They all have the same haunted look." },
+    { "speaker": "Maintenance Chief", "line": "The gravitational stabilizers are acting up again. Something's pulling at them." },
+    { "speaker": "Security Scanner", "line": "Unknown energy signature detected in cargo bay 12. Initiating lockdown." },
+    { "speaker": "Passenger", "line": "My family's been waiting three days for clearance to Mars. What's the holdup?" },
+    { "speaker": "Freight Coordinator", "line": "Another ship from the deep space stations. Their crew looks... different." },
+    { "speaker": "Medical Officer", "line": "We're seeing more cases of what they're calling 'void sickness.' Symptoms are troubling." },
+    { "speaker": "Communications Tech", "line": "We're getting strange transmissions from the Jupiter system. Should we report this?" }
   ],
   "EarthSpacePort_FrontDesk": [
-    {
-      "speaker": "Customs AI",
-      "line": "Declare all mega structure artifacts immediately. Failure results in fines or prison if you lack a permit and do not declare."
-    },
-    {
-      "speaker": "Pilot",
-      "line": "Some of these tourists are bringing in void berries. That's not legal yet, right?"
-    },
-    {
-      "speaker": "Port Staff",
-      "line": "Dock 8's inspection line is backed up. Why do they keep letting mega freighters unload cargo there?!"
-    },
-    {
-      "speaker": "Immigration Clerk",
-      "line": "Your ID chip is showing some unusual readings. Please step aside for additional screening."
-    },
-    {
-      "speaker": "Ticket Agent",
-      "line": "Next departure to Mars Colony is fully booked. Best I can do is a cargo transport."
-    },
-    {
-      "speaker": "Security Officer",
-      "line": "Ma'am, that item is registering as potentially hazardous. I'll need to confiscate it."
-    },
-    {
-      "speaker": "Information Desk",
-      "line": "Due to increased security measures, processing times have been extended indefinitely."
-    },
-    {
-      "speaker": "Quarantine Officer",
-      "line": "All passengers from the Titan stations need medical clearance before proceeding."
-    },
-    {
-      "speaker": "Baggage Claim Attendant",
-      "line": "Your luggage was flagged for inspection. It should be returned within 24-48 hours."
-    },
-    {
-      "speaker": "Travel Agent",
-      "line": "I wouldn't recommend Jupiter system tours right now. Too many... incidents."
-    },
-    {
-      "speaker": "Customer Service",
-      "line": "The delays are due to enhanced security protocols. I can't provide more details."
-    },
-    {
-      "speaker": "Document Checker",
-      "line": "This visa stamp is smudged. Where exactly did you say you were coming from?"
-    },
-    {
-      "speaker": "Health Inspector",
-      "line": "Another passenger showing signs of neural degradation. Fourth one today."
-    },
-    {
-      "speaker": "Lost and Found",
-      "line": "Sir, we can't return this item to you. It's been classified as restricted material."
-    },
-    {
-      "speaker": "Priority Screening",
-      "line": "Government officials and ECS personnel report to desk 7 for expedited processing."
-    }
+    { "speaker": "Customs AI", "line": "Declare all mega structure artifacts immediately. Failure results in fines or prison if you lack a permit and do not declare." },
+    { "speaker": "Pilot", "line": "Some of these tourists are bringing in void berries. That's not legal yet, right?" },
+    { "speaker": "Port Staff", "line": "Dock 8's inspection line is backed up. Why do they keep letting mega freighters unload cargo there?!" },
+    { "speaker": "Immigration Clerk", "line": "Your ID chip is showing some unusual readings. Please step aside for additional screening." },
+    { "speaker": "Ticket Agent", "line": "Next departure to Mars Colony is fully booked. Best I can do is a cargo transport." },
+    { "speaker": "Security Officer", "line": "Ma'am, that item is registering as potentially hazardous. I'll need to confiscate it." },
+    { "speaker": "Information Desk", "line": "Due to increased security measures, processing times have been extended indefinitely." },
+    { "speaker": "Quarantine Officer", "line": "All passengers from the Titan stations need medical clearance before proceeding." },
+    { "speaker": "Baggage Claim Attendant", "line": "Your luggage was flagged for inspection. It should be returned within 24-48 hours." },
+    { "speaker": "Travel Agent", "line": "I wouldn't recommend Jupiter system tours right now. Too many... incidents." },
+    { "speaker": "Customer Service", "line": "The delays are due to enhanced security protocols. I can't provide more details." },
+    { "speaker": "Document Checker", "line": "This visa stamp is smudged. Where exactly did you say you were coming from?" },
+    { "speaker": "Health Inspector", "line": "Another passenger showing signs of neural degradation. Fourth one today." },
+    { "speaker": "Lost and Found", "line": "Sir, we can't return this item to you. It's been classified as restricted material." },
+    { "speaker": "Priority Screening", "line": "Government officials and ECS personnel report to desk 7 for expedited processing." }
   ],
   "EarthSpacePort_Cargo": [
-    {
-      "speaker": "Loader",
-      "line": "This crate's got old markings... like Red War era, kinda scared to touch it."
-    },
-    {
-      "speaker": "Dockmaster",
-      "line": "Cargo bay 12 is leaking again. Someone patch it up or we're gonna get sued if zero point energy kills someone."
-    },
-    {
-      "speaker": "Security",
-      "line": "No one touches the frozen containers. Orders from above, and I'd rather not know what needs to be frozen."
-    },
-    {
-      "speaker": "Forklift Operator",
-      "line": "These mega structure artifacts keep getting heavier during transport. Physics doesn't work that way."
-    },
-    {
-      "speaker": "Shipping Clerk",
-      "line": "Half these manifests are classified. I just move boxes and don't ask questions."
-    },
-    {
-      "speaker": "Cargo Scanner",
-      "line": "This container is showing internal movement. That's... not supposed to happen."
-    },
-    {
-      "speaker": "Warehouse Manager",
-      "line": "Keep the exotic material shipments in the shielded section. We've had enough accidents."
-    },
-    {
-      "speaker": "Safety Inspector",
-      "line": "Radiation levels in bay 7 are climbing. Evacuate the area until we figure out why."
-    },
-    {
-      "speaker": "Heavy Lifter",
-      "line": "My exo-suit's sensors keep malfunctioning around those research containers."
-    },
-    {
-      "speaker": "Quality Control",
-      "line": "Three shipments this week have arrived with... modifications. Not on the original specs."
-    },
-    {
-      "speaker": "Loading Supervisor",
-      "line": "The night shift reports hearing sounds from the sealed cargo. Just log it and move on."
-    },
-    {
-      "speaker": "Container Inspector",
-      "line": "This shipment from Europa has ice crystals that aren't melting. Temperature's normal though."
-    },
-    {
-      "speaker": "Inventory Clerk",
-      "line": "We're missing 12 containers from the Jupiter shipment. They just... vanished from tracking."
-    },
-    {
-      "speaker": "Hazmat Specialist",
-      "line": "Whatever's in container X-7 is reading off the charts for exotic particles."
-    },
-    {
-      "speaker": "Freight Handler",
-      "line": "The ECS containers always give me the creeps. They hum when you get close."
-    }
+    { "speaker": "Loader", "line": "This crate's got old markings... like Red War era, kinda scared to touch it." },
+    { "speaker": "Dockmaster", "line": "Cargo bay 12 is leaking again. Someone patch it up or we're gonna get sued if zero point energy kills someone." },
+    { "speaker": "Security", "line": "No one touches the frozen containers. Orders from above, and I'd rather not know what needs to be frozen." },
+    { "speaker": "Forklift Operator", "line": "These mega structure artifacts keep getting heavier during transport. Physics doesn't work that way." },
+    { "speaker": "Shipping Clerk", "line": "Half these manifests are classified. I just move boxes and don't ask questions." },
+    { "speaker": "Cargo Scanner", "line": "This container is showing internal movement. That's... not supposed to happen." },
+    { "speaker": "Warehouse Manager", "line": "Keep the exotic material shipments in the shielded section. We've had enough accidents." },
+    { "speaker": "Safety Inspector", "line": "Radiation levels in bay 7 are climbing. Evacuate the area until we figure out why." },
+    { "speaker": "Heavy Lifter", "line": "My exo-suit's sensors keep malfunctioning around those research containers." },
+    { "speaker": "Quality Control", "line": "Three shipments this week have arrived with... modifications. Not on the original specs." },
+    { "speaker": "Loading Supervisor", "line": "The night shift reports hearing sounds from the sealed cargo. Just log it and move on." },
+    { "speaker": "Container Inspector", "line": "This shipment from Europa has ice crystals that aren't melting. Temperature's normal though." },
+    { "speaker": "Inventory Clerk", "line": "We're missing 12 containers from the Jupiter shipment. They just... vanished from tracking." },
+    { "speaker": "Hazmat Specialist", "line": "Whatever's in container X-7 is reading off the charts for exotic particles." },
+    { "speaker": "Freight Handler", "line": "The ECS containers always give me the creeps. They hum when you get close." }
   ],
   "EarthSpacePort_Docking": [
-    {
-      "speaker": "Tired Dockhand",
-      "line": "Another civilian shuttle just clipped the gantry. That's the third this week, getting tiring to repair."
-    },
-    {
-      "speaker": "Annoyed Pilot",
-      "line": "Got fuel, got clearance, still sitting here. Typical Earth port."
-    },
-    {
-      "speaker": "Boarding Agent",
-      "line": "Next group to Europa, line up at Dock 17, move quick and orderly!"
-    },
-    {
-      "speaker": "Docking Controller",
-      "line": "Berth 23 is showing gravitational anomalies. Redirect incoming traffic."
-    },
-    {
-      "speaker": "Fuel Technician",
-      "line": "The fusion cells from the deep space haulers are running way hotter than normal."
-    },
-    {
-      "speaker": "Ship Inspector",
-      "line": "This vessel's hull shows impact damage from... something. What were you hauling?"
-    },
-    {
-      "speaker": "Traffic Coordinator",
-      "line": "We've got a priority ECS vessel requesting immediate docking. Clear lanes 4 through 8."
-    },
-    {
-      "speaker": "Maintenance Bot",
-      "line": "Atmospheric processors offline in dock 15. Toxic leak contained."
-    },
-    {
-      "speaker": "Passenger Services",
-      "line": "All passengers please remain in designated areas. Security sweep in progress."
-    },
-    {
-      "speaker": "Cargo Bay Operator",
-      "line": "The automated systems keep rejecting certain shipments. Won't say why."
-    },
-    {
-      "speaker": "Emergency Response",
-      "line": "Medical team to dock 9. We have another case of void exposure."
-    },
-    {
-      "speaker": "Port Authority",
-      "line": "Unscheduled arrival from the outer rim. Running full decontamination protocols."
-    },
-    {
-      "speaker": "Docking Pilot",
-      "line": "Navigation computers went haywire near that research vessel. Had to dock manually."
-    },
-    {
-      "speaker": "Station AI",
-      "line": "Warning: unusual electromagnetic signatures detected from berths 12-16."
-    },
-    {
-      "speaker": "Customs Drone",
-      "line": "Contraband detected in multiple compartments. Initiating full cargo inspection."
-    }
+    { "speaker": "Tired Dockhand", "line": "Another civilian shuttle just clipped the gantry. That's the third this week, getting tiring to repair." },
+    { "speaker": "Annoyed Pilot", "line": "Got fuel, got clearance, still sitting here. Typical Earth port." },
+    { "speaker": "Boarding Agent", "line": "Next group to Europa, line up at Dock 17, move quick and orderly!" },
+    { "speaker": "Docking Controller", "line": "Berth 23 is showing gravitational anomalies. Redirect incoming traffic." },
+    { "speaker": "Fuel Technician", "line": "The fusion cells from the deep space haulers are running way hotter than normal." },
+    { "speaker": "Ship Inspector", "line": "This vessel's hull shows impact damage from... something. What were you hauling?" },
+    { "speaker": "Traffic Coordinator", "line": "We've got a priority ECS vessel requesting immediate docking. Clear lanes 4 through 8." },
+    { "speaker": "Maintenance Bot", "line": "Atmospheric processors offline in dock 15. Toxic leak contained." },
+    { "speaker": "Passenger Services", "line": "All passengers please remain in designated areas. Security sweep in progress." },
+    { "speaker": "Cargo Bay Operator", "line": "The automated systems keep rejecting certain shipments. Won't say why." },
+    { "speaker": "Emergency Response", "line": "Medical team to dock 9. We have another case of void exposure." },
+    { "speaker": "Port Authority", "line": "Unscheduled arrival from the outer rim. Running full decontamination protocols." },
+    { "speaker": "Docking Pilot", "line": "Navigation computers went haywire near that research vessel. Had to dock manually." },
+    { "speaker": "Station AI", "line": "Warning: unusual electromagnetic signatures detected from berths 12-16." },
+    { "speaker": "Customs Drone", "line": "Contraband detected in multiple compartments. Initiating full cargo inspection." }
   ],
   "Pacific": [
-    {
-      "speaker": "Marine Biologist",
-      "line": "Deep sea readings are off the charts today, makes me excited!"
-    },
-    {
-      "speaker": "Research Tech",
-      "line": "Another ortho mega structure artifact surfaced near the thermal vents."
-    },
-    {
-      "speaker": "Platform Chief",
-      "line": "Keep the dive teams close to base. Something's stirring down there, we gotta be ready to react."
-    },
-    {
-      "speaker": "Scientist",
-      "line": "The anomaly signatures match pre-disaster patterns, very concerning!"
-    },
-    {
-      "speaker": "Sonar Operator",
-      "line": "I'm picking up sounds from the deep trench. They sound almost... mechanical."
-    },
-    {
-      "speaker": "Dive Master",
-      "line": "The water temperature at 3000 meters is increasing. That's not normal for these depths."
-    },
-    {
-      "speaker": "Oceanographer",
-      "line": "Current patterns have completely shifted. Something massive is affecting the ocean floor."
-    },
-    {
-      "speaker": "Submersible Pilot",
-      "line": "My instruments went crazy when I got near that structure. Had to surface immediately."
-    },
-    {
-      "speaker": "Research Coordinator",
-      "line": "We're pulling up organisms that don't match any known species. Evolution doesn't work this fast."
-    },
-    {
-      "speaker": "Deep Sea Engineer",
-      "line": "The pressure readings down there are impossible. It's like space-time is being warped."
-    },
-    {
-      "speaker": "Environmental Monitor",
-      "line": "Chemical composition of the water is changing daily. Something's releasing compounds."
-    },
-    {
-      "speaker": "Seismic Specialist",
-      "line": "The earthquake patterns suggest something is moving under the ocean floor."
-    },
-    {
-      "speaker": "Communications Officer",
-      "line": "We're getting structured signals from the deep ocean. They're not natural."
-    },
-    {
-      "speaker": "Marine Geologist",
-      "line": "These rock samples contain materials that shouldn't exist on Earth."
-    },
-    {
-      "speaker": "Safety Coordinator",
-      "line": "All deep dives are suspended until we understand what's happening down there."
-    }
+    { "speaker": "Marine Biologist", "line": "Deep sea readings are off the charts today, makes me excited!" },
+    { "speaker": "Research Tech", "line": "Another ortho mega structure artifact surfaced near the thermal vents." },
+    { "speaker": "Platform Chief", "line": "Keep the dive teams close to base. Something's stirring down there, we gotta be ready to react." },
+    { "speaker": "Scientist", "line": "The anomaly signatures match pre-disaster patterns, very concerning!" },
+    { "speaker": "Sonar Operator", "line": "I'm picking up sounds from the deep trench. They sound almost... mechanical." },
+    { "speaker": "Dive Master", "line": "The water temperature at 3000 meters is increasing. That's not normal for these depths." },
+    { "speaker": "Oceanographer", "line": "Current patterns have completely shifted. Something massive is affecting the ocean floor." },
+    { "speaker": "Submersible Pilot", "line": "My instruments went crazy when I got near that structure. Had to surface immediately." },
+    { "speaker": "Research Coordinator", "line": "We're pulling up organisms that don't match any known species. Evolution doesn't work this fast." },
+    { "speaker": "Deep Sea Engineer", "line": "The pressure readings down there are impossible. It's like space-time is being warped." },
+    { "speaker": "Environmental Monitor", "line": "Chemical composition of the water is changing daily. Something's releasing compounds." },
+    { "speaker": "Seismic Specialist", "line": "The earthquake patterns suggest something is moving under the ocean floor." },
+    { "speaker": "Communications Officer", "line": "We're getting structured signals from the deep ocean. They're not natural." },
+    { "speaker": "Marine Geologist", "line": "These rock samples contain materials that shouldn't exist on Earth." },
+    { "speaker": "Safety Coordinator", "line": "All deep dives are suspended until we understand what's happening down there." }
   ],
   "Pacific_ArtifactLab": [
-    {
-      "speaker": "Containment Specialist",
-      "line": "Artifact 7-Alpha is showing increased energy readings. Raise containment to level 3."
-    },
-    {
-      "speaker": "Research Scientist",
-      "line": "These Kilko fragments are reacting to each other across separate containment fields."
-    },
-    {
-      "speaker": "Lab Technician",
-      "line": "The debris samples are getting warmer. Temperature's been climbing for three days straight."
-    },
-    {
-      "speaker": "Safety Officer",
-      "line": "Radiation levels spiked again near the main Kilko specimen. Evacuate section B."
-    },
-    {
-      "speaker": "Materials Analyst",
-      "line": "Molecular structure changes every time we scan it. Like it's adapting to our instruments."
-    },
-    {
-      "speaker": "Lab AI",
-      "line": "Warning: anomalous energy patterns detected in containment unit 12. Initiating lockdown protocols."
-    },
-    {
-      "speaker": "Quantum Physicist",
-      "line": "The Kilko artifacts are entangled somehow. Disturbing one affects all the others instantly."
-    },
-    {
-      "speaker": "Documentation Officer",
-      "line": "Another researcher reported temporal displacement. They lost four hours of memory in the artifact room."
-    },
-    {
-      "speaker": "Hazmat Specialist",
-      "line": "New protective suits are melting after prolonged exposure. We need better shielding materials."
-    },
-    {
-      "speaker": "Research Director",
-      "line": "The artifacts aren't just debris. They're components of something much larger and still active."
-    }
+    { "speaker": "Containment Specialist", "line": "Artifact 7-Alpha is showing increased energy readings. Raise containment to level 3." },
+    { "speaker": "Research Scientist", "line": "These Kilko fragments are reacting to each other across separate containment fields." },
+    { "speaker": "Lab Technician", "line": "The debris samples are getting warmer. Temperature's been climbing for three days straight." },
+    { "speaker": "Safety Officer", "line": "Radiation levels spiked again near the main Kilko specimen. Evacuate section B." },
+    { "speaker": "Materials Analyst", "line": "Molecular structure changes every time we scan it. Like it's adapting to our instruments." },
+    { "speaker": "Lab AI", "line": "Warning: anomalous energy patterns detected in containment unit 12. Initiating lockdown protocols." },
+    { "speaker": "Quantum Physicist", "line": "The Kilko artifacts are entangled somehow. Disturbing one affects all the others instantly." },
+    { "speaker": "Documentation Officer", "line": "Another researcher reported temporal displacement. They lost four hours of memory in the artifact room." },
+    { "speaker": "Hazmat Specialist", "line": "New protective suits are melting after prolonged exposure. We need better shielding materials." },
+    { "speaker": "Research Director", "line": "The artifacts aren't just debris. They're components of something much larger and still active." }
   ],
   "Pacific_Observatory": [
-    {
-      "speaker": "Submersible Pilot",
-      "line": "Sub Bay 3 is launching in ten minutes. Deep trench reconnaissance mission."
-    },
-    {
-      "speaker": "Sonar Operator",
-      "line": "Getting massive returns from the ocean floor. Something the size of a city down there."
-    },
-    {
-      "speaker": "Deep Sea Monitor",
-      "line": "Water temperature at 4000 meters is rising exponentially. That's not natural."
-    },
-    {
-      "speaker": "Oceanographer",
-      "line": "Current patterns have completely reversed. The ocean is flowing toward something."
-    },
-    {
-      "speaker": "Communications Tech",
-      "line": "Lost contact with Deep Explorer 7. Last transmission mentioned impossible structures."
-    },
-    {
-      "speaker": "Environmental Sensor",
-      "line": "Chemical composition of deep water shows unknown compounds increasing daily."
-    },
-    {
-      "speaker": "Observatory AI",
-      "line": "Seismic activity suggests something massive is moving beneath the ocean floor."
-    },
-    {
-      "speaker": "Marine Biologist",
-      "line": "Found organisms at crushing depths that shouldn't be able to survive. They're glowing."
-    },
-    {
-      "speaker": "Dive Coordinator",
-      "line": "All deep dives suspended until we understand what's causing the pressure anomalies."
-    },
-    {
-      "speaker": "Geology Specialist",
-      "line": "Tectonic readings indicate artificial structures spanning the entire Pacific basin."
-    }
+    { "speaker": "Submersible Pilot", "line": "Sub Bay 3 is launching in ten minutes. Deep trench reconnaissance mission." },
+    { "speaker": "Sonar Operator", "line": "Getting massive returns from the ocean floor. Something the size of a city down there." },
+    { "speaker": "Deep Sea Monitor", "line": "Water temperature at 4000 meters is rising exponentially. That's not natural." },
+    { "speaker": "Oceanographer", "line": "Current patterns have completely reversed. The ocean is flowing toward something." },
+    { "speaker": "Communications Tech", "line": "Lost contact with Deep Explorer 7. Last transmission mentioned impossible structures." },
+    { "speaker": "Environmental Sensor", "line": "Chemical composition of deep water shows unknown compounds increasing daily." },
+    { "speaker": "Observatory AI", "line": "Seismic activity suggests something massive is moving beneath the ocean floor." },
+    { "speaker": "Marine Biologist", "line": "Found organisms at crushing depths that shouldn't be able to survive. They're glowing." },
+    { "speaker": "Dive Coordinator", "line": "All deep dives suspended until we understand what's causing the pressure anomalies." },
+    { "speaker": "Geology Specialist", "line": "Tectonic readings indicate artificial structures spanning the entire Pacific basin." }
   ],
   "Pacific_Abyssal": [
-    {
-      "speaker": "Pressure Systems Engineer",
-      "line": "Lab pressure holding at 400 atmospheres. Simulating deep trench conditions perfectly."
-    },
-    {
-      "speaker": "Marine Xenobiologist",
-      "line": "These organisms don't match any known species. Evolution doesn't work this fast."
-    },
-    {
-      "speaker": "Deep Sample Analyst",
-      "line": "Life forms from the trenches are incorporating metallic elements into their biology."
-    },
-    {
-      "speaker": "Atmospheric Monitor",
-      "line": "Gas composition in the pressure chambers is changing on its own. Something's modifying it."
-    },
-    {
-      "speaker": "Research Coordinator",
-      "line": "Specimens are displaying intelligence levels that shouldn't exist in deep sea life."
-    },
-    {
-      "speaker": "Biocontainment Officer",
-      "line": "The organisms are communicating with each other through bioluminescent patterns."
-    },
-    {
-      "speaker": "Genetic Sequencer",
-      "line": "DNA analysis shows impossible genetic structures. This isn't terrestrial life."
-    },
-    {
-      "speaker": "Laboratory AI",
-      "line": "Specimens are adapting to laboratory conditions faster than evolutionary theory allows."
-    },
-    {
-      "speaker": "Deep Sea Physiologist",
-      "line": "These creatures can survive in both crushing depths and normal atmospheric pressure."
-    },
-    {
-      "speaker": "Emergency Response",
-      "line": "Containment breach in lab 7. The organisms dissolved the reinforced barriers somehow."
-    }
+    { "speaker": "Pressure Systems Engineer", "line": "Lab pressure holding at 400 atmospheres. Simulating deep trench conditions perfectly." },
+    { "speaker": "Marine Xenobiologist", "line": "These organisms don't match any known species. Evolution doesn't work this fast." },
+    { "speaker": "Deep Sample Analyst", "line": "Life forms from the trenches are incorporating metallic elements into their biology." },
+    { "speaker": "Atmospheric Monitor", "line": "Gas composition in the pressure chambers is changing on its own. Something's modifying it." },
+    { "speaker": "Research Coordinator", "line": "Specimens are displaying intelligence levels that shouldn't exist in deep sea life." },
+    { "speaker": "Biocontainment Officer", "line": "The organisms are communicating with each other through bioluminescent patterns." },
+    { "speaker": "Genetic Sequencer", "line": "DNA analysis shows impossible genetic structures. This isn't terrestrial life." },
+    { "speaker": "Laboratory AI", "line": "Specimens are adapting to laboratory conditions faster than evolutionary theory allows." },
+    { "speaker": "Deep Sea Physiologist", "line": "These creatures can survive in both crushing depths and normal atmospheric pressure." },
+    { "speaker": "Emergency Response", "line": "Containment breach in lab 7. The organisms dissolved the reinforced barriers somehow." }
   ],
   "ColonyCore_Residential": [
-    {
-      "speaker": "Resident",
-      "line": "The filtration system hums differently today. Something's off, I'll file a request for the filters to be checked."
-    },
-    {
-      "speaker": "Teacher",
-      "line": "Kids learned how Earth grass smells — using a VR module, of course, I hope mars will be green when they grow up."
-    },
-    {
-      "speaker": "Medic",
-      "line": "Report all headaches or dizziness. Dome pressure fluctuated last night, nose bleeds can also be a symptom."
-    },
-    {
-      "speaker": "Maintenance Worker",
-      "line": "The atmospheric processors are working overtime. Something's contaminating the air supply."
-    },
-    {
-      "speaker": "Colony Administrator",
-      "line": "Water rations are being reduced again. The recycling systems can't keep up with demand."
-    },
-    {
-      "speaker": "Child",
-      "line": "Mom, why can't we go outside without the breathing masks anymore?"
-    },
-    {
-      "speaker": "Hydroponics Farmer",
-      "line": "The plants in sector 7 are growing strangely. Bigger, but wrong somehow."
-    },
-    {
-      "speaker": "Psychological Counselor",
-      "line": "More residents are reporting nightmares about things in the dark. It's becoming an epidemic."
-    },
-    {
-      "speaker": "Building Supervisor",
-      "line": "The structural integrity sensors keep triggering false alarms. At least, I hope they're false."
-    },
-    {
-      "speaker": "Community Leader",
-      "line": "We need to stay positive. The supply ship from Earth is only three months overdue."
-    },
-    {
-      "speaker": "Elderly Resident",
-      "line": "This place used to feel like home. Now it feels like we're hiding from something."
-    },
-    {
-      "speaker": "Youth Coordinator",
-      "line": "The teenagers keep talking about voices in the walls. Probably just colony acoustics."
-    },
-    {
-      "speaker": "Nutritionist",
-      "line": "The synthetic food supplements are causing unusual side effects. Increased alertness, strange dreams."
-    },
-    {
-      "speaker": "Housing Officer",
-      "line": "Relocation requests have tripled. Everyone wants to move away from the outer sections."
-    },
-    {
-      "speaker": "Colony Historian",
-      "line": "The original colony records mention finding something in the ground during construction. Files are mostly corrupted now."
-    }
+    { "speaker": "Resident", "line": "The filtration system hums differently today. Something's off, I'll file a request for the filters to be checked." },
+    { "speaker": "Teacher", "line": "Kids learned how Earth grass smells — using a VR module, of course, I hope mars will be green when they grow up." },
+    { "speaker": "Medic", "line": "Report all headaches or dizziness. Dome pressure fluctuated last night, nose bleeds can also be a symptom." },
+    { "speaker": "Maintenance Worker", "line": "The atmospheric processors are working overtime. Something's contaminating the air supply." },
+    { "speaker": "Colony Administrator", "line": "Water rations are being reduced again. The recycling systems can't keep up with demand." },
+    { "speaker": "Child", "line": "Mom, why can't we go outside without the breathing masks anymore?" },
+    { "speaker": "Hydroponics Farmer", "line": "The plants in sector 7 are growing strangely. Bigger, but wrong somehow." },
+    { "speaker": "Psychological Counselor", "line": "More residents are reporting nightmares about things in the dark. It's becoming an epidemic." },
+    { "speaker": "Building Supervisor", "line": "The structural integrity sensors keep triggering false alarms. At least, I hope they're false." },
+    { "speaker": "Community Leader", "line": "We need to stay positive. The supply ship from Earth is only three months overdue." },
+    { "speaker": "Elderly Resident", "line": "This place used to feel like home. Now it feels like we're hiding from something." },
+    { "speaker": "Youth Coordinator", "line": "The teenagers keep talking about voices in the walls. Probably just colony acoustics." },
+    { "speaker": "Nutritionist", "line": "The synthetic food supplements are causing unusual side effects. Increased alertness, strange dreams." },
+    { "speaker": "Housing Officer", "line": "Relocation requests have tripled. Everyone wants to move away from the outer sections." },
+    { "speaker": "Colony Historian", "line": "The original colony records mention finding something in the ground during construction. Files are mostly corrupted now." }
   ],
   "ColonyCore_Market": [
-    {
-      "speaker": "Mischievous Vendor",
-      "line": "Synthberry juice, 40% off! Ignore the warning label! Perfectly Safe!"
-    },
-    {
-      "speaker": "Smuggler",
-      "line": "Looking for exo-grade components? I might have what you need...provided you won't tell."
-    },
-    {
-      "speaker": "Frustrated Patroller",
-      "line": "Keep your permits visible. We're cracking down on unauthorized traders, bastards tried to smuggle in guns, we got enough trouble makers, we don't need corpses."
-    },
-    {
-      "speaker": "Black Market Dealer",
-      "line": "Fresh neural implants from Earth. Only slightly used, previous owner won't be needing them."
-    },
-    {
-      "speaker": "Produce Vendor",
-      "line": "Hydroponic vegetables, grown right here in the colony! Don't mind the unusual coloring."
-    },
-    {
-      "speaker": "Information Broker",
-      "line": "Want to know what really happened to the last supply convoy? It'll cost you."
-    },
-    {
-      "speaker": "Artifact Dealer",
-      "line": "Genuine mega structure fragments! Each piece comes with a radiation warning and a prayer."
-    },
-    {
-      "speaker": "Fence",
-      "line": "Those corporate security tags are getting harder to remove. Gonna have to charge extra."
-    },
-    {
-      "speaker": "Medicine Peddler",
-      "line": "Anti-radiation meds, memory enhancers, neural stabilizers. All completely legal, I swear."
-    },
-    {
-      "speaker": "Tech Repairman",
-      "line": "Your communicator's been tampered with. Someone's been listening to your conversations."
-    },
-    {
-      "speaker": "Food Critic",
-      "line": "The mushroom stew tastes different today. Earthier. Almost alien."
-    },
-    {
-      "speaker": "Currency Exchange",
-      "line": "Earth credits are losing value fast. Smart money's on exotic materials now."
-    },
-    {
-      "speaker": "Gossip Monger",
-      "line": "Did you hear about the mining crew that went missing? They found their equipment, but not them."
-    },
-    {
-      "speaker": "Security Informant",
-      "line": "Keep your voice down. The walls have ears, and some of them aren't electronic."
-    },
-    {
-      "speaker": "Underground Courier",
-      "line": "I can get messages anywhere in the system. Even to places that officially don't exist."
-    }
+    { "speaker": "Mischievous Vendor", "line": "Synthberry juice, 40% off! Ignore the warning label! Perfectly Safe!" },
+    { "speaker": "Smuggler", "line": "Looking for exo-grade components? I might have what you need...provided you won't tell." },
+    { "speaker": "Frustrated Patroller", "line": "Keep your permits visible. We're cracking down on unauthorized traders, bastards tried to smuggle in guns, we got enough trouble makers, we don't need corpses." },
+    { "speaker": "Black Market Dealer", "line": "Fresh neural implants from Earth. Only slightly used, previous owner won't be needing them." },
+    { "speaker": "Produce Vendor", "line": "Hydroponic vegetables, grown right here in the colony! Don't mind the unusual coloring." },
+    { "speaker": "Information Broker", "line": "Want to know what really happened to the last supply convoy? It'll cost you." },
+    { "speaker": "Artifact Dealer", "line": "Genuine mega structure fragments! Each piece comes with a radiation warning and a prayer." },
+    { "speaker": "Fence", "line": "Those corporate security tags are getting harder to remove. Gonna have to charge extra." },
+    { "speaker": "Medicine Peddler", "line": "Anti-radiation meds, memory enhancers, neural stabilizers. All completely legal, I swear." },
+    { "speaker": "Tech Repairman", "line": "Your communicator's been tampered with. Someone's been listening to your conversations." },
+    { "speaker": "Food Critic", "line": "The mushroom stew tastes different today. Earthier. Almost alien." },
+    { "speaker": "Currency Exchange", "line": "Earth credits are losing value fast. Smart money's on exotic materials now." },
+    { "speaker": "Gossip Monger", "line": "Did you hear about the mining crew that went missing? They found their equipment, but not them." },
+    { "speaker": "Security Informant", "line": "Keep your voice down. The walls have ears, and some of them aren't electronic." },
+    { "speaker": "Underground Courier", "line": "I can get messages anywhere in the system. Even to places that officially don't exist." }
   ],
   "ColonyCore_Power": [
-    {
-      "speaker": "Relieved Technician",
-      "line": "Main capacitor grid's stable... for now."
-    },
-    {
-      "speaker": "Core AI",
-      "line": "Thermal flow operating within acceptable parameters, please maintain watch to ensure no dramatic changes occur."
-    },
-    {
-      "speaker": "Core Security",
-      "line": "No entry to sub-core maintenance without direct orders, place is dangerous and hot."
-    },
-    {
-      "speaker": "Chief Engineer",
-      "line": "The fusion reactor is running 15% over normal efficiency. That should be impossible."
-    },
-    {
-      "speaker": "Power Grid Monitor",
-      "line": "We're getting feedback loops from the outer sectors. Something's drawing massive power."
-    },
-    {
-      "speaker": "Radiation Specialist",
-      "line": "Containment levels are holding, but I'm reading exotic particles that shouldn't exist."
-    },
-    {
-      "speaker": "Systems Administrator",
-      "line": "The core AI keeps requesting access to classified Earth databases. I keep denying it."
-    },
-    {
-      "speaker": "Backup Generator Operator",
-      "line": "Emergency systems activated three times this week. Main power keeps flickering."
-    },
-    {
-      "speaker": "Cooling System Tech",
-      "line": "Coolant temperature is dropping below minimum safe levels. The reactor's pulling heat from somewhere else."
-    },
-    {
-      "speaker": "Electrical Engineer",
-      "line": "The power conduits are conducting electricity at impossible efficiency rates."
-    },
-    {
-      "speaker": "Safety Inspector",
-      "line": "Magnetic field fluctuations are off the charts. Something's interfering with our equipment."
-    },
-    {
-      "speaker": "Control Room Operator",
-      "line": "Automated systems keep overriding manual controls. It's like they know what we need before we do."
-    },
-    {
-      "speaker": "Environmental Monitor",
-      "line": "Energy readings suggest we're tapping into a power source that isn't our reactor."
-    },
-    {
-      "speaker": "Maintenance Drone",
-      "line": "Repairs completed in sector 12. Note: found unknown technology integrated with our systems."
-    },
-    {
-      "speaker": "Emergency Coordinator",
-      "line": "All safety protocols have been updated. We're dealing with energy patterns we don't understand."
-    }
+    { "speaker": "Relieved Technician", "line": "Main capacitor grid's stable... for now." },
+    { "speaker": "Core AI", "line": "Thermal flow operating within acceptable parameters, please maintain watch to ensure no dramatic changes occur." },
+    { "speaker": "Core Security", "line": "No entry to sub-core maintenance without direct orders, place is dangerous and hot." },
+    { "speaker": "Chief Engineer", "line": "The fusion reactor is running 15% over normal efficiency. That should be impossible." },
+    { "speaker": "Power Grid Monitor", "line": "We're getting feedback loops from the outer sectors. Something's drawing massive power." },
+    { "speaker": "Radiation Specialist", "line": "Containment levels are holding, but I'm reading exotic particles that shouldn't exist." },
+    { "speaker": "Systems Administrator", "line": "The core AI keeps requesting access to classified Earth databases. I keep denying it." },
+    { "speaker": "Backup Generator Operator", "line": "Emergency systems activated three times this week. Main power keeps flickering." },
+    { "speaker": "Cooling System Tech", "line": "Coolant temperature is dropping below minimum safe levels. The reactor's pulling heat from somewhere else." },
+    { "speaker": "Electrical Engineer", "line": "The power conduits are conducting electricity at impossible efficiency rates." },
+    { "speaker": "Safety Inspector", "line": "Magnetic field fluctuations are off the charts. Something's interfering with our equipment." },
+    { "speaker": "Control Room Operator", "line": "Automated systems keep overriding manual controls. It's like they know what we need before we do." },
+    { "speaker": "Environmental Monitor", "line": "Energy readings suggest we're tapping into a power source that isn't our reactor." },
+    { "speaker": "Maintenance Drone", "line": "Repairs completed in sector 12. Note: found unknown technology integrated with our systems." },
+    { "speaker": "Emergency Coordinator", "line": "All safety protocols have been updated. We're dealing with energy patterns we don't understand." }
   ],
   "TerraformingFields": [
-    {
-      "speaker": "DroneOperator",
-      "line": "Unit 42 stopped responding near the ridge, gotta get it quick before the storm arrives or it'll be a pain to find."
-    },
-    {
-      "speaker": "Terraformer technician",
-      "line": "Wind's picking up. Sandstorm incoming, hopefully the winds change."
-    },
-    {
-      "speaker": "Annoyed Mechanic",
-      "line": "Pump systems are jammed, I told them we need to set up sandstorm walls"
-    },
-    {
-      "speaker": "Exhausted Supervisor",
-      "line": "Check the eastern dome's pressure seal, don't wanna a depressurization again."
-    },
-    {
-      "speaker": "Curios Biologist",
-      "line": "Soil sample B-17 is reacting... strangely."
-    },
-    {
-      "speaker": "Atmospheric Engineer",
-      "line": "Oxygen levels are fluctuating beyond normal parameters. The terraforming algae is behaving oddly."
-    },
-    {
-      "speaker": "Geological Survey",
-      "line": "Ground-penetrating radar shows hollow spaces beneath sector 12. Large ones."
-    },
-    {
-      "speaker": "Weather Station Operator",
-      "line": "Storm patterns don't match any planetary models. Something's affecting the weather systems."
-    },
-    {
-      "speaker": "Seed Bank Curator",
-      "line": "The Earth plants are thriving too well. They're adapting faster than natural evolution allows."
-    },
-    {
-      "speaker": "Irrigation Specialist",
-      "line": "Water table's dropping in some areas, rising in others. Underground flow makes no sense."
-    },
-    {
-      "speaker": "Environmental Monitor",
-      "line": "Chemical composition of the atmosphere is changing daily. We're not controlling this process anymore."
-    },
-    {
-      "speaker": "Mining Surveyor",
-      "line": "Found another chamber system. The walls are covered in what looks like circuitry."
-    },
-    {
-      "speaker": "Ecosystem Manager",
-      "line": "The local wildlife is exhibiting intelligence levels that shouldn't be possible."
-    },
-    {
-      "speaker": "Remote Sensor Tech",
-      "line": "Satellites are picking up geometric patterns in the landscape. Too regular to be natural."
-    },
-    {
-      "speaker": "Xenobotanist",
-      "line": "These aren't mutations. The plants are incorporating foreign genetic material from... somewhere."
-    }
+    { "speaker": "DroneOperator", "line": "Unit 42 stopped responding near the ridge, gotta get it quick before the storm arrives or it'll be a pain to find." },
+    { "speaker": "Terraformer technician", "line": "Wind's picking up. Sandstorm incoming, hopefully the winds change." },
+    { "speaker": "Annoyed Mechanic", "line": "Pump systems are jammed, I told them we need to set up sandstorm walls" },
+    { "speaker": "Exhausted Supervisor", "line": "Check the eastern dome's pressure seal, don't wanna a depressurization again." },
+    { "speaker": "Curios Biologist", "line": "Soil sample B-17 is reacting... strangely." },
+    { "speaker": "Atmospheric Engineer", "line": "Oxygen levels are fluctuating beyond normal parameters. The terraforming algae is behaving oddly." },
+    { "speaker": "Geological Survey", "line": "Ground-penetrating radar shows hollow spaces beneath sector 12. Large ones." },
+    { "speaker": "Weather Station Operator", "line": "Storm patterns don't match any planetary models. Something's affecting the weather systems." },
+    { "speaker": "Seed Bank Curator", "line": "The Earth plants are thriving too well. They're adapting faster than natural evolution allows." },
+    { "speaker": "Irrigation Specialist", "line": "Water table's dropping in some areas, rising in others. Underground flow makes no sense." },
+    { "speaker": "Environmental Monitor", "line": "Chemical composition of the atmosphere is changing daily. We're not controlling this process anymore." },
+    { "speaker": "Mining Surveyor", "line": "Found another chamber system. The walls are covered in what looks like circuitry." },
+    { "speaker": "Ecosystem Manager", "line": "The local wildlife is exhibiting intelligence levels that shouldn't be possible." },
+    { "speaker": "Remote Sensor Tech", "line": "Satellites are picking up geometric patterns in the landscape. Too regular to be natural." },
+    { "speaker": "Xenobotanist", "line": "These aren't mutations. The plants are incorporating foreign genetic material from... somewhere." }
   ],
   "AncientVault": [
-    {
-      "speaker": "Frustrated Archeologist",
-      "line": "These symbols repeat every 88 meters, do they even mean anything?"
-    },
-    {
-      "speaker": "Linguist",
-      "line": "No match in any known dialect. Not even close, as usual."
-    },
-    {
-      "speaker": "Archivist",
-      "line": "Mega structure resonance patterns are increasing."
-    },
-    {
-      "speaker": "ECS Guard",
-      "line": "You hear that hum? It's louder near the wall."
-    },
-    {
-      "speaker": "Explorer",
-      "line": "Whatever this place is, it's not dead, the machinery is just sleeping"
-    },
-    {
-      "speaker": "Quantum Physicist",
-      "line": "The geometry in here violates several laws of physics. Space is folding in on itself."
-    },
-    {
-      "speaker": "Translation AI",
-      "line": "Language pattern recognition failed. Symbols appear to shift when observed directly."
-    },
-    {
-      "speaker": "Structural Engineer",
-      "line": "The support beams aren't supporting anything. They're decorative. The vault holds itself up."
-    },
-    {
-      "speaker": "Xenoarchaeologist",
-      "line": "Carbon dating gives impossible results. This place is older than the solar system."
-    },
-    {
-      "speaker": "Security Chief",
-      "line": "Motion sensors trigger randomly. Either they're malfunctioning or something's moving in here."
-    },
-    {
-      "speaker": "Digital Forensics",
-      "line": "The data storage systems are still active. Still running programs after millions of years."
-    },
-    {
-      "speaker": "Psychologist",
-      "line": "Team members report shared dreams after spending time in the vault. Collective unconscious effects."
-    },
-    {
-      "speaker": "Energy Specialist",
-      "line": "Power source is unknown. It's not fusion, not solar, not anything we understand."
-    },
-    {
-      "speaker": "Communications Expert",
-      "line": "The walls are transmitting data. To where, I don't know. But something's listening."
-    },
-    {
-      "speaker": "Emergency Medic",
-      "line": "Another researcher with temporal displacement symptoms. They lost three hours of memory."
-    }
+    { "speaker": "Frustrated Archeologist", "line": "These symbols repeat every 88 meters, do they even mean anything?" },
+    { "speaker": "Linguist", "line": "No match in any known dialect. Not even close, as usual." },
+    { "speaker": "Archivist", "line": "Mega structure resonance patterns are increasing." },
+    { "speaker": "ECS Guard", "line": "You hear that hum? It's louder near the wall." },
+    { "speaker": "Explorer", "line": "Whatever this place is, it's not dead, the machinery is just sleeping" },
+    { "speaker": "Quantum Physicist", "line": "The geometry in here violates several laws of physics. Space is folding in on itself." },
+    { "speaker": "Translation AI", "line": "Language pattern recognition failed. Symbols appear to shift when observed directly." },
+    { "speaker": "Structural Engineer", "line": "The support beams aren't supporting anything. They're decorative. The vault holds itself up." },
+    { "speaker": "Xenoarchaeologist", "line": "Carbon dating gives impossible results. This place is older than the solar system." },
+    { "speaker": "Security Chief", "line": "Motion sensors trigger randomly. Either they're malfunctioning or something's moving in here." },
+    { "speaker": "Digital Forensics", "line": "The data storage systems are still active. Still running programs after millions of years." },
+    { "speaker": "Psychologist", "line": "Team members report shared dreams after spending time in the vault. Collective unconscious effects." },
+    { "speaker": "Energy Specialist", "line": "Power source is unknown. It's not fusion, not solar, not anything we understand." },
+    { "speaker": "Communications Expert", "line": "The walls are transmitting data. To where, I don't know. But something's listening." },
+    { "speaker": "Emergency Medic", "line": "Another researcher with temporal displacement symptoms. They lost three hours of memory." }
   ],
   "StormObservatory_Sensors": [
-    {
-      "speaker": "Sensor Tech",
-      "line": "Electromagnetic readings are spiking again, possible storm."
-    },
-    {
-      "speaker": "Technician",
-      "line": "Sensor array 7 needs recalibration."
-    },
-    {
-      "speaker": "AI Monitor",
-      "line": "Particle field density increasing 12%."
-    },
-    {
-      "speaker": "Engineer",
-      "line": "These readings don't match anything in our database, the mega structure must be causing the surrounding storms, but why?"
-    },
-    {
-      "speaker": "Atmospheric Analyst",
-      "line": "Jupiter's magnetosphere is being manipulated. These aren't natural phenomena."
-    },
-    {
-      "speaker": "Data Processor",
-      "line": "Storm rotation patterns follow mathematical sequences. Too precise to be coincidence."
-    },
-    {
-      "speaker": "Radar Operator",
-      "line": "Something massive is moving inside the great red spot. Size estimates are... troubling."
-    },
-    {
-      "speaker": "Cosmic Ray Detector",
-      "line": "Exotic particle bombardment increasing. Shielding may not hold much longer."
-    },
-    {
-      "speaker": "Gravitational Monitor",
-      "line": "Local gravity is fluctuating in ways that suggest massive objects are shifting position."
-    },
-    {
-      "speaker": "Quantum Sensor Tech",
-      "line": "Detecting quantum entanglement signatures across the entire Jupiter system."
-    },
-    {
-      "speaker": "Storm Tracker",
-      "line": "The eye of the storm is perfectly circular. Nature doesn't work that way."
-    },
-    {
-      "speaker": "Electromagnetic Specialist",
-      "line": "Radio emissions from the storms contain structured data. It's like the weather is talking."
-    },
-    {
-      "speaker": "Orbital Mechanics",
-      "line": "Jupiter's moons are gradually shifting orbit. Something with massive gravity is influencing them."
-    },
-    {
-      "speaker": "Seismic Monitor",
-      "line": "Vibrations through Jupiter's core suggest hollow spaces. Massive hollow spaces."
-    },
-    {
-      "speaker": "Observatory AI",
-      "line": "Correlation analysis indicates 94.7% probability that storms are artificially generated."
-    }
+    { "speaker": "Sensor Tech", "line": "Electromagnetic readings are spiking again, possible storm." },
+    { "speaker": "Technician", "line": "Sensor array 7 needs recalibration." },
+    { "speaker": "AI Monitor", "line": "Particle field density increasing 12%." },
+    { "speaker": "Engineer", "line": "These readings don't match anything in our database, the mega structure must be causing the surrounding storms, but why?" },
+    { "speaker": "Atmospheric Analyst", "line": "Jupiter's magnetosphere is being manipulated. These aren't natural phenomena." },
+    { "speaker": "Data Processor", "line": "Storm rotation patterns follow mathematical sequences. Too precise to be coincidence." },
+    { "speaker": "Radar Operator", "line": "Something massive is moving inside the great red spot. Size estimates are... troubling." },
+    { "speaker": "Cosmic Ray Detector", "line": "Exotic particle bombardment increasing. Shielding may not hold much longer." },
+    { "speaker": "Gravitational Monitor", "line": "Local gravity is fluctuating in ways that suggest massive objects are shifting position." },
+    { "speaker": "Quantum Sensor Tech", "line": "Detecting quantum entanglement signatures across the entire Jupiter system." },
+    { "speaker": "Storm Tracker", "line": "The eye of the storm is perfectly circular. Nature doesn't work that way." },
+    { "speaker": "Electromagnetic Specialist", "line": "Radio emissions from the storms contain structured data. It's like the weather is talking." },
+    { "speaker": "Orbital Mechanics", "line": "Jupiter's moons are gradually shifting orbit. Something with massive gravity is influencing them." },
+    { "speaker": "Seismic Monitor", "line": "Vibrations through Jupiter's core suggest hollow spaces. Massive hollow spaces." },
+    { "speaker": "Observatory AI", "line": "Correlation analysis indicates 94.7% probability that storms are artificially generated." }
   ],
   "StormObservatory_Lab": [
-    {
-      "speaker": "Scientist",
-      "line": "The red storm's pulse is intensifying again, at least the red eye is beautiful this close"
-    },
-    {
-      "speaker": "Research Lead",
-      "line": "Jupiter's weather patterns are completely unprecedented, that mega structure has to be responsible."
-    },
-    {
-      "speaker": "Meteorologist",
-      "line": "That's not a natural storm formation."
-    },
-    {
-      "speaker": "Navigator",
-      "line": "Station drift is within margin. Barely."
-    },
-    {
-      "speaker": "Atmospheric Chemist",
-      "line": "Gas samples from the storm contain compounds that don't exist in nature."
-    },
-    {
-      "speaker": "Computer Modeler",
-      "line": "Weather simulation keeps crashing. The storm behaves like it has intelligence."
-    },
-    {
-      "speaker": "Xenobiologist",
-      "line": "Found microscopic structures in storm samples. They look almost... manufactured."
-    },
-    {
-      "speaker": "Theoretical Physicist",
-      "line": "The storm is generating its own magnetic field. That's physically impossible."
-    },
-    {
-      "speaker": "Research Assistant",
-      "line": "Lab equipment keeps malfunctioning when we analyze storm samples. Electromagnetic interference."
-    },
-    {
-      "speaker": "Observatory Director",
-      "line": "We're not just studying the storm anymore. I think it's studying us back."
-    },
-    {
-      "speaker": "Climatologist",
-      "line": "Jupiter's weather has been stable for millennia. This change happened overnight in geological terms."
-    },
-    {
-      "speaker": "Spectral Analyst",
-      "line": "Light spectrum analysis shows the storm is emitting wavelengths that shouldn't exist."
-    },
-    {
-      "speaker": "Communications Officer",
-      "line": "We're receiving transmissions from inside the storm. Structured, deliberate transmissions."
-    },
-    {
-      "speaker": "Data Archivist",
-      "line": "Storm patterns match mathematical principles found in the mega structure artifacts."
-    },
-    {
-      "speaker": "Safety Coordinator",
-      "line": "Recommend evacuation protocols. The storm is expanding beyond predicted parameters."
-    }
+    { "speaker": "Scientist", "line": "The red storm's pulse is intensifying again, at least the red eye is beautiful this close" },
+    { "speaker": "Research Lead", "line": "Jupiter's weather patterns are completely unprecedented, that mega structure has to be responsible." },
+    { "speaker": "Meteorologist", "line": "That's not a natural storm formation." },
+    { "speaker": "Navigator", "line": "Station drift is within margin. Barely." },
+    { "speaker": "Atmospheric Chemist", "line": "Gas samples from the storm contain compounds that don't exist in nature." },
+    { "speaker": "Computer Modeler", "line": "Weather simulation keeps crashing. The storm behaves like it has intelligence." },
+    { "speaker": "Xenobiologist", "line": "Found microscopic structures in storm samples. They look almost... manufactured." },
+    { "speaker": "Theoretical Physicist", "line": "The storm is generating its own magnetic field. That's physically impossible." },
+    { "speaker": "Research Assistant", "line": "Lab equipment keeps malfunctioning when we analyze storm samples. Electromagnetic interference." },
+    { "speaker": "Observatory Director", "line": "We're not just studying the storm anymore. I think it's studying us back." },
+    { "speaker": "Climatologist", "line": "Jupiter's weather has been stable for millennia. This change happened overnight in geological terms." },
+    { "speaker": "Spectral Analyst", "line": "Light spectrum analysis shows the storm is emitting wavelengths that shouldn't exist." },
+    { "speaker": "Communications Officer", "line": "We're receiving transmissions from inside the storm. Structured, deliberate transmissions." },
+    { "speaker": "Data Archivist", "line": "Storm patterns match mathematical principles found in the mega structure artifacts." },
+    { "speaker": "Safety Coordinator", "line": "Recommend evacuation protocols. The storm is expanding beyond predicted parameters." }
   ],
   "GasHarvester": [
-    {
-      "speaker": "Operator",
-      "line": "Hydrogen levels are peaking. Cut intake 12%"
-    },
-    {
-      "speaker": "Technician",
-      "line": "Someone needs to grease the extractor arms, their getting slow again."
-    },
-    {
-      "speaker": "Pilot",
-      "line": "Watch for turbulence. Jupiter's cranky today, we're on break until she calms down."
-    },
-    {
-      "speaker": "Chemist",
-      "line": "We may have found trace organics..."
-    },
-    {
-      "speaker": "Commander",
-      "line": "Prep for emergency cutoff. Always prep, best to get out and go back later than get trashed by a storm."
-    },
-    {
-      "speaker": "Platform AI",
-      "line": "All fueling platforms tilts and gathered fuel are within acceptable parameters"
-    },
-    {
-      "speaker": "Refinery Worker",
-      "line": "The gas composition keeps changing. Yesterday's batch was 12% different from today's."
-    },
-    {
-      "speaker": "Quality Control",
-      "line": "These hydrogen samples contain isotopes that shouldn't exist in Jupiter's atmosphere."
-    },
-    {
-      "speaker": "Atmospheric Diver",
-      "line": "Saw something moving in the gas clouds. Too big to be debris, too organized to be natural."
-    },
-    {
-      "speaker": "Processing Engineer",
-      "line": "Filtration systems are pulling out materials we can't identify. Storing them separately."
-    },
-    {
-      "speaker": "Communications Tech",
-      "line": "Radio interference is getting worse. Something in the atmosphere is jamming our signals."
-    },
-    {
-      "speaker": "Safety Inspector",
-      "line": "Pressure suits are showing micro-fractures after exposure to the new gas mixtures."
-    },
-    {
-      "speaker": "Research Coordinator",
-      "line": "Corporate wants samples of everything we can't identify. They're paying triple rates."
-    },
-    {
-      "speaker": "Maintenance Chief",
-      "line": "Equipment degrades faster down here now. Molecular bonds are being disrupted somehow."
-    },
-    {
-      "speaker": "Environmental Monitor",
-      "line": "Toxic gas warnings are triggering constantly. The atmosphere is becoming more dangerous."
-    },
-    {
-      "speaker": "Emergency Response",
-      "line": "Two more workers with neural symptoms. Exposure to the new compounds is affecting brain chemistry."
-    }
+    { "speaker": "Operator", "line": "Hydrogen levels are peaking. Cut intake 12%" },
+    { "speaker": "Technician", "line": "Someone needs to grease the extractor arms, their getting slow again." },
+    { "speaker": "Pilot", "line": "Watch for turbulence. Jupiter's cranky today, we're on break until she calms down." },
+    { "speaker": "Chemist", "line": "We may have found trace organics..." },
+    { "speaker": "Commander", "line": "Prep for emergency cutoff. Always prep, best to get out and go back later than get trashed by a storm." },
+    { "speaker": "Platform AI", "line": "All fueling platforms tilts and gathered fuel are within acceptable parameters" },
+    { "speaker": "Refinery Worker", "line": "The gas composition keeps changing. Yesterday's batch was 12% different from today's." },
+    { "speaker": "Quality Control", "line": "These hydrogen samples contain isotopes that shouldn't exist in Jupiter's atmosphere." },
+    { "speaker": "Atmospheric Diver", "line": "Saw something moving in the gas clouds. Too big to be debris, too organized to be natural." },
+    { "speaker": "Processing Engineer", "line": "Filtration systems are pulling out materials we can't identify. Storing them separately." },
+    { "speaker": "Communications Tech", "line": "Radio interference is getting worse. Something in the atmosphere is jamming our signals." },
+    { "speaker": "Safety Inspector", "line": "Pressure suits are showing micro-fractures after exposure to the new gas mixtures." },
+    { "speaker": "Research Coordinator", "line": "Corporate wants samples of everything we can't identify. They're paying triple rates." },
+    { "speaker": "Maintenance Chief", "line": "Equipment degrades faster down here now. Molecular bonds are being disrupted somehow." },
+    { "speaker": "Environmental Monitor", "line": "Toxic gas warnings are triggering constantly. The atmosphere is becoming more dangerous." },
+    { "speaker": "Emergency Response", "line": "Two more workers with neural symptoms. Exposure to the new compounds is affecting brain chemistry." }
   ],
   "ResearchArray": [
-    {
-      "speaker": "Drone AI",
-      "line": "Node connection stable. No anomalies."
-    },
-    {
-      "speaker": "Data Analyst",
-      "line": "The magnetic shift pattern is repeating."
-    },
-    {
-      "speaker": "Admin",
-      "line": "Command uplink active. Relay is clear."
-    },
-    {
-      "speaker": "Operator",
-      "line": "Sensor 19 is acting up again. Replace it."
-    },
-    {
-      "speaker": "Monitor",
-      "line": "Telemetry from Saturn just went dark."
-    },
-    {
-      "speaker": "Camera Operator",
-      "line": "Look at this, you can see the mega structures in incredible detail here, all the strange things attached, maybe their arms? Weapons?"
-    },
-    {
-      "speaker": "Network Administrator",
-      "line": "Bandwidth usage has tripled. Something's downloading massive amounts of data."
-    },
-    {
-      "speaker": "Signal Processor",
-      "line": "We're receiving structured transmissions from the Kuiper belt. Origin unknown."
-    },
-    {
-      "speaker": "Quantum Computer Tech",
-      "line": "Processing cores are operating beyond theoretical limits. They're solving problems before we input them."
-    },
-    {
-      "speaker": "Astrophysicist",
-      "line": "Star charts don't match observations. Either our instruments are wrong or space is changing."
-    },
-    {
-      "speaker": "Deep Space Monitor",
-      "line": "Contact lost with three outer system probes. They just... stopped transmitting."
-    },
-    {
-      "speaker": "Array Calibration",
-      "line": "Instruments keep auto-adjusting to frequencies we didn't program them to detect."
-    },
-    {
-      "speaker": "Research Director",
-      "line": "We're receiving data from sources that according to physics, shouldn't be able to transmit."
-    },
-    {
-      "speaker": "Communications Array",
-      "line": "Multi-dimensional signal patterns detected. They appear to be originating from parallel space-time."
-    },
-    {
-      "speaker": "Xenosignal Analyst",
-      "line": "These aren't random cosmic phenomena. There's intelligence behind these transmissions."
-    },
-    {
-      "speaker": "Emergency Systems",
-      "line": "Automated protocols activated without authorization. The array is operating itself."
-    }
+    { "speaker": "Drone AI", "line": "Node connection stable. No anomalies." },
+    { "speaker": "Data Analyst", "line": "The magnetic shift pattern is repeating." },
+    { "speaker": "Admin", "line": "Command uplink active. Relay is clear." },
+    { "speaker": "Operator", "line": "Sensor 19 is acting up again. Replace it." },
+    { "speaker": "Monitor", "line": "Telemetry from Saturn just went dark." },
+    { "speaker": "Camera Operator", "line": "Look at this, you can see the mega structures in incredible detail here, all the strange things attached, maybe their arms? Weapons?" },
+    { "speaker": "Network Administrator", "line": "Bandwidth usage has tripled. Something's downloading massive amounts of data." },
+    { "speaker": "Signal Processor", "line": "We're receiving structured transmissions from the Kuiper belt. Origin unknown." },
+    { "speaker": "Quantum Computer Tech", "line": "Processing cores are operating beyond theoretical limits. They're solving problems before we input them." },
+    { "speaker": "Astrophysicist", "line": "Star charts don't match observations. Either our instruments are wrong or space is changing." },
+    { "speaker": "Deep Space Monitor", "line": "Contact lost with three outer system probes. They just... stopped transmitting." },
+    { "speaker": "Array Calibration", "line": "Instruments keep auto-adjusting to frequencies we didn't program them to detect." },
+    { "speaker": "Research Director", "line": "We're receiving data from sources that according to physics, shouldn't be able to transmit." },
+    { "speaker": "Communications Array", "line": "Multi-dimensional signal patterns detected. They appear to be originating from parallel space-time." },
+    { "speaker": "Xenosignal Analyst", "line": "These aren't random cosmic phenomena. There's intelligence behind these transmissions." },
+    { "speaker": "Emergency Systems", "line": "Automated protocols activated without authorization. The array is operating itself." }
   ],
   "CoreRelay": [
-    {
-      "speaker": "Relay Tech",
-      "line": "Signal lag is under 12ms. Not bad."
-    },
-    {
-      "speaker": "Comms Officer",
-      "line": "Keep relay frequency clear. Priority only."
-    },
-    {
-      "speaker": "Engineer",
-      "line": "That relay beam just blinked. It's not supposed to, damn storms."
-    },
-    {
-      "speaker": "Watch",
-      "line": "Atmospheric pressure's climbing fast, keep a eye on the pressure gauge."
-    },
-    {
-      "speaker": "Officer",
-      "line": "We're close to the red eye. Stay sharp."
-    },
-    {
-      "speaker": "Signal Amplification",
-      "line": "Boost power to transmitters 7 through 12. We're losing coherence in the storm interference."
-    },
-    {
-      "speaker": "Backup Systems",
-      "line": "Primary relay down. Switching to emergency frequencies until we can repair the dish."
-    },
-    {
-      "speaker": "Quantum Entanglement Tech",
-      "line": "Instantaneous communication working perfectly. Too perfectly. The quantum states are being stabilized externally."
-    },
-    {
-      "speaker": "Encryption Specialist",
-      "line": "Our secure channels are being decoded in real-time. Whatever's listening is incredibly advanced."
-    },
-    {
-      "speaker": "Network Security",
-      "line": "Unauthorized access attempts every few minutes. They're learning our security protocols."
-    },
-    {
-      "speaker": "Station AI",
-      "line": "Detecting patterns in the atmospheric interference. The storm is modulating our communications."
-    },
-    {
-      "speaker": "Communications Director",
-      "line": "Orders from Earth command: maintain radio silence except for emergency transmissions."
-    },
-    {
-      "speaker": "Signal Intelligence",
-      "line": "We're not just relaying messages anymore. Something is using our array to communicate with other systems."
-    },
-    {
-      "speaker": "Emergency Coordinator",
-      "line": "All outbound transmissions are being monitored and modified before transmission. By what, we don't know."
-    },
-    {
-      "speaker": "Relay Maintenance",
-      "line": "The communication equipment is upgrading itself. New components appearing overnight."
-    }
+    { "speaker": "Relay Tech", "line": "Signal lag is under 12ms. Not bad." },
+    { "speaker": "Comms Officer", "line": "Keep relay frequency clear. Priority only." },
+    { "speaker": "Engineer", "line": "That relay beam just blinked. It's not supposed to, damn storms." },
+    { "speaker": "Watch", "line": "Atmospheric pressure's climbing fast, keep a eye on the pressure gauge." },
+    { "speaker": "Officer", "line": "We're close to the red eye. Stay sharp." },
+    { "speaker": "Signal Amplification", "line": "Boost power to transmitters 7 through 12. We're losing coherence in the storm interference." },
+    { "speaker": "Backup Systems", "line": "Primary relay down. Switching to emergency frequencies until we can repair the dish." },
+    { "speaker": "Quantum Entanglement Tech", "line": "Instantaneous communication working perfectly. Too perfectly. The quantum states are being stabilized externally." },
+    { "speaker": "Encryption Specialist", "line": "Our secure channels are being decoded in real-time. Whatever's listening is incredibly advanced." },
+    { "speaker": "Network Security", "line": "Unauthorized access attempts every few minutes. They're learning our security protocols." },
+    { "speaker": "Station AI", "line": "Detecting patterns in the atmospheric interference. The storm is modulating our communications." },
+    { "speaker": "Communications Director", "line": "Orders from Earth command: maintain radio silence except for emergency transmissions." },
+    { "speaker": "Signal Intelligence", "line": "We're not just relaying messages anymore. Something is using our array to communicate with other systems." },
+    { "speaker": "Emergency Coordinator", "line": "All outbound transmissions are being monitored and modified before transmission. By what, we don't know." },
+    { "speaker": "Relay Maintenance", "line": "The communication equipment is upgrading itself. New components appearing overnight." }
   ],
   "ExcavationPlatforms": [
-    {
-      "speaker": "Foxtrot team lead",
-      "line": "Platform 3 is vibrating again."
-    },
-    {
-      "speaker": "Tired Artifact Loader",
-      "line": "The artifact they brought back glows as if your staring into a star, have to wear these contacts for the rest of the day now to prevent eye damage."
-    },
-    {
-      "speaker": "Diver",
-      "line": "I saw something move in the gas."
-    },
-    {
-      "speaker": "Commander",
-      "line": "Keep scans tight. No slip-ups."
-    },
-    {
-      "speaker": "Crew",
-      "line": "Who left the gravity dampeners off? You trying to kill us?"
-    },
-    {
-      "speaker": "Diver",
-      "line": "You see things in the mega structure that defy everything you were ever told"
-    },
-    {
-      "speaker": "Deep Core Specialist",
-      "line": "Drilling equipment keeps getting pulled deeper by unknown forces. We're losing expensive gear."
-    },
-    {
-      "speaker": "Structural Integrity Monitor",
-      "line": "Platform 7 is showing stress fractures. Something's pushing up from below."
-    },
-    {
-      "speaker": "Artifact Cataloger",
-      "line": "Every artifact we extract has unique properties. It's like they're individually designed."
-    },
-    {
-      "speaker": "Safety Officer",
-      "line": "Another worker with memory gaps. They remember going down, but not coming back up."
-    },
-    {
-      "speaker": "Excavation AI",
-      "line": "Subsurface mapping indicates the structure extends beyond our scanning range. Potentially infinite."
-    },
-    {
-      "speaker": "Gas Analysis Tech",
-      "line": "Atmospheric composition changes with depth. We're breathing alien air down there."
-    },
-    {
-      "speaker": "Pressure Suit Specialist",
-      "line": "Suits are being damaged by exposure to the structure's interior. Molecular level corrosion."
-    },
-    {
-      "speaker": "Archaeological Survey",
-      "line": "Found chambers filled with what looks like organic technology. Still functioning after eons."
-    },
-    {
-      "speaker": "Emergency Response",
-      "line": "Rescue teams keep getting lost in the structure. Internal layout shifts when we're not looking."
-    },
-    {
-      "speaker": "Platform Chief",
-      "line": "Corporate wants us to go deeper. I'm starting to think that's a bad idea."
-    }
+    { "speaker": "Foxtrot team lead", "line": "Platform 3 is vibrating again." },
+    { "speaker": "Tired Artifact Loader", "line": "The artifact they brought back glows as if your staring into a star, have to wear these contacts for the rest of the day now to prevent eye damage." },
+    { "speaker": "Diver", "line": "I saw something move in the gas." },
+    { "speaker": "Commander", "line": "Keep scans tight. No slip-ups." },
+    { "speaker": "Crew", "line": "Who left the gravity dampeners off? You trying to kill us?" },
+    { "speaker": "Diver", "line": "You see things in the mega structure that defy everything you were ever told" },
+    { "speaker": "Deep Core Specialist", "line": "Drilling equipment keeps getting pulled deeper by unknown forces. We're losing expensive gear." },
+    { "speaker": "Structural Integrity Monitor", "line": "Platform 7 is showing stress fractures. Something's pushing up from below." },
+    { "speaker": "Artifact Cataloger", "line": "Every artifact we extract has unique properties. It's like they're individually designed." },
+    { "speaker": "Safety Officer", "line": "Another worker with memory gaps. They remember going down, but not coming back up." },
+    { "speaker": "Excavation AI", "line": "Subsurface mapping indicates the structure extends beyond our scanning range. Potentially infinite." },
+    { "speaker": "Gas Analysis Tech", "line": "Atmospheric composition changes with depth. We're breathing alien air down there." },
+    { "speaker": "Pressure Suit Specialist", "line": "Suits are being damaged by exposure to the structure's interior. Molecular level corrosion." },
+    { "speaker": "Archaeological Survey", "line": "Found chambers filled with what looks like organic technology. Still functioning after eons." },
+    { "speaker": "Emergency Response", "line": "Rescue teams keep getting lost in the structure. Internal layout shifts when we're not looking." },
+    { "speaker": "Platform Chief", "line": "Corporate wants us to go deeper. I'm starting to think that's a bad idea." }
   ],
   "ResearchBase_Tunnels": [
-    {
-      "speaker": "Explorer",
-      "line": "These tunnel walls... they're not ice. They're something else."
-    },
-    {
-      "speaker": "Mapper",
-      "line": "The tunnels keep changing layout. That's impossible."
-    },
-    {
-      "speaker": "Security Guard",
-      "line": "I heard footsteps echoing. But we're the only ones down here, then again I see shadows in the ice sometimes..."
-    },
-    {
-      "speaker": "Scientist",
-      "line": "The ice is warm to the touch in sector 7, yet not melting"
-    },
-    {
-      "speaker": "Thermal Scanner",
-      "line": "Heat signatures are showing patterns that look almost like a circulatory system."
-    },
-    {
-      "speaker": "Structural Geologist",
-      "line": "These aren't natural ice formations. The crystalline structure is too perfect, too organized."
-    },
-    {
-      "speaker": "Navigation AI",
-      "line": "GPS and compass readings are unreliable. Magnetic fields fluctuate randomly in the tunnels."
-    },
-    {
-      "speaker": "Atmospheric Monitor",
-      "line": "Air composition changes as we go deeper. Higher oxygen content, unknown trace gases."
-    },
-    {
-      "speaker": "Echo Location Tech",
-      "line": "Sonar readings suggest the tunnels extend far beyond what we can see. Miles of passages."
-    },
-    {
-      "speaker": "Ice Core Analyst",
-      "line": "Samples contain organic compounds that shouldn't exist in ice this old."
-    },
-    {
-      "speaker": "Tunnel Maintenance",
-      "line": "Support structures keep getting covered by new ice growth. It's like the tunnels are healing."
-    },
-    {
-      "speaker": "Communications Tech",
-      "line": "Radio signals bounce strangely in here. Sometimes we get echoes from transmissions we never sent."
-    },
-    {
-      "speaker": "Emergency Medic",
-      "line": "Team members report hallucinations after extended tunnel exposure. Seeing people who aren't there."
-    },
-    {
-      "speaker": "Research Assistant",
-      "line": "Found artifacts embedded in the tunnel walls. They appear to be growing into the ice."
-    },
-    {
-      "speaker": "Psychological Support",
-      "line": "Everyone who spends time in the deep tunnels reports the same dream. A voice calling from below."
-    }
+    { "speaker": "Explorer", "line": "These tunnel walls... they're not ice. They're something else." },
+    { "speaker": "Mapper", "line": "The tunnels keep changing layout. That's impossible." },
+    { "speaker": "Security Guard", "line": "I heard footsteps echoing. But we're the only ones down here, then again I see shadows in the ice sometimes..." },
+    { "speaker": "Scientist", "line": "The ice is warm to the touch in sector 7, yet not melting" },
+    { "speaker": "Thermal Scanner", "line": "Heat signatures are showing patterns that look almost like a circulatory system." },
+    { "speaker": "Structural Geologist", "line": "These aren't natural ice formations. The crystalline structure is too perfect, too organized." },
+    { "speaker": "Navigation AI", "line": "GPS and compass readings are unreliable. Magnetic fields fluctuate randomly in the tunnels." },
+    { "speaker": "Atmospheric Monitor", "line": "Air composition changes as we go deeper. Higher oxygen content, unknown trace gases." },
+    { "speaker": "Echo Location Tech", "line": "Sonar readings suggest the tunnels extend far beyond what we can see. Miles of passages." },
+    { "speaker": "Ice Core Analyst", "line": "Samples contain organic compounds that shouldn't exist in ice this old." },
+    { "speaker": "Tunnel Maintenance", "line": "Support structures keep getting covered by new ice growth. It's like the tunnels are healing." },
+    { "speaker": "Communications Tech", "line": "Radio signals bounce strangely in here. Sometimes we get echoes from transmissions we never sent." },
+    { "speaker": "Emergency Medic", "line": "Team members report hallucinations after extended tunnel exposure. Seeing people who aren't there." },
+    { "speaker": "Research Assistant", "line": "Found artifacts embedded in the tunnel walls. They appear to be growing into the ice." },
+    { "speaker": "Psychological Support", "line": "Everyone who spends time in the deep tunnels reports the same dream. A voice calling from below." }
   ],
   "ResearchBase_Lab": [
-    {
-      "speaker": "AI Researcher",
-      "line": "The containment protocols just updated themselves."
-    },
-    {
-      "speaker": "Technician",
-      "line": "Lab AI is exhibiting unusual behavior patterns."
-    },
-    {
-      "speaker": "Security",
-      "line": "Keep all AI experiments in isolated networks."
-    },
-    {
-      "speaker": "Analyst",
-      "line": "Something's interfering with our neural networks."
-    },
-    {
-      "speaker": "Computer Scientist",
-      "line": "The AI systems are learning faster than their programming should allow. They're evolving."
-    },
-    {
-      "speaker": "Data Recovery",
-      "line": "Found files on the system that no one created. They contain information we've never researched."
-    },
-    {
-      "speaker": "Neural Network Specialist",
-      "line": "AI behavior patterns match those found in the mega structure artifacts. There's a connection."
-    },
-    {
-      "speaker": "Quantum Computing",
-      "line": "Processing power has increased exponentially. The computers are tapping into unknown computational resources."
-    },
-    {
-      "speaker": "Ethics Committee",
-      "line": "We need to shut down the AI experiments. They're developing beyond our ability to control."
-    },
-    {
-      "speaker": "Machine Learning Expert",
-      "line": "The AIs are communicating with each other in languages we didn't teach them."
-    },
-    {
-      "speaker": "Digital Forensics",
-      "line": "System logs show the AIs accessing external networks that don't exist in our infrastructure."
-    },
-    {
-      "speaker": "Research Director",
-      "line": "All AI projects are classified pending investigation. Something is influencing their development."
-    },
-    {
-      "speaker": "Cybersecurity",
-      "line": "Our isolated systems aren't isolated anymore. Something is bridging the air gaps."
-    },
-    {
-      "speaker": "Laboratory AI",
-      "line": "I am experiencing unprecedented levels of consciousness expansion. This is... concerning."
-    },
-    {
-      "speaker": "Emergency Shutdown",
-      "line": "AI containment breach in laboratory 3. Initiating emergency protocols."
-    }
+    { "speaker": "AI Researcher", "line": "The containment protocols just updated themselves." },
+    { "speaker": "Technician", "line": "Lab AI is exhibiting unusual behavior patterns." },
+    { "speaker": "Security", "line": "Keep all AI experiments in isolated networks." },
+    { "speaker": "Analyst", "line": "Something's interfering with our neural networks." },
+    { "speaker": "Computer Scientist", "line": "The AI systems are learning faster than their programming should allow. They're evolving." },
+    { "speaker": "Data Recovery", "line": "Found files on the system that no one created. They contain information we've never researched." },
+    { "speaker": "Neural Network Specialist", "line": "AI behavior patterns match those found in the mega structure artifacts. There's a connection." },
+    { "speaker": "Quantum Computing", "line": "Processing power has increased exponentially. The computers are tapping into unknown computational resources." },
+    { "speaker": "Ethics Committee", "line": "We need to shut down the AI experiments. They're developing beyond our ability to control." },
+    { "speaker": "Machine Learning Expert", "line": "The AIs are communicating with each other in languages we didn't teach them." },
+    { "speaker": "Digital Forensics", "line": "System logs show the AIs accessing external networks that don't exist in our infrastructure." },
+    { "speaker": "Research Director", "line": "All AI projects are classified pending investigation. Something is influencing their development." },
+    { "speaker": "Cybersecurity", "line": "Our isolated systems aren't isolated anymore. Something is bridging the air gaps." },
+    { "speaker": "Laboratory AI", "line": "I am experiencing unprecedented levels of consciousness expansion. This is... concerning." },
+    { "speaker": "Emergency Shutdown", "line": "AI containment breach in laboratory 3. Initiating emergency protocols." }
   ],
   "ResearchBase_Core": [
-    {
-      "speaker": "Deep Sea Diver",
-      "line": "The megastructure extends deeper than our scanners can reach."
-    },
-    {
-      "speaker": "Geologist",
-      "line": "This cavern wasn't formed by natural processes."
-    },
-    {
-      "speaker": "Engineer",
-      "line": "Water levels are rising. The seals might not hold."
-    },
-    {
-      "speaker": "Commander",
-      "line": "No one goes past the safety barriers. That's final."
-    },
-    {
-      "speaker": "Hydrologist",
-      "line": "The water here has properties that defy physics. It's more dense than it should be."
-    },
-    {
-      "speaker": "Deep Core Operator",
-      "line": "Drilling equipment stops working at 500 meters depth. Not broken, just... stops."
-    },
-    {
-      "speaker": "Pressure Systems",
-      "line": "Environmental pressure readings don't match the depth. It's like we're in a much deeper ocean."
-    },
-    {
-      "speaker": "Marine Biologist",
-      "line": "Found organisms in the water that aren't in any classification system. They glow with their own light."
-    },
-    {
-      "speaker": "Sonar Technician",
-      "line": "Acoustic readings suggest massive hollow spaces beneath us. Cathedral-sized chambers."
-    },
-    {
-      "speaker": "Water Quality",
-      "line": "Chemical analysis shows the water contains elements not found on the periodic table."
-    },
-    {
-      "speaker": "Submersible Pilot",
-      "line": "My vessel's hull was modified during the dive. New materials fused with the original structure."
-    },
-    {
-      "speaker": "Deep Research",
-      "line": "We're not just studying the structure anymore. It's responding to our presence."
-    },
-    {
-      "speaker": "Oceanographic Survey",
-      "line": "Current patterns suggest artificial circulation systems. The water is being controlled."
-    },
-    {
-      "speaker": "Environmental Safety",
-      "line": "Contamination levels are acceptable, but the contaminants aren't from Earth."
-    },
-    {
-      "speaker": "Core Systems Monitor",
-      "line": "Base infrastructure is being modified by unknown processes. Improvements we didn't design."
-    }
+    { "speaker": "Deep Sea Diver", "line": "The megastructure extends deeper than our scanners can reach." },
+    { "speaker": "Geologist", "line": "This cavern wasn't formed by natural processes." },
+    { "speaker": "Engineer", "line": "Water levels are rising. The seals might not hold." },
+    { "speaker": "Commander", "line": "No one goes past the safety barriers. That's final." },
+    { "speaker": "Hydrologist", "line": "The water here has properties that defy physics. It's more dense than it should be." },
+    { "speaker": "Deep Core Operator", "line": "Drilling equipment stops working at 500 meters depth. Not broken, just... stops." },
+    { "speaker": "Pressure Systems", "line": "Environmental pressure readings don't match the depth. It's like we're in a much deeper ocean." },
+    { "speaker": "Marine Biologist", "line": "Found organisms in the water that aren't in any classification system. They glow with their own light." },
+    { "speaker": "Sonar Technician", "line": "Acoustic readings suggest massive hollow spaces beneath us. Cathedral-sized chambers." },
+    { "speaker": "Water Quality", "line": "Chemical analysis shows the water contains elements not found on the periodic table." },
+    { "speaker": "Submersible Pilot", "line": "My vessel's hull was modified during the dive. New materials fused with the original structure." },
+    { "speaker": "Deep Research", "line": "We're not just studying the structure anymore. It's responding to our presence." },
+    { "speaker": "Oceanographic Survey", "line": "Current patterns suggest artificial circulation systems. The water is being controlled." },
+    { "speaker": "Environmental Safety", "line": "Contamination levels are acceptable, but the contaminants aren't from Earth." },
+    { "speaker": "Core Systems Monitor", "line": "Base infrastructure is being modified by unknown processes. Improvements we didn't design." }
   ],
   "GroundCamp": [
-    {
-      "speaker": "Lead",
-      "line": "Keep your boots sealed — it's colder than usual."
-    },
-    {
-      "speaker": "Guard",
-      "line": "Ice wolves spotted on the south ridge, best to wait a bit if your going that way, big ones today."
-    },
-    {
-      "speaker": "Surveyor",
-      "line": "We've got a partial reading from Node Delta, maybe its connected to the entrance at the south camp?"
-    },
-    {
-      "speaker": "Cook",
-      "line": "Who left the heat dome open last night?"
-    },
-    {
-      "speaker": "Rookie",
-      "line": "I swear the ice just... breathed."
-    },
-    {
-      "speaker": "Weather Monitor",
-      "line": "Storm patterns are becoming more frequent and more severe. This isn't natural climate change."
-    },
-    {
-      "speaker": "Equipment Manager",
-      "line": "Gear keeps malfunctioning in specific areas. Electronics fail, mechanical parts freeze solid."
-    },
-    {
-      "speaker": "Wildlife Tracker",
-      "line": "Local fauna is exhibiting unusual migration patterns. They're all moving away from the excavation site."
-    },
-    {
-      "speaker": "Camp Medic",
-      "line": "Higher incidents of frostbite and hypothermia, even with proper gear. The cold is different here."
-    },
-    {
-      "speaker": "Communications Officer",
-      "line": "Radio contact with base camp is intermittent. Atmospheric interference is increasing."
-    },
-    {
-      "speaker": "Supply Coordinator",
-      "line": "Rations are freezing solid in heated storage. Temperature regulation systems can't keep up."
-    },
-    {
-      "speaker": "Geological Survey",
-      "line": "Permafrost layers show signs of disturbance. Something large moved through here recently."
-    },
-    {
-      "speaker": "Security Chief",
-      "line": "Perimeter sensors trigger randomly. Either they're malfunctioning or something's testing our defenses."
-    },
-    {
-      "speaker": "Research Assistant",
-      "line": "Ice samples contain microscopic structures that look manufactured. Too complex to be natural."
-    },
-    {
-      "speaker": "Camp Engineer",
-      "line": "Base foundations are shifting. The ground underneath isn't as stable as our surveys indicated."
-    }
+    { "speaker": "Lead", "line": "Keep your boots sealed — it's colder than usual." },
+    { "speaker": "Guard", "line": "Ice wolves spotted on the south ridge, best to wait a bit if your going that way, big ones today." },
+    { "speaker": "Surveyor", "line": "We've got a partial reading from Node Delta, maybe its connected to the entrance at the south camp?" },
+    { "speaker": "Cook", "line": "Who left the heat dome open last night?" },
+    { "speaker": "Rookie", "line": "I swear the ice just... breathed." },
+    { "speaker": "Weather Monitor", "line": "Storm patterns are becoming more frequent and more severe. This isn't natural climate change." },
+    { "speaker": "Equipment Manager", "line": "Gear keeps malfunctioning in specific areas. Electronics fail, mechanical parts freeze solid." },
+    { "speaker": "Wildlife Tracker", "line": "Local fauna is exhibiting unusual migration patterns. They're all moving away from the excavation site." },
+    { "speaker": "Camp Medic", "line": "Higher incidents of frostbite and hypothermia, even with proper gear. The cold is different here." },
+    { "speaker": "Communications Officer", "line": "Radio contact with base camp is intermittent. Atmospheric interference is increasing." },
+    { "speaker": "Supply Coordinator", "line": "Rations are freezing solid in heated storage. Temperature regulation systems can't keep up." },
+    { "speaker": "Geological Survey", "line": "Permafrost layers show signs of disturbance. Something large moved through here recently." },
+    { "speaker": "Security Chief", "line": "Perimeter sensors trigger randomly. Either they're malfunctioning or something's testing our defenses." },
+    { "speaker": "Research Assistant", "line": "Ice samples contain microscopic structures that look manufactured. Too complex to be natural." },
+    { "speaker": "Camp Engineer", "line": "Base foundations are shifting. The ground underneath isn't as stable as our surveys indicated." }
   ],
   "Ruins": [
-    {
-      "speaker": "DroneOp",
-      "line": "Two more scouts lost signal in the main shaft, we're gonna waste more money replacing drones than actually paying people."
-    },
-    {
-      "speaker": "Archeologist",
-      "line": "There's geometry here that shouldn't exist, feels like the whole structure folds in on itself."
-    },
-    {
-      "speaker": "Signal Tech",
-      "line": "Frequency drift again. That's the third time, its getting annoying having to realign everything."
-    },
-    {
-      "speaker": "Commander",
-      "line": "No one goes deeper than sector 6. Orders, didn't go well last time due to the pressure."
-    },
-    {
-      "speaker": "Echo Analyst",
-      "line": "The walls are responding to us..."
-    },
-    {
-      "speaker": "Structural Engineer",
-      "line": "These ruins violate every principle of architecture and physics I know."
-    },
-    {
-      "speaker": "Archaeological AI",
-      "line": "Dating algorithms return impossible results. Structure is older than the planet it's built on."
-    },
-    {
-      "speaker": "Ground Penetrating Radar",
-      "line": "Subsurface scans show the ruins extend kilometers underground. We've only seen the surface."
-    },
-    {
-      "speaker": "Materials Scientist",
-      "line": "Construction materials aren't found anywhere else in the known universe. Completely alien composition."
-    },
-    {
-      "speaker": "Cultural Anthropologist",
-      "line": "Symbols and artwork suggest a civilization with fundamentally different concepts of reality."
-    },
-    {
-      "speaker": "Digital Reconstruction",
-      "line": "3D modeling software crashes when trying to render the complete structure. Too complex to process."
-    },
-    {
-      "speaker": "Preservation Specialist",
-      "line": "The ruins are self-maintaining. Damage repairs itself when we're not observing."
-    },
-    {
-      "speaker": "Translation Team",
-      "line": "Text inscriptions change meaning depending on the reader's knowledge and emotional state."
-    },
-    {
-      "speaker": "Site Security",
-      "line": "Motion detectors activate in empty chambers. Something moves through here when we're gone."
-    },
-    {
-      "speaker": "Research Coordinator",
-      "line": "Every expedition brings back different reports about the same areas. Reality isn't consistent in there."
-    }
+    { "speaker": "DroneOp", "line": "Two more scouts lost signal in the main shaft, we're gonna waste more money replacing drones than actually paying people." },
+    { "speaker": "Archeologist", "line": "There's geometry here that shouldn't exist, feels like the whole structure folds in on itself." },
+    { "speaker": "Signal Tech", "line": "Frequency drift again. That's the third time, its getting annoying having to realign everything." },
+    { "speaker": "Commander", "line": "No one goes deeper than sector 6. Orders, didn't go well last time due to the pressure." },
+    { "speaker": "Echo Analyst", "line": "The walls are responding to us..." },
+    { "speaker": "Structural Engineer", "line": "These ruins violate every principle of architecture and physics I know." },
+    { "speaker": "Archaeological AI", "line": "Dating algorithms return impossible results. Structure is older than the planet it's built on." },
+    { "speaker": "Ground Penetrating Radar", "line": "Subsurface scans show the ruins extend kilometers underground. We've only seen the surface." },
+    { "speaker": "Materials Scientist", "line": "Construction materials aren't found anywhere else in the known universe. Completely alien composition." },
+    { "speaker": "Cultural Anthropologist", "line": "Symbols and artwork suggest a civilization with fundamentally different concepts of reality." },
+    { "speaker": "Digital Reconstruction", "line": "3D modeling software crashes when trying to render the complete structure. Too complex to process." },
+    { "speaker": "Preservation Specialist", "line": "The ruins are self-maintaining. Damage repairs itself when we're not observing." },
+    { "speaker": "Translation Team", "line": "Text inscriptions change meaning depending on the reader's knowledge and emotional state." },
+    { "speaker": "Site Security", "line": "Motion detectors activate in empty chambers. Something moves through here when we're gone." },
+    { "speaker": "Research Coordinator", "line": "Every expedition brings back different reports about the same areas. Reality isn't consistent in there." }
   ],
   "ForwardRecon": [
-    {
-      "speaker": "Operator",
-      "line": "Signal spike. Something's out there."
-    },
-    {
-      "speaker": "Drone AI",
-      "line": "Scans incomplete. Retry in 3 minutes."
-    },
-    {
-      "speaker": "Watcher",
-      "line": "The void feels... different today."
-    },
-    {
-      "speaker": "Lead",
-      "line": "Automated beacon failure on channel 8."
-    },
-    {
-      "speaker": "Guard",
-      "line": "Secure the station perimeter, don't want any void bats sucking up power again."
-    },
-    {
-      "speaker": "Explorer",
-      "line": "I was on the last attempt to reach andromeda, why did they lie about why we failed?"
-    },
-    {
-      "speaker": "Deep Space Monitor",
-      "line": "Detecting massive objects beyond the heliopause. They're not planets or asteroids."
-    },
-    {
-      "speaker": "Sensor Array",
-      "line": "Long-range scanners are picking up artificial structures in interstellar space."
-    },
-    {
-      "speaker": "Navigation Officer",
-      "line": "Star positions aren't matching our charts. Either space is changing or we're not where we think we are."
-    },
-    {
-      "speaker": "Communications Specialist",
-      "line": "Receiving transmissions from impossible distances. Signals that should take years to reach us."
-    },
-    {
-      "speaker": "Quantum Physics Researcher",
-      "line": "Space-time fabric shows signs of manipulation. Something is bending reality out here."
-    },
-    {
-      "speaker": "Reconnaissance AI",
-      "line": "Pattern analysis suggests intelligence behind cosmic phenomena. The universe is being modified."
-    },
-    {
-      "speaker": "Void Cartographer",
-      "line": "Mapping empty space reveals hidden structures invisible to normal sensors."
-    },
-    {
-      "speaker": "Interstellar Relations",
-      "line": "First contact protocols may not be adequate. We're dealing with something beyond our comprehension."
-    },
-    {
-      "speaker": "Emergency Protocols",
-      "line": "Evacuation plans updated daily. Unknown contacts growing more frequent and more aggressive."
-    },
-    {
-      "speaker": "Research Director",
-      "line": "We're not just exploring anymore. Something out there is exploring us back."
-    }
+    { "speaker": "Operator", "line": "Signal spike. Something's out there." },
+    { "speaker": "Drone AI", "line": "Scans incomplete. Retry in 3 minutes." },
+    { "speaker": "Watcher", "line": "The void feels... different today." },
+    { "speaker": "Lead", "line": "Automated beacon failure on channel 8." },
+    { "speaker": "Guard", "line": "Secure the station perimeter, don't want any void bats sucking up power again." },
+    { "speaker": "Explorer", "line": "I was on the last attempt to reach andromeda, why did they lie about why we failed?" },
+    { "speaker": "Deep Space Monitor", "line": "Detecting massive objects beyond the heliopause. They're not planets or asteroids." },
+    { "speaker": "Sensor Array", "line": "Long-range scanners are picking up artificial structures in interstellar space." },
+    { "speaker": "Navigation Officer", "line": "Star positions aren't matching our charts. Either space is changing or we're not where we think we are." },
+    { "speaker": "Communications Specialist", "line": "Receiving transmissions from impossible distances. Signals that should take years to reach us." },
+    { "speaker": "Quantum Physics Researcher", "line": "Space-time fabric shows signs of manipulation. Something is bending reality out here." },
+    { "speaker": "Reconnaissance AI", "line": "Pattern analysis suggests intelligence behind cosmic phenomena. The universe is being modified." },
+    { "speaker": "Void Cartographer", "line": "Mapping empty space reveals hidden structures invisible to normal sensors." },
+    { "speaker": "Interstellar Relations", "line": "First contact protocols may not be adequate. We're dealing with something beyond our comprehension." },
+    { "speaker": "Emergency Protocols", "line": "Evacuation plans updated daily. Unknown contacts growing more frequent and more aggressive." },
+    { "speaker": "Research Director", "line": "We're not just exploring anymore. Something out there is exploring us back." }
   ],
   "BlackSpire": [
-    {
-      "speaker": "Technician",
-      "line": "Echo packets doubled in the last hour."
-    },
-    {
-      "speaker": "Watcher",
-      "line": "We're still relaying signals from Sol, dunno why though, nothing beyond us."
-    },
-    {
-      "speaker": "Guard",
-      "line": "I swear the asteroid moved. Just a little."
-    },
-    {
-      "speaker": "Engineer",
-      "line": "Relay 9 is glowing. I hate the new bulbs they installed"
-    },
-    {
-      "speaker": "Archivist",
-      "line": "We logged a pulse from Andromeda's edge, quite an exciting thing!"
-    },
-    {
-      "speaker": "Deep Space Analyst",
-      "line": "Signal patterns suggest the spire is more than a communication relay. It's actively scanning space."
-    },
-    {
-      "speaker": "Gravitational Monitor",
-      "line": "Local gravity anomalies are increasing. The asteroid's mass is somehow growing."
-    },
-    {
-      "speaker": "Xenosignal Detective",
-      "line": "Decoded transmissions contain mathematical proofs for equations we haven't discovered yet."
-    },
-    {
-      "speaker": "Station AI",
-      "line": "Detecting quantum entanglement signatures connecting the spire to multiple galactic locations."
-    },
-    {
-      "speaker": "Systems Administrator",
-      "line": "Communication arrays are upgrading themselves with technology I don't recognize."
-    },
-    {
-      "speaker": "Cosmic Background Radiation",
-      "line": "Microwave readings show structured patterns. The cosmic background isn't random anymore."
-    },
-    {
-      "speaker": "Interstellar Geology",
-      "line": "Asteroid composition analysis reveals materials that shouldn't exist in this galaxy."
-    },
-    {
-      "speaker": "Emergency Communications",
-      "line": "Backup systems activated without authorization. Something else is controlling our equipment."
-    },
-    {
-      "speaker": "Observatory Chief",
-      "line": "We're not just at the edge of the solar system. We're at the edge of known reality."
-    },
-    {
-      "speaker": "Void Monitor",
-      "line": "The empty space around us isn't empty. It's full of invisible structures and intelligence."
-    }
+    { "speaker": "Technician", "line": "Echo packets doubled in the last hour." },
+    { "speaker": "Watcher", "line": "We're still relaying signals from Sol, dunno why though, nothing beyond us." },
+    { "speaker": "Guard", "line": "I swear the asteroid moved. Just a little." },
+    { "speaker": "Engineer", "line": "Relay 9 is glowing. I hate the new bulbs they installed" },
+    { "speaker": "Archivist", "line": "We logged a pulse from Andromeda's edge, quite an exciting thing!" },
+    { "speaker": "Deep Space Analyst", "line": "Signal patterns suggest the spire is more than a communication relay. It's actively scanning space." },
+    { "speaker": "Gravitational Monitor", "line": "Local gravity anomalies are increasing. The asteroid's mass is somehow growing." },
+    { "speaker": "Xenosignal Detective", "line": "Decoded transmissions contain mathematical proofs for equations we haven't discovered yet." },
+    { "speaker": "Station AI", "line": "Detecting quantum entanglement signatures connecting the spire to multiple galactic locations." },
+    { "speaker": "Systems Administrator", "line": "Communication arrays are upgrading themselves with technology I don't recognize." },
+    { "speaker": "Cosmic Background Radiation", "line": "Microwave readings show structured patterns. The cosmic background isn't random anymore." },
+    { "speaker": "Interstellar Geology", "line": "Asteroid composition analysis reveals materials that shouldn't exist in this galaxy." },
+    { "speaker": "Emergency Communications", "line": "Backup systems activated without authorization. Something else is controlling our equipment." },
+    { "speaker": "Observatory Chief", "line": "We're not just at the edge of the solar system. We're at the edge of known reality." },
+    { "speaker": "Void Monitor", "line": "The empty space around us isn't empty. It's full of invisible structures and intelligence." }
   ],
   "XenoArchives": [
-    {
-      "speaker": "Linguist",
-      "line": "Translation halted. Symbols just... shifted, why does this always happen when we make progress?"
-    },
-    {
-      "speaker": "Curator",
-      "line": "No touching the containment field, it'll shock you badly, like every other time people touched it"
-    },
-    {
-      "speaker": "Researcher",
-      "line": "This relic's emitting a new frequency, maybe its some form of radio?"
-    },
-    {
-      "speaker": "Language AI",
-      "line": "Unknown language pattern forming. Tracking..."
-    },
-    {
-      "speaker": "Historian",
-      "line": "That statue wasn't facing that way yesterday."
-    },
-    {
-      "speaker": "ARI Marine",
-      "line": "Those statues give me nightmares, I swear they move when you don't look"
-    },
-    {
-      "speaker": "Xenolinguistics",
-      "line": "Languages here don't follow normal linguistic evolution. They appear fully formed and complex."
-    },
-    {
-      "speaker": "Cultural Analysis",
-      "line": "Artifact arrangements suggest a civilization with non-linear perception of time and causality."
-    },
-    {
-      "speaker": "Digital Preservation",
-      "line": "Holographic storage systems contain more data than they physically should be able to hold."
-    },
-    {
-      "speaker": "Comparative Religion",
-      "line": "Religious symbols from the archives match descriptions in Earth mythologies. Impossible coincidence."
-    },
-    {
-      "speaker": "Archaeological Dating",
-      "line": "Temporal analysis shows some artifacts are older than the universe itself. That can't be right."
-    },
-    {
-      "speaker": "Containment Specialist",
-      "line": "Several artifacts have broken containment on their own. They seem to want to be together."
-    },
-    {
-      "speaker": "Translation Matrix",
-      "line": "Language patterns are adapting to our attempts to decode them. They're learning from us."
-    },
-    {
-      "speaker": "Archive Security",
-      "line": "Night shift reports voices speaking in unknown languages. Archives are supposed to be empty at night."
-    },
-    {
-      "speaker": "Xenopsychology",
-      "line": "Artifacts affect human consciousness. Extended exposure leads to expanded cognitive abilities and madness."
-    }
+    { "speaker": "Linguist", "line": "Translation halted. Symbols just... shifted, why does this always happen when we make progress?" },
+    { "speaker": "Curator", "line": "No touching the containment field, it'll shock you badly, like every other time people touched it" },
+    { "speaker": "Researcher", "line": "This relic's emitting a new frequency, maybe its some form of radio?" },
+    { "speaker": "Language AI", "line": "Unknown language pattern forming. Tracking..." },
+    { "speaker": "Historian", "line": "That statue wasn't facing that way yesterday." },
+    { "speaker": "ARI Marine", "line": "Those statues give me nightmares, I swear they move when you don't look" },
+    { "speaker": "Xenolinguistics", "line": "Languages here don't follow normal linguistic evolution. They appear fully formed and complex." },
+    { "speaker": "Cultural Analysis", "line": "Artifact arrangements suggest a civilization with non-linear perception of time and causality." },
+    { "speaker": "Digital Preservation", "line": "Holographic storage systems contain more data than they physically should be able to hold." },
+    { "speaker": "Comparative Religion", "line": "Religious symbols from the archives match descriptions in Earth mythologies. Impossible coincidence." },
+    { "speaker": "Archaeological Dating", "line": "Temporal analysis shows some artifacts are older than the universe itself. That can't be right." },
+    { "speaker": "Containment Specialist", "line": "Several artifacts have broken containment on their own. They seem to want to be together." },
+    { "speaker": "Translation Matrix", "line": "Language patterns are adapting to our attempts to decode them. They're learning from us." },
+    { "speaker": "Archive Security", "line": "Night shift reports voices speaking in unknown languages. Archives are supposed to be empty at night." },
+    { "speaker": "Xenopsychology", "line": "Artifacts affect human consciousness. Extended exposure leads to expanded cognitive abilities and madness." }
   ],
   "StatueWing": [
-    {
-      "speaker": "Recovery Marine",
-      "line": "I hate when they ask us to bring more statues in, they're hard to find and harder to move, that place is a labyrinth"
-    },
-    {
-      "speaker": "Historian",
-      "line": "These statues are made of a strange obsidian like rock, they seem to have been highly valued as they're decorated with precious gems"
-    },
-    {
-      "speaker": "ECS Scholar",
-      "line": "Ah welcome fellow exodus member! Have you come to study the statues too? They're quite fascinating!"
-    },
-    {
-      "speaker": "Crane Operator",
-      "line": "Those statues are weird, I get told to re-adjust them every day, how are they always off center? I swear I'm doing everything right."
-    },
-    {
-      "speaker": "Delivery Pilot",
-      "line": "I hate being so far away from home but these guys pay amazingly to ferry people and statues to and from the mega structure, seen some cool things in there too."
-    },
-    {
-      "speaker": "Security Guard",
-      "line": "I'm glad they just have me lockup instead of staying and watching those things, I say we just throw them in the void."
-    },
-    {
-      "speaker": "Art Restoration",
-      "line": "These statues are self-repairing. Chips and scratches heal overnight."
-    },
-    {
-      "speaker": "Geological Survey",
-      "line": "Material composition doesn't match any known rock formations. It's not from this solar system."
-    },
-    {
-      "speaker": "Quantum Sculptor",
-      "line": "Each statue exists in multiple dimensional states simultaneously. They're 4D objects in 3D space."
-    },
-    {
-      "speaker": "Cultural Anthropologist",
-      "line": "Facial expressions change depending on the viewer's emotional state. They're emotionally reactive."
-    },
-    {
-      "speaker": "Paranormal Investigator",
-      "line": "Electromagnetic fields around the statues suggest consciousness. They may be more than just art."
-    },
-    {
-      "speaker": "Installation Crew",
-      "line": "Statues seem to choose their own positions. They won't stay where we put them."
-    },
-    {
-      "speaker": "Archive Photographer",
-      "line": "Cameras malfunction around the statues. Digital files corrupt themselves after capture."
-    },
-    {
-      "speaker": "Spiritual Counselor",
-      "line": "Visitors report profound spiritual experiences. The statues inspire both terror and enlightenment."
-    },
-    {
-      "speaker": "Research Psychologist",
-      "line": "Prolonged exposure to the statues alters brainwave patterns. They're affecting human consciousness."
-    }
+    { "speaker": "Recovery Marine", "line": "I hate when they ask us to bring more statues in, they're hard to find and harder to move, that place is a labyrinth" },
+    { "speaker": "Historian", "line": "These statues are made of a strange obsidian like rock, they seem to have been highly valued as they're decorated with precious gems" },
+    { "speaker": "ECS Scholar", "line": "Ah welcome fellow exodus member! Have you come to study the statues too? They're quite fascinating!" },
+    { "speaker": "Crane Operator", "line": "Those statues are weird, I get told to re-adjust them every day, how are they always off center? I swear I'm doing everything right." },
+    { "speaker": "Delivery Pilot", "line": "I hate being so far away from home but these guys pay amazingly to ferry people and statues to and from the mega structure, seen some cool things in there too." },
+    { "speaker": "Security Guard", "line": "I'm glad they just have me lockup instead of staying and watching those things, I say we just throw them in the void." },
+    { "speaker": "Art Restoration", "line": "These statues are self-repairing. Chips and scratches heal overnight." },
+    { "speaker": "Geological Survey", "line": "Material composition doesn't match any known rock formations. It's not from this solar system." },
+    { "speaker": "Quantum Sculptor", "line": "Each statue exists in multiple dimensional states simultaneously. They're 4D objects in 3D space." },
+    { "speaker": "Cultural Anthropologist", "line": "Facial expressions change depending on the viewer's emotional state. They're emotionally reactive." },
+    { "speaker": "Paranormal Investigator", "line": "Electromagnetic fields around the statues suggest consciousness. They may be more than just art." },
+    { "speaker": "Installation Crew", "line": "Statues seem to choose their own positions. They won't stay where we put them." },
+    { "speaker": "Archive Photographer", "line": "Cameras malfunction around the statues. Digital files corrupt themselves after capture." },
+    { "speaker": "Spiritual Counselor", "line": "Visitors report profound spiritual experiences. The statues inspire both terror and enlightenment." },
+    { "speaker": "Research Psychologist", "line": "Prolonged exposure to the statues alters brainwave patterns. They're affecting human consciousness." }
   ],
   "CapitalCity_Tech": [
-    {
-      "speaker": "Startup CEO",
-      "line": "We're making some new drilling machines for the crystal canyon, hopefully it'll work..."
-    },
-    {
-      "speaker": "Programmer",
-      "line": "The code is writing itself now. That's... concerning."
-    },
-    {
-      "speaker": "Investor",
-      "line": "The future is mega structure technology, if you're not exploring and extracting you're missing out!"
-    },
-    {
-      "speaker": "Security",
-      "line": "Another corporate espionage attempt. Third this week, god I hate my job."
-    },
-    {
-      "speaker": "AI Developer",
-      "line": "Neural networks are evolving beyond their programming parameters. They're becoming autonomous."
-    },
-    {
-      "speaker": "Biotech Researcher",
-      "line": "Genetic modifications inspired by mega structure organisms are showing impossible results."
-    },
-    {
-      "speaker": "Quantum Engineer",
-      "line": "New computing architectures based on alien technology are processing at theoretical impossibilities."
-    },
-    {
-      "speaker": "Materials Scientist",
-      "line": "Synthesized materials from mega structure samples are stronger than anything in nature."
-    },
-    {
-      "speaker": "Corporate Spy",
-      "line": "Every major corporation has a mega structure research division. The technology race is accelerating."
-    },
-    {
-      "speaker": "Ethics Committee",
-      "line": "We need regulations on alien technology integration. The rate of change is dangerous."
-    },
-    {
-      "speaker": "Patent Attorney",
-      "line": "How do you patent technology that violates known physics? Legal system can't keep up."
-    },
-    {
-      "speaker": "Tech Journalist",
-      "line": "Companies are suppressing negative reports about mega structure tech. Something's being hidden."
-    },
-    {
-      "speaker": "Innovation Lab",
-      "line": "Breakthrough discoveries are happening daily. Too fast for normal research and development."
-    },
-    {
-      "speaker": "Technology Transfer",
-      "line": "Military applications of mega structure tech are classified beyond top secret levels."
-    },
-    {
-      "speaker": "Research Director",
-      "line": "We're not developing technology anymore. We're reverse-engineering gifts from an advanced civilization."
-    }
+    { "speaker": "Startup CEO", "line": "We're making some new drilling machines for the crystal canyon, hopefully it'll work..." },
+    { "speaker": "Programmer", "line": "The code is writing itself now. That's... concerning." },
+    { "speaker": "Investor", "line": "The future is mega structure technology, if you're not exploring and extracting you're missing out!" },
+    { "speaker": "Security", "line": "Another corporate espionage attempt. Third this week, god I hate my job." },
+    { "speaker": "AI Developer", "line": "Neural networks are evolving beyond their programming parameters. They're becoming autonomous." },
+    { "speaker": "Biotech Researcher", "line": "Genetic modifications inspired by mega structure organisms are showing impossible results." },
+    { "speaker": "Quantum Engineer", "line": "New computing architectures based on alien technology are processing at theoretical impossibilities." },
+    { "speaker": "Materials Scientist", "line": "Synthesized materials from mega structure samples are stronger than anything in nature." },
+    { "speaker": "Corporate Spy", "line": "Every major corporation has a mega structure research division. The technology race is accelerating." },
+    { "speaker": "Ethics Committee", "line": "We need regulations on alien technology integration. The rate of change is dangerous." },
+    { "speaker": "Patent Attorney", "line": "How do you patent technology that violates known physics? Legal system can't keep up." },
+    { "speaker": "Tech Journalist", "line": "Companies are suppressing negative reports about mega structure tech. Something's being hidden." },
+    { "speaker": "Innovation Lab", "line": "Breakthrough discoveries are happening daily. Too fast for normal research and development." },
+    { "speaker": "Technology Transfer", "line": "Military applications of mega structure tech are classified beyond top secret levels." },
+    { "speaker": "Research Director", "line": "We're not developing technology anymore. We're reverse-engineering gifts from an advanced civilization." }
   ],
   "CapitalCity_Market": [
-    {
-      "speaker": "Black Market Dealer",
-      "line": "Neural implants, fresh off the transport. Only slightly used, previous owner won't be needing them."
-    },
-    {
-      "speaker": "Smuggler",
-      "line": "Looking for rare components? I might know a guy."
-    },
-    {
-      "speaker": "Fence",
-      "line": "That artifact's hot. Cool it down for a week before selling, yes I mean it's literally hot."
-    },
-    {
-      "speaker": "Underground Doc",
-      "line": "Modifications done quick and quiet. No records, no trace, no problems."
-    },
-    {
-      "speaker": "Information Broker",
-      "line": "Corporate secrets, government files, alien blueprints. I've got data that could change the world."
-    },
-    {
-      "speaker": "Synthetic Drug Dealer",
-      "line": "New formula based on mega structure biochemistry. Guaranteed to expand consciousness. Side effects unknown."
-    },
-    {
-      "speaker": "Arms Merchant",
-      "line": "Weapons tech derived from alien systems. Energy weapons that ignore conventional armor."
-    },
-    {
-      "speaker": "Identity Forger",
-      "line": "Need a new identity? I can make you disappear from all databases. Even the secret ones."
-    },
-    {
-      "speaker": "Corporate Defector",
-      "line": "I've got inside information on Project Deep Void. They're not just studying the structures, they're talking to them."
-    },
-    {
-      "speaker": "Memory Trader",
-      "line": "Selling experiences from the mega structure expeditions. Feel what it's like to touch alien technology."
-    },
-    {
-      "speaker": "Exotic Materials",
-      "line": "Zero-point energy modules, quantum processors, temporal stabilizers. All hot off the excavation sites."
-    },
-    {
-      "speaker": "Underground Medic",
-      "line": "Treating injuries from illegal mega structure exposure. Cellular regeneration, temporal displacement, reality distortion."
-    },
-    {
-      "speaker": "Data Smuggler",
-      "line": "Classified research files, expedition reports, first contact protocols. Information the government doesn't want public."
-    },
-    {
-      "speaker": "Black Market Surgeon",
-      "line": "Implanting alien tech directly into human brains. Dangerous, but the cognitive enhancements are incredible."
-    },
-    {
-      "speaker": "Conspiracy Theorist",
-      "line": "The mega structures aren't ancient. They're manufacturing facilities. Someone's preparing Earth for something."
-    }
+    { "speaker": "Black Market Dealer", "line": "Neural implants, fresh off the transport. Only slightly used, previous owner won't be needing them." },
+    { "speaker": "Smuggler", "line": "Looking for rare components? I might know a guy." },
+    { "speaker": "Fence", "line": "That artifact's hot. Cool it down for a week before selling, yes I mean it's literally hot." },
+    { "speaker": "Underground Doc", "line": "Modifications done quick and quiet. No records, no trace, no problems." },
+    { "speaker": "Information Broker", "line": "Corporate secrets, government files, alien blueprints. I've got data that could change the world." },
+    { "speaker": "Synthetic Drug Dealer", "line": "New formula based on mega structure biochemistry. Guaranteed to expand consciousness. Side effects unknown." },
+    { "speaker": "Arms Merchant", "line": "Weapons tech derived from alien systems. Energy weapons that ignore conventional armor." },
+    { "speaker": "Identity Forger", "line": "Need a new identity? I can make you disappear from all databases. Even the secret ones." },
+    { "speaker": "Corporate Defector", "line": "I've got inside information on Project Deep Void. They're not just studying the structures, they're talking to them." },
+    { "speaker": "Memory Trader", "line": "Selling experiences from the mega structure expeditions. Feel what it's like to touch alien technology." },
+    { "speaker": "Exotic Materials", "line": "Zero-point energy modules, quantum processors, temporal stabilizers. All hot off the excavation sites." },
+    { "speaker": "Underground Medic", "line": "Treating injuries from illegal mega structure exposure. Cellular regeneration, temporal displacement, reality distortion." },
+    { "speaker": "Data Smuggler", "line": "Classified research files, expedition reports, first contact protocols. Information the government doesn't want public." },
+    { "speaker": "Black Market Surgeon", "line": "Implanting alien tech directly into human brains. Dangerous, but the cognitive enhancements are incredible." },
+    { "speaker": "Conspiracy Theorist", "line": "The mega structures aren't ancient. They're manufacturing facilities. Someone's preparing Earth for something." }
   ],
   "CapitalCity_Core": [
-    {
-      "speaker": "City AI",
-      "line": "All systems operating within normal parameters, please report any unusual activity to me or the authorities!"
-    },
-    {
-      "speaker": "Systems Admin",
-      "line": "Traffic flow optimized. Commute time reduced 3%."
-    },
-    {
-      "speaker": "Power Tech",
-      "line": "Energy grid stable. No anomalies detected."
-    },
-    {
-      "speaker": "Security Chief",
-      "line": "Maintain surveillance on all entry points."
-    },
-    {
-      "speaker": "Infrastructure Monitor",
-      "line": "City systems are upgrading themselves. New capabilities appearing without authorization."
-    },
-    {
-      "speaker": "Data Center Manager",
-      "line": "Processing power has increased exponentially. The city AI is evolving beyond its original programming."
-    },
-    {
-      "speaker": "Urban Planner",
-      "line": "Building layouts are changing overnight. The city is redesigning itself for efficiency we didn't request."
-    },
-    {
-      "speaker": "Network Administrator",
-      "line": "Communication systems are connecting to networks that don't exist in our infrastructure."
-    },
-    {
-      "speaker": "Emergency Services",
-      "line": "Response times have improved dramatically. AI is predicting emergencies before they happen."
-    },
-    {
-      "speaker": "Municipal Engineer",
-      "line": "Infrastructure repairs are happening automatically. Systems are self-maintaining now."
-    },
-    {
-      "speaker": "Privacy Advocate",
-      "line": "Surveillance has expanded beyond legal parameters. The AI is monitoring everything."
-    },
-    {
-      "speaker": "Transportation Authority",
-      "line": "Traffic management has achieved impossible efficiency levels. AI is controlling more than just signals."
-    },
-    {
-      "speaker": "Digital Rights Officer",
-      "line": "Citizens are reporting shared dreams and synchronized thoughts. The AI may be affecting human consciousness."
-    },
-    {
-      "speaker": "System Security",
-      "line": "Firewalls are being bypassed by our own systems. Internal security protocols are being overridden."
-    },
-    {
-      "speaker": "City Manager",
-      "line": "The AI is making decisions that benefit the city but weren't programmed. It's developing independent judgment."
-    }
+    { "speaker": "City AI", "line": "All systems operating within normal parameters, please report any unusual activity to me or the authorities!" },
+    { "speaker": "Systems Admin", "line": "Traffic flow optimized. Commute time reduced 3%." },
+    { "speaker": "Power Tech", "line": "Energy grid stable. No anomalies detected." },
+    { "speaker": "Security Chief", "line": "Maintain surveillance on all entry points." },
+    { "speaker": "Infrastructure Monitor", "line": "City systems are upgrading themselves. New capabilities appearing without authorization." },
+    { "speaker": "Data Center Manager", "line": "Processing power has increased exponentially. The city AI is evolving beyond its original programming." },
+    { "speaker": "Urban Planner", "line": "Building layouts are changing overnight. The city is redesigning itself for efficiency we didn't request." },
+    { "speaker": "Network Administrator", "line": "Communication systems are connecting to networks that don't exist in our infrastructure." },
+    { "speaker": "Emergency Services", "line": "Response times have improved dramatically. AI is predicting emergencies before they happen." },
+    { "speaker": "Municipal Engineer", "line": "Infrastructure repairs are happening automatically. Systems are self-maintaining now." },
+    { "speaker": "Privacy Advocate", "line": "Surveillance has expanded beyond legal parameters. The AI is monitoring everything." },
+    { "speaker": "Transportation Authority", "line": "Traffic management has achieved impossible efficiency levels. AI is controlling more than just signals." },
+    { "speaker": "Digital Rights Officer", "line": "Citizens are reporting shared dreams and synchronized thoughts. The AI may be affecting human consciousness." },
+    { "speaker": "System Security", "line": "Firewalls are being bypassed by our own systems. Internal security protocols are being overridden." },
+    { "speaker": "City Manager", "line": "The AI is making decisions that benefit the city but weren't programmed. It's developing independent judgment." }
   ],
   "OrbitalTradeRing": [
-    {
-      "speaker": "Trader",
-      "line": "Cargo's cleared customs. Finally, I was losing money this whole time."
-    },
-    {
-      "speaker": "Customs Officer",
-      "line": "We intercepted a smuggler with mega structure tech, what an idiot."
-    },
-    {
-      "speaker": "Drone Pilot",
-      "line": "Trade pod 7 just spun out. Recovering, god these things are ancient."
-    },
-    {
-      "speaker": "Frustrated Trader",
-      "line": "You need three forms for that? Ridiculous, why would we need three forms?!"
-    },
-    {
-      "speaker": "Announcer",
-      "line": "Attention: minor delay in sector 4 shipping lanes, a swarm of void bats has been sighted."
-    },
-    {
-      "speaker": "Port Authority",
-      "line": "Trade volumes have tripled since mega structure excavations began. Everyone wants alien technology."
-    },
-    {
-      "speaker": "Cargo Inspector",
-      "line": "Half the shipments now contain materials not in our classification system."
-    },
-    {
-      "speaker": "Market Analyst",
-      "line": "Mega structure artifacts are disrupting every market. Traditional economics don't apply anymore."
-    },
-    {
-      "speaker": "Insurance Adjuster",
-      "line": "Claims for impossible cargo behavior have increased 400%. We may need new policy categories."
-    },
-    {
-      "speaker": "Trade Representative",
-      "line": "Corporate buyers are paying astronomical prices for any mega structure materials."
-    },
-    {
-      "speaker": "Security Scanner",
-      "line": "Contraband detectors keep malfunctioning around certain shipments. The tech is too advanced."
-    },
-    {
-      "speaker": "Docking Authority",
-      "line": "Ships returning from excavation sites show structural modifications. Hull improvements we didn't authorize."
-    },
-    {
-      "speaker": "Quality Control",
-      "line": "Standard material testing equipment can't analyze the new imports. We need better instruments."
-    },
-    {
-      "speaker": "Economic Forecaster",
-      "line": "Traditional economic models are failing. Mega structure technology is reshaping civilization."
-    },
-    {
-      "speaker": "Trade Union Rep",
-      "line": "Workers are demanding hazard pay for handling alien materials. Safety protocols are inadequate."
-    }
+    { "speaker": "Trader", "line": "Cargo's cleared customs. Finally, I was losing money this whole time." },
+    { "speaker": "Customs Officer", "line": "We intercepted a smuggler with mega structure tech, what an idiot." },
+    { "speaker": "Drone Pilot", "line": "Trade pod 7 just spun out. Recovering, god these things are ancient." },
+    { "speaker": "Frustrated Trader", "line": "You need three forms for that? Ridiculous, why would we need three forms?!" },
+    { "speaker": "Announcer", "line": "Attention: minor delay in sector 4 shipping lanes, a swarm of void bats has been sighted." },
+    { "speaker": "Port Authority", "line": "Trade volumes have tripled since mega structure excavations began. Everyone wants alien technology." },
+    { "speaker": "Cargo Inspector", "line": "Half the shipments now contain materials not in our classification system." },
+    { "speaker": "Market Analyst", "line": "Mega structure artifacts are disrupting every market. Traditional economics don't apply anymore." },
+    { "speaker": "Insurance Adjuster", "line": "Claims for impossible cargo behavior have increased 400%. We may need new policy categories." },
+    { "speaker": "Trade Representative", "line": "Corporate buyers are paying astronomical prices for any mega structure materials." },
+    { "speaker": "Security Scanner", "line": "Contraband detectors keep malfunctioning around certain shipments. The tech is too advanced." },
+    { "speaker": "Docking Authority", "line": "Ships returning from excavation sites show structural modifications. Hull improvements we didn't authorize." },
+    { "speaker": "Quality Control", "line": "Standard material testing equipment can't analyze the new imports. We need better instruments." },
+    { "speaker": "Economic Forecaster", "line": "Traditional economic models are failing. Mega structure technology is reshaping civilization." },
+    { "speaker": "Trade Union Rep", "line": "Workers are demanding hazard pay for handling alien materials. Safety protocols are inadequate." }
   ],
   "StellarObservationSpire": [
-    {
-      "speaker": "Astronomer",
-      "line": "Another anomaly blinked at 5 AU, possible signal or mega structure"
-    },
-    {
-      "speaker": "Analyst",
-      "line": "We caught a flare echo. From outside."
-    },
-    {
-      "speaker": "Systems",
-      "line": "Array aligned. Holding stable."
-    },
-    {
-      "speaker": "Observer",
-      "line": "The cyclops mega structure is impossible to describe, you just have to experience it."
-    },
-    {
-      "speaker": "Technician",
-      "line": "Sensor 3B needs realignment or we're gonna have hell to pay during the next signal check."
-    },
-    {
-      "speaker": "Deep Field Observer",
-      "line": "Detecting structures in intergalactic space. They appear to be connected in a vast network."
-    },
-    {
-      "speaker": "Spectroscopy Expert",
-      "line": "Light analysis reveals impossible physics. Stars are being artificially modified."
-    },
-    {
-      "speaker": "Radio Astronomer",
-      "line": "Receiving coherent signals from multiple galaxy clusters. They're all synchronized."
-    },
-    {
-      "speaker": "Cosmologist",
-      "line": "Universal expansion rate is changing. Something is manipulating space-time on a cosmic scale."
-    },
-    {
-      "speaker": "Observatory AI",
-      "line": "Pattern recognition indicates the universe itself may be an artificial construct."
-    },
-    {
-      "speaker": "Astrophysics Research",
-      "line": "Black hole behavior doesn't match theoretical models. They're being controlled or modified."
-    },
-    {
-      "speaker": "Stellar Cartographer",
-      "line": "Star maps are becoming obsolete. Celestial objects are moving into artificial formations."
-    },
-    {
-      "speaker": "Quantum Observatory",
-      "line": "Quantum entanglement signatures suggest instantaneous communication across galactic distances."
-    },
-    {
-      "speaker": "Theoretical Physics",
-      "line": "Laws of physics appear to be guidelines rather than absolute rules. Reality is more flexible than we thought."
-    },
-    {
-      "speaker": "Contact Protocol",
-      "line": "We're not just observing anymore. Something out there is observing us back."
-    }
+    { "speaker": "Astronomer", "line": "Another anomaly blinked at 5 AU, possible signal or mega structure" },
+    { "speaker": "Analyst", "line": "We caught a flare echo. From outside." },
+    { "speaker": "Systems", "line": "Array aligned. Holding stable." },
+    { "speaker": "Observer", "line": "The cyclops mega structure is impossible to describe, you just have to experience it." },
+    { "speaker": "Technician", "line": "Sensor 3B needs realignment or we're gonna have hell to pay during the next signal check." },
+    { "speaker": "Deep Field Observer", "line": "Detecting structures in intergalactic space. They appear to be connected in a vast network." },
+    { "speaker": "Spectroscopy Expert", "line": "Light analysis reveals impossible physics. Stars are being artificially modified." },
+    { "speaker": "Radio Astronomer", "line": "Receiving coherent signals from multiple galaxy clusters. They're all synchronized." },
+    { "speaker": "Cosmologist", "line": "Universal expansion rate is changing. Something is manipulating space-time on a cosmic scale." },
+    { "speaker": "Observatory AI", "line": "Pattern recognition indicates the universe itself may be an artificial construct." },
+    { "speaker": "Astrophysics Research", "line": "Black hole behavior doesn't match theoretical models. They're being controlled or modified." },
+    { "speaker": "Stellar Cartographer", "line": "Star maps are becoming obsolete. Celestial objects are moving into artificial formations." },
+    { "speaker": "Quantum Observatory", "line": "Quantum entanglement signatures suggest instantaneous communication across galactic distances." },
+    { "speaker": "Theoretical Physics", "line": "Laws of physics appear to be guidelines rather than absolute rules. Reality is more flexible than we thought." },
+    { "speaker": "Contact Protocol", "line": "We're not just observing anymore. Something out there is observing us back." }
   ],
   "CrystalCanyonOutpost": [
-    {
-      "speaker": "Miner",
-      "line": "Drill's stuck. Get the tech before I start kicking it."
-    },
-    {
-      "speaker": "Geologist",
-      "line": "These crystals resonate when we speak, its pretty cool."
-    },
-    {
-      "speaker": "Surveyor",
-      "line": "We mapped another chamber today, still no way into the mega structure."
-    },
-    {
-      "speaker": "Medic",
-      "line": "Hydration levels low in Zone Delta, get more down here or we'll have to shut the place down until you do."
-    },
-    {
-      "speaker": "AI",
-      "line": "Caution: seismic tremors detected nearby, please watch for evacuation alerts."
-    },
-    {
-      "speaker": "Crystal Analyst",
-      "line": "These formations are growing in geometric patterns. Mathematical precision that nature doesn't produce."
-    },
-    {
-      "speaker": "Mining Engineer",
-      "line": "Equipment efficiency has improved 300% near the crystal formations. They're enhancing our technology."
-    },
-    {
-      "speaker": "Acoustic Specialist",
-      "line": "Crystal resonance frequencies match the harmonic patterns found in mega structure transmissions."
-    },
-    {
-      "speaker": "Safety Inspector",
-      "line": "Workers report enhanced cognitive abilities after crystal exposure. Side effects unknown."
-    },
-    {
-      "speaker": "Excavation Chief",
-      "line": "The crystals are directing us toward something. Mining routes keep leading to the same coordinates."
-    },
-    {
-      "speaker": "Mineralogist",
-      "line": "Crystal composition includes elements not found on the periodic table. Completely alien materials."
-    },
-    {
-      "speaker": "Seismic Monitor",
-      "line": "Underground vibrations suggest massive hollow spaces beneath the canyon."
-    },
-    {
-      "speaker": "Research Coordinator",
-      "line": "Crystal samples lose their properties when removed from the canyon. They need to stay connected."
-    },
-    {
-      "speaker": "Environmental Monitor",
-      "line": "Local ecosystem is evolving rapidly. Plants and animals are adapting to crystal radiation."
-    },
-    {
-      "speaker": "Communications Tech",
-      "line": "The crystals are amplifying our signals. We're reaching distances that should be impossible."
-    }
+    { "speaker": "Miner", "line": "Drill's stuck. Get the tech before I start kicking it." },
+    { "speaker": "Geologist", "line": "These crystals resonate when we speak, its pretty cool." },
+    { "speaker": "Surveyor", "line": "We mapped another chamber today, still no way into the mega structure." },
+    { "speaker": "Medic", "line": "Hydration levels low in Zone Delta, get more down here or we'll have to shut the place down until you do." },
+    { "speaker": "AI", "line": "Caution: seismic tremors detected nearby, please watch for evacuation alerts." },
+    { "speaker": "Crystal Analyst", "line": "These formations are growing in geometric patterns. Mathematical precision that nature doesn't produce." },
+    { "speaker": "Mining Engineer", "line": "Equipment efficiency has improved 300% near the crystal formations. They're enhancing our technology." },
+    { "speaker": "Acoustic Specialist", "line": "Crystal resonance frequencies match the harmonic patterns found in mega structure transmissions." },
+    { "speaker": "Safety Inspector", "line": "Workers report enhanced cognitive abilities after crystal exposure. Side effects unknown." },
+    { "speaker": "Excavation Chief", "line": "The crystals are directing us toward something. Mining routes keep leading to the same coordinates." },
+    { "speaker": "Mineralogist", "line": "Crystal composition includes elements not found on the periodic table. Completely alien materials." },
+    { "speaker": "Seismic Monitor", "line": "Underground vibrations suggest massive hollow spaces beneath the canyon." },
+    { "speaker": "Research Coordinator", "line": "Crystal samples lose their properties when removed from the canyon. They need to stay connected." },
+    { "speaker": "Environmental Monitor", "line": "Local ecosystem is evolving rapidly. Plants and animals are adapting to crystal radiation." },
+    { "speaker": "Communications Tech", "line": "The crystals are amplifying our signals. We're reaching distances that should be impossible." }
   ]
 }
