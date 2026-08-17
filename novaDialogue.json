@@ -126,22 +126,10 @@
   },
   "relationship": {
     "tiers": [
-      {
-        "minCompletions": 0,
-        "label": "Stranger"
-      },
-      {
-        "minCompletions": 2,
-        "label": "Crewmate"
-      },
-      {
-        "minCompletions": 4,
-        "label": "Trusted"
-      },
-      {
-        "minCompletions": 6,
-        "label": "Bonded"
-      }
+      { "minCompletions": 0,  "label": "Stranger" },
+      { "minCompletions": 8,  "label": "Crewmate" },
+      { "minCompletions": 18, "label": "Trusted" },
+      { "minCompletions": 30, "label": "Bonded" }
     ],
     "tierUnlock": {
       "Crewmate": "Nova: Hey. I've been thinking. We've been through enough now that I feel like I can drop the professional distance. Slightly. Don't push it.",
