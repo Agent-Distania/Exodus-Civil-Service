@@ -2049,35 +2049,190 @@ function runEndingSequence(type) {
       runQuietFileReveal(linesEl, () => finishTrueEnding(overlay, linesEl, style));
     }, t);
   } else {
-    finishEnding(overlay, linesEl, style, t);
+    setTimeout(() => finishNaturalEnding(overlay, linesEl, style), t);
   }
 }
 
-function finishEnding(overlay, linesEl, style, delay = 0) {
-  setTimeout(() => {
-    const teaser = document.createElement('div');
-    teaser.className = 'end-teaser';
-    teaser.textContent = 'DISTANIA TRAVEL GROUP WILL RETURN';
-    linesEl.appendChild(teaser);
-    requestAnimationFrame(() => requestAnimationFrame(() => teaser.classList.add('show')));
+// ================================================================
+// Natural-ending closer: office scene -> radar scene -> fade to black -> line
+// Pure images-and-text, mirroring the true ending's structure but showing
+// what happens on the other side — the report that gets filed, and the
+// single ping that answers it.
+// ================================================================
+const NATURAL_SCENE_CSS = `
+  .scene-stage {
+    position: fixed; inset: 0; z-index: 27000; display: flex;
+    align-items: center; justify-content: center; background: #000;
+    opacity: 0; transition: opacity 1.4s ease; overflow: hidden;
+  }
+  .scene-stage.show { opacity: 1; }
 
+  /* Office scene */
+  .office-scene {
+    position: relative; width: min(560px, 90vw); height: 320px;
+    background: radial-gradient(ellipse at 30% 70%, rgba(255,180,90,0.10), transparent 60%), #060504;
+    border: 1px solid rgba(255,180,90,0.15);
+  }
+  .office-desk {
+    position: absolute; left: 15%; right: 10%; bottom: 22%; height: 14px;
+    background: #0d0906; border-top: 2px solid rgba(255,180,90,0.25);
+  }
+  .office-lamp-glow {
+    position: absolute; right: 14%; bottom: 36%; width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(255,190,110,0.22), transparent 70%);
+    pointer-events: none;
+  }
+  .office-figure { position: absolute; bottom: 22%; width: 34px; height: 90px; }
+  .office-figure svg { width: 100%; height: 100%; display: block; }
+  .office-amplifier { right: 20%; }
+  .office-aide { left: 4%; animation: aideWalk 3.2s ease forwards; }
+  @keyframes aideWalk {
+    0%   { left: 4%; }
+    70%  { left: 34%; }
+    100% { left: 36%; }
+  }
+  .office-file {
+    position: absolute; bottom: 22.6%; left: 36%; width: 20px; height: 14px;
+    background: #caa46a; border: 1px solid #7a5c33;
+    opacity: 0; transform: translateY(-16px);
+    animation: fileDrop 0.8s ease forwards; animation-delay: 3.1s;
+  }
+  @keyframes fileDrop { to { opacity: 1; transform: translateY(0); } }
+
+  /* Radar scene */
+  .radar-scene {
+    position: relative; width: 320px; height: 320px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,20,10,0.9), #000 75%);
+    border: 1px solid rgba(15,255,80,0.25);
+    box-shadow: 0 0 40px rgba(15,255,15,0.08), inset 0 0 30px rgba(0,0,0,0.6);
+  }
+  .radar-ring { position: absolute; border: 1px solid rgba(15,255,80,0.15); border-radius: 50%; }
+  .radar-ring.r1 { inset: 10%; } .radar-ring.r2 { inset: 30%; } .radar-ring.r3 { inset: 50%; }
+  .radar-cross { position: absolute; background: rgba(15,255,80,0.12); }
+  .radar-cross.h { left: 0; right: 0; top: 50%; height: 1px; }
+  .radar-cross.v { top: 0; bottom: 0; left: 50%; width: 1px; }
+  .radar-sweep {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: conic-gradient(rgba(15,255,80,0.35), transparent 40deg);
+    animation: radarSpin 3.4s linear infinite; mix-blend-mode: screen;
+  }
+  @keyframes radarSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .radar-ping {
+    position: absolute; width: 8px; height: 8px; border-radius: 50%;
+    background: #8dfd8d; box-shadow: 0 0 10px #0f4; top: 14%; left: 78%;
+    opacity: 0; animation: pingAppear 0.6s ease forwards; animation-delay: 4.2s;
+  }
+  .radar-ping::after {
+    content: ''; position: absolute; inset: -10px; border: 1px solid rgba(141,253,141,0.5);
+    border-radius: 50%; animation: pingRing 1.6s ease-out infinite; animation-delay: 4.2s;
+  }
+  @keyframes pingAppear { to { opacity: 1; } }
+  @keyframes pingRing { 0% { transform: scale(0.3); opacity: 0.9; } 100% { transform: scale(2.4); opacity: 0; } }
+
+  .black-fade {
+    position: fixed; inset: 0; background: #000; z-index: 27500;
+    opacity: 0; transition: opacity 2.6s ease; pointer-events: none;
+  }
+  .black-fade.show { opacity: 1; }
+  .final-text-layer {
+    position: fixed; inset: 0; z-index: 28000; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1.5rem;
+    color: #cfefff; font-family: 'Share Tech Mono', monospace; text-align: center;
+    padding: 2rem; opacity: 0; transition: opacity 2.2s ease;
+  }
+  .final-text-layer.show { opacity: 1; }
+  .final-text-line { font-size: 1rem; letter-spacing: 0.1rem; line-height: 1.8; max-width: 560px; }
+`;
+
+const AMPLIFIER_SVG = `<svg viewBox="0 0 40 90" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="14" r="10" fill="#0a0806"/>
+  <path d="M8 30 C8 24 12 22 20 22 C28 22 32 24 32 30 L34 70 L6 70 Z" fill="#0a0806"/>
+</svg>`;
+
+const AIDE_SVG = `<svg viewBox="0 0 34 90" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="17" cy="12" r="9" fill="#0a0806"/>
+  <path d="M6 28 C6 22 10 20 17 20 C24 20 28 22 28 28 L30 80 L4 80 Z" fill="#0a0806"/>
+</svg>`;
+
+function finishNaturalEnding(overlay, linesEl, style) {
+  linesEl.style.transition = 'opacity 1.2s ease';
+  linesEl.style.opacity = '0';
+
+  setTimeout(() => {
+    const sceneStyle = document.createElement('style');
+    sceneStyle.textContent = NATURAL_SCENE_CSS;
+    document.head.appendChild(sceneStyle);
+
+    const stage = document.createElement('div');
+    stage.className = 'scene-stage';
+    stage.innerHTML = `
+      <div class="office-scene">
+        <div class="office-lamp-glow"></div>
+        <div class="office-desk"></div>
+        <div class="office-figure office-amplifier">${AMPLIFIER_SVG}</div>
+        <div class="office-figure office-aide">${AIDE_SVG}</div>
+        <div class="office-file"></div>
+      </div>
+    `;
+    document.body.appendChild(stage);
+    requestAnimationFrame(() => requestAnimationFrame(() => stage.classList.add('show')));
+
+    // Office scene holds long enough for the walk + file drop to read, then
+    // the radar scene takes over the same stage.
     setTimeout(() => {
-      const btn = document.createElement('button');
-      btn.className = 'end-btn';
-      btn.textContent = '[ RETURN TO START ]';
-      btn.addEventListener('click', () => {
-        overlay.remove();
-        style.remove();
-        startupScreen.classList.remove('hidden');
-        loginScreen.classList.add('hidden');
-        travelScreen.classList.add('hidden');
-        journalToggle.classList.add('hidden');
-        initStartupScreen();
-      });
-      linesEl.appendChild(btn);
-      requestAnimationFrame(() => requestAnimationFrame(() => btn.classList.add('show')));
-    }, 1800);
-  }, delay);
+      stage.innerHTML = `
+        <div class="radar-scene">
+          <div class="radar-cross h"></div>
+          <div class="radar-cross v"></div>
+          <div class="radar-ring r1"></div>
+          <div class="radar-ring r2"></div>
+          <div class="radar-ring r3"></div>
+          <div class="radar-sweep"></div>
+          <div class="radar-ping"></div>
+        </div>
+      `;
+    }, 4600);
+
+    // Radar scene holds long enough to watch the ping arrive, then fades out.
+    setTimeout(() => {
+      const black = document.createElement('div');
+      black.className = 'black-fade';
+      document.body.appendChild(black);
+      requestAnimationFrame(() => requestAnimationFrame(() => black.classList.add('show')));
+      setTimeout(() => {
+        stage.remove();
+        showNaturalFinalText(overlay, style, sceneStyle);
+      }, 2700);
+    }, 4600 + 6000);
+  }, 1300);
+}
+
+function showNaturalFinalText(overlay, style, sceneStyle) {
+  const finalLayer = document.createElement('div');
+  finalLayer.className = 'final-text-layer';
+  finalLayer.innerHTML = `<div class="final-text-line">Something noticed us.</div>`;
+  document.body.appendChild(finalLayer);
+  requestAnimationFrame(() => requestAnimationFrame(() => finalLayer.classList.add('show')));
+
+  setTimeout(() => {
+    const btn = document.createElement('button');
+    btn.className = 'end-btn show';
+    btn.style.opacity = '1';
+    btn.textContent = '[ RETURN TO START ]';
+    btn.addEventListener('click', () => {
+      finalLayer.remove();
+      document.querySelectorAll('.black-fade').forEach(el => el.remove());
+      overlay.remove();
+      style.remove();
+      sceneStyle.remove();
+      startupScreen.classList.remove('hidden');
+      loginScreen.classList.add('hidden');
+      travelScreen.classList.add('hidden');
+      journalToggle.classList.add('hidden');
+      initStartupScreen();
+    });
+    finalLayer.appendChild(btn);
+  }, 3200);
 }
 
 // ================================================================
