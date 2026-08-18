@@ -1118,14 +1118,23 @@ function completeMission(m) {
 function rebuildCurrentButtons() {
   if (!currentHub) { createButtons(mainDestinations); return; }
   const config = destinationConfigs[currentHub];
-  if (currentSubLocation) {
-    const parent = findByKey(currentSubLocation, config.subDestinations);
-    if (parent?.subDestinations) { createButtons(parent.subDestinations); return; }
-  }
+
+  // Re-render whatever the player is actually standing at right now —
+  // findByKey searches the whole tree, so this works whether currentLocation
+  // is a mid-level hub sub or a leaf two levels deep. Leaf locations with no
+  // subDestinations of their own (most mission targets) correctly fall back
+  // to just "Return to Previous", matching what was already on screen.
   if (currentLocation && currentLocation !== currentHub) {
     const dest = findByKey(currentLocation, config.subDestinations);
-    if (dest?.subDestinations) { createButtons(dest.subDestinations); return; }
+    if (dest) {
+      const subList = dest.subDestinations?.length
+        ? dest.subDestinations
+        : [{ name: 'Return to Previous', key: 'Return' }];
+      createButtons(subList);
+      return;
+    }
   }
+
   createButtons(config.subDestinations);
 }
 
@@ -2305,7 +2314,35 @@ const QUIET_FILE_CSS = `
   .qf-site-title { font-weight: bold; color: #4fd1ff; font-size: 0.85rem; margin-bottom: 0.4rem; }
   .qf-site-meta { font-size: 0.65rem; color: rgba(207,239,255,0.4); margin-bottom: 0.6rem; }
   .qf-forum-post { border-left: 2px solid rgba(79,209,255,0.2); padding-left: 0.6rem; margin-bottom: 0.7rem; }
+  .qf-forum-post.qf-forum-reply { margin-left: 1.1rem; border-left-color: rgba(79,209,255,0.12); }
+  .qf-forum-post.qf-forum-mod { border-left-color: rgba(255,120,120,0.35); }
+  .qf-forum-post.qf-forum-highlight { border-left-color: rgba(255,180,48,0.5); }
   .qf-forum-user { color: #7dffb0; font-size: 0.72rem; font-weight: bold; }
+  .qf-forum-user.qf-forum-mod-name { color: #ff8f8f; }
+  .qf-forum-user.qf-forum-new { color: #ffd97d; }
+  .qf-forum-meta {
+    display: block; font-size: 0.6rem; color: rgba(207,239,255,0.3);
+    margin: 0.1rem 0 0.25rem 0; letter-spacing: 0.03rem;
+  }
+  .qf-forum-edited { font-style: italic; color: rgba(207,239,255,0.3); font-size: 0.6rem; }
+  .qf-forum-quote {
+    display: block; border-left: 2px solid rgba(207,239,255,0.15);
+    padding-left: 0.5rem; margin: 0.3rem 0; color: rgba(207,239,255,0.45);
+    font-size: 0.72rem; font-style: italic;
+  }
+  .qf-forum-locked-banner {
+    font-size: 0.68rem; color: rgba(255,120,120,0.7); text-align: center;
+    border-top: 1px dashed rgba(255,120,120,0.25); border-bottom: 1px dashed rgba(255,120,120,0.25);
+    padding: 0.4rem 0; margin: 0.8rem 0; letter-spacing: 0.05rem;
+  }
+  .qf-forum-reopened-banner {
+    font-size: 0.68rem; color: rgba(141,253,141,0.6); text-align: center;
+    padding: 0.3rem 0; margin: 0.4rem 0 0.8rem 0; letter-spacing: 0.05rem;
+  }
+  .qf-forum-scanning {
+    font-size: 0.68rem; color: rgba(79,209,255,0.5); letter-spacing: 0.08rem;
+    text-align: center; padding: 0.6rem 0; animation: qfBlink 1.2s ease-in-out infinite;
+  }
   .qf-job-listing { border: 1px solid rgba(255,180,48,0.25); padding: 0.6rem 0.8rem; background: rgba(20,12,0,0.3); }
 
   /* Glitch cinematic */
@@ -2422,24 +2459,7 @@ const BROWSER_SITES = {
   voidwatch: {
     label: 'VoidWatch Forums',
     url: 'voidwatch.forum/t/quiet-programme-megathread',
-    html: `
-      <div class="qf-site-title">the "Quiet Programme" megathread (pinned)</div>
-      <div class="qf-site-meta">VoidWatch Forums — r/deepsignal — 3,891 replies — locked by moderators three times, reopened three times</div>
-      <div class="qf-forum-post">
-        <span class="qf-forum-user">torta_truther:</span> my cousin worked excavation. got "transferred" last month.
-        HR won't confirm which department. his apartment's still under his name. nobody's collected his mail.
-      </div>
-      <div class="qf-forum-post">
-        <span class="qf-forum-user">exodus_insider (unverified):</span> it's not a department. stop calling it a department.
-        it doesn't have an org chart. it has a waiting list.
-      </div>
-      <div class="qf-forum-post">
-        <span class="qf-forum-user">mod_action_bot:</span> Thread locked pending review — Rule 4 (unverifiable personnel claims).
-      </div>
-      <div class="qf-forum-post">
-        <span class="qf-forum-user">torta_truther:</span> reopened it myself. worth the ban. someone needs to be keeping a list of names.
-      </div>
-    `
+    dynamic: true
   },
   halcyon: {
     label: 'Halcyon Extraction Corp',
@@ -2460,6 +2480,139 @@ const BROWSER_SITES = {
     `
   }
 };
+
+// The VoidWatch thread is built at render time instead of stored as a fixed
+// string — most of it is "archived" history (fixed, since it already
+// happened before the player got here), but the closing post is generated
+// from the player's own session data, so it reads like the thread caught up
+// to the exact ship sitting in front of it.
+function buildVoidwatchHtml() {
+  const visits = novaRel.visits || 0;
+  const filesFound = unlockedFiles.size;
+  const allCollected = COLLECTIBLES.every(c => c.found);
+
+  return `
+    <div class="qf-site-title">the "Quiet Programme" megathread (pinned)</div>
+    <div class="qf-site-meta">VoidWatch Forums — r/deepsignal — 4,417 replies — locked 3 times, reopened 3 times — last activity: just now</div>
+
+    <div class="qf-forum-post">
+      <span class="qf-forum-user">torta_truther</span>
+      <span class="qf-forum-meta">Original Post · 2y 3mo ago · 312 views</span>
+      Anyone else notice people just... vanish off excavation crews? My cousin worked Torta. Got "transferred"
+      out of nowhere. HR won't confirm which department. His apartment's still under his name. Nobody's
+      collected his mail in six weeks.
+    </div>
+
+    <div class="qf-forum-post qf-forum-reply">
+      <span class="qf-forum-user">civil_service_lifer</span>
+      <span class="qf-forum-meta">2y 3mo ago</span>
+      people get reassigned literally constantly, this is not a conspiracy, some of us have actual jobs in
+      this industry
+    </div>
+
+    <div class="qf-forum-post qf-forum-reply">
+      <span class="qf-forum-user">exodus_insider <em>(unverified)</em></span>
+      <span class="qf-forum-meta">2y 2mo ago</span>
+      <span class="qf-forum-quote">&gt; Got "transferred" out of nowhere.</span>
+      it's not a department. stop calling it a department. it doesn't have an org chart. it has a waiting list.
+    </div>
+
+    <div class="qf-forum-post qf-forum-mod">
+      <span class="qf-forum-user qf-forum-mod-name">mod_action_bot</span>
+      <span class="qf-forum-meta">2y 2mo ago</span>
+      Thread locked pending review — Rule 4 (unverifiable personnel claims).
+    </div>
+    <div class="qf-forum-locked-banner">🔒 THREAD LOCKED</div>
+    <div class="qf-forum-reopened-banner">🔓 Reopened by OP appeal — moderation note: personal anecdotes permitted if flaired [unverified]</div>
+
+    <div class="qf-forum-post">
+      <span class="qf-forum-user">torta_truther</span>
+      <span class="qf-forum-meta">1y 9mo ago</span>
+      reopened it myself. worth the ban. someone needs to be keeping a list of names. starting one in the
+      wiki tab, add yours if you've got one.
+    </div>
+
+    <div class="qf-forum-post qf-forum-highlight">
+      <span class="qf-forum-user">starlight_drifter</span>
+      <span class="qf-forum-meta">1y 4mo ago · 88 upvotes</span>
+      my aunt worked comms on the Jupiter relay. before she stopped answering messages she gave me three
+      names on a call, like she wanted someone else to have them just in case. Haddad. Voss. Reyes. I looked
+      all three up after — all three show "reassigned" in the public registry, no destination listed.
+      I haven't heard from my aunt in two weeks either.
+    </div>
+
+    <div class="qf-forum-post qf-forum-reply">
+      <span class="qf-forum-user">torta_truther</span>
+      <span class="qf-forum-meta">1y 4mo ago</span>
+      pinning this to the top post. this is exactly the pattern three other people have described
+      independently now. if anyone else has names, this is the thread.
+    </div>
+
+    <div class="qf-forum-post qf-forum-reply">
+      <span class="qf-forum-user">spacefan_99</span>
+      <span class="qf-forum-meta">1y 4mo ago</span>
+      anyone know where to get cheap fuel cells on the trade ring lol asking for a friend
+    </div>
+    <div class="qf-forum-post qf-forum-reply qf-forum-mod">
+      <span class="qf-forum-user qf-forum-mod-name">mod_action_bot</span>
+      <span class="qf-forum-meta">1y 4mo ago</span>
+      @spacefan_99 please keep replies on-topic or take it to r/tradechat.
+    </div>
+    <div class="qf-forum-post qf-forum-reply">
+      <span class="qf-forum-user">spacefan_99</span>
+      <span class="qf-forum-meta">1y 4mo ago</span>
+      my b
+    </div>
+
+    <div class="qf-forum-post qf-forum-highlight">
+      <span class="qf-forum-user qf-forum-new">quietroom_survivor <em>(1 post)</em></span>
+      <span class="qf-forum-meta">11mo ago <span class="qf-forum-edited">· edited by moderator: content warning added</span></span>
+      i don't have long to post this so i'm not going to explain how i have this account. i was quiet
+      programme. i got out. i don't think that's supposed to be possible. ask why the intake tests
+      specifically screen for something they call resonance sensitivity. ask why it correlates with
+      EXTENDED FIELD EXPOSURE assignments. ask why nobody who scores high on it stays on a desk job for long.
+      i'm not going to be able to answer replies.
+    </div>
+
+    <div class="qf-forum-post qf-forum-reply">
+      <span class="qf-forum-user">civil_service_lifer</span>
+      <span class="qf-forum-meta">11mo ago</span>
+      this account is eleven minutes old, this is obviously a troll post, reported
+    </div>
+    <div class="qf-forum-post qf-forum-reply">
+      <span class="qf-forum-user">torta_truther</span>
+      <span class="qf-forum-meta">11mo ago</span>
+      even if the account's fake, "resonance sensitivity" matches internal ECS terminology from two
+      unrelated whistleblower leaks last year. that's not a phrase a troll makes up on the spot.
+    </div>
+
+    <div class="qf-forum-post qf-forum-mod">
+      <span class="qf-forum-user qf-forum-mod-name">mod_action_bot</span>
+      <span class="qf-forum-meta">11mo ago</span>
+      Thread locked — Rule 7 (unverified medical/personnel claims, repeat violation).
+    </div>
+    <div class="qf-forum-locked-banner">🔒 THREAD LOCKED</div>
+    <div class="qf-forum-reopened-banner">🔓 Reopened after community appeal — 4,200 upvotes on the appeal post. Moderation team note: we are aware.</div>
+
+    <div class="qf-forum-post">
+      <span class="qf-forum-user">archive_watcher</span>
+      <span class="qf-forum-meta">5mo ago</span>
+      does anyone else notice the Xeno Archive translation team just stopped publishing? no announcement.
+      last public paper was eight months ago. their staff directory page 404s now.
+    </div>
+
+    <div class="qf-forum-scanning">◆ loading latest replies...</div>
+
+    <div class="qf-forum-post qf-forum-highlight">
+      <span class="qf-forum-user qf-forum-new">signal_logs_anon <em>(new account)</em></span>
+      <span class="qf-forum-meta">just now</span>
+      posting this before it gets pulled. partial activity extract, Distania Travel Group registry:
+      one vessel logged <strong>${visits}</strong> individual site check-ins across six systems this cycle,
+      ${filesFound} recovered documents cross-referenced as resonance-adjacent${allCollected ? ', full anomalous-material recovery flagged on the same manifest' : ''}.
+      no name attached to the transponder ID yet. if this is your ship — I'm sorry, and I think you already know.
+    </div>
+  `;
+}
 
 // This terminal is deliberately styled nothing like the ship's own console —
 // cold blue-white instead of warm green — to read as a different, unfamiliar
@@ -2596,9 +2749,10 @@ function runQuietFileReveal(parentEl, onDone) {
   function showSite(siteId) {
     const site = BROWSER_SITES[siteId];
     const content = terminal.querySelector('.qf-content');
+    const pageHtml = site.dynamic ? buildVoidwatchHtml() : site.html;
     content.innerHTML = `
       <div class="qf-browser-bar"><span class="qf-dot"></span>${site.url}</div>
-      ${site.html}
+      ${pageHtml}
       <div class="qf-back" id="qfSiteBack">[ BACK ]</div>
     `;
     content.querySelector('#qfSiteBack').addEventListener('click', renderBrowserHome);
