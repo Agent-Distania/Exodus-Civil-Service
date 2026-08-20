@@ -10,6 +10,9 @@ const travelOverlay     = document.getElementById('travelOverlay');
 const missionIndicator  = document.getElementById('missionIndicator');
 const journalToggle     = document.getElementById('journalToggle');
 const missionLogOverlay = document.getElementById('missionLogOverlay');
+const netlinkToggle     = document.getElementById('netlinkToggle');
+const netlinkOverlay    = document.getElementById('netlinkOverlay');
+const netlinkContent    = document.getElementById('netlinkContent');
 
 // ================================================================
 // State
@@ -1745,6 +1748,7 @@ function restoreSession() {
 
 function startTravelConsole() {
   journalToggle.classList.remove('hidden');
+  netlinkToggle.classList.remove('hidden');
   document.getElementById('healthWidget').classList.remove('hidden');
   Health.render();
   restoreSession();
@@ -2238,6 +2242,7 @@ function showNaturalFinalText(overlay, style, sceneStyle) {
       loginScreen.classList.add('hidden');
       travelScreen.classList.add('hidden');
       journalToggle.classList.add('hidden');
+      netlinkToggle.classList.add('hidden');
       initStartupScreen();
     });
     finalLayer.appendChild(btn);
@@ -2310,40 +2315,6 @@ const QUIET_FILE_CSS = `
   }
   .qf-browser-bar .qf-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(79,209,255,0.3); flex-shrink: 0; }
   .qf-bookmark-list { display: flex; flex-direction: column; gap: 0.15rem; }
-  .qf-site-page { font-size: 0.78rem; line-height: 1.6; }
-  .qf-site-title { font-weight: bold; color: #4fd1ff; font-size: 0.85rem; margin-bottom: 0.4rem; }
-  .qf-site-meta { font-size: 0.65rem; color: rgba(207,239,255,0.4); margin-bottom: 0.6rem; }
-  .qf-forum-post { border-left: 2px solid rgba(79,209,255,0.2); padding-left: 0.6rem; margin-bottom: 0.7rem; }
-  .qf-forum-post.qf-forum-reply { margin-left: 1.1rem; border-left-color: rgba(79,209,255,0.12); }
-  .qf-forum-post.qf-forum-mod { border-left-color: rgba(255,120,120,0.35); }
-  .qf-forum-post.qf-forum-highlight { border-left-color: rgba(255,180,48,0.5); }
-  .qf-forum-user { color: #7dffb0; font-size: 0.72rem; font-weight: bold; }
-  .qf-forum-user.qf-forum-mod-name { color: #ff8f8f; }
-  .qf-forum-user.qf-forum-new { color: #ffd97d; }
-  .qf-forum-meta {
-    display: block; font-size: 0.6rem; color: rgba(207,239,255,0.3);
-    margin: 0.1rem 0 0.25rem 0; letter-spacing: 0.03rem;
-  }
-  .qf-forum-edited { font-style: italic; color: rgba(207,239,255,0.3); font-size: 0.6rem; }
-  .qf-forum-quote {
-    display: block; border-left: 2px solid rgba(207,239,255,0.15);
-    padding-left: 0.5rem; margin: 0.3rem 0; color: rgba(207,239,255,0.45);
-    font-size: 0.72rem; font-style: italic;
-  }
-  .qf-forum-locked-banner {
-    font-size: 0.68rem; color: rgba(255,120,120,0.7); text-align: center;
-    border-top: 1px dashed rgba(255,120,120,0.25); border-bottom: 1px dashed rgba(255,120,120,0.25);
-    padding: 0.4rem 0; margin: 0.8rem 0; letter-spacing: 0.05rem;
-  }
-  .qf-forum-reopened-banner {
-    font-size: 0.68rem; color: rgba(141,253,141,0.6); text-align: center;
-    padding: 0.3rem 0; margin: 0.4rem 0 0.8rem 0; letter-spacing: 0.05rem;
-  }
-  .qf-forum-scanning {
-    font-size: 0.68rem; color: rgba(79,209,255,0.5); letter-spacing: 0.08rem;
-    text-align: center; padding: 0.6rem 0; animation: qfBlink 1.2s ease-in-out infinite;
-  }
-  .qf-job-listing { border: 1px solid rgba(255,180,48,0.25); padding: 0.6rem 0.8rem; background: rgba(20,12,0,0.3); }
 
   /* Glitch cinematic */
   .glitch-stage {
@@ -2456,11 +2427,6 @@ const BROWSER_SITES = {
       </div>
     `
   },
-  voidwatch: {
-    label: 'VoidWatch Forums',
-    url: 'voidwatch.forum/t/quiet-programme-megathread',
-    dynamic: true
-  },
   halcyon: {
     label: 'Halcyon Extraction Corp',
     url: 'halcyonextraction.corp/careers/field-integration-specialist',
@@ -2481,73 +2447,52 @@ const BROWSER_SITES = {
   }
 };
 
-// The VoidWatch thread is built at render time instead of stored as a fixed
-// string — most of it is "archived" history (fixed, since it already
-// happened before the player got here), but the closing post is generated
-// from the player's own session data, so it reads like the thread caught up
-// to the exact ship sitting in front of it.
-function buildVoidwatchHtml() {
-  const visits = novaRel.visits || 0;
-  const filesFound = unlockedFiles.size;
-  const allCollected = COLLECTIBLES.every(c => c.found);
-
-  return `
-    <div class="qf-site-title">the "Quiet Programme" megathread (pinned)</div>
-    <div class="qf-site-meta">VoidWatch Forums — r/deepsignal — 4,417 replies — locked 3 times, reopened 3 times — last activity: just now</div>
-
+// The VoidWatch thread is built at render time, not stored as a fixed
+// string. Most posts are gated by currentAct — checking NETLINK in Act I
+// shows a much shorter, less alarming thread than checking it in Act III,
+// because the same community discussion was happening off-screen the whole
+// time and the player is just catching up to wherever they currently are.
+// The closing post is fully dynamic, generated from the player's own live
+// session data, so it updates every single time the thread is reopened.
+const VOIDWATCH_POSTS = [
+  { minAct: 1, html: `
     <div class="qf-forum-post">
       <span class="qf-forum-user">torta_truther</span>
       <span class="qf-forum-meta">Original Post · 2y 3mo ago · 312 views</span>
       Anyone else notice people just... vanish off excavation crews? My cousin worked Torta. Got "transferred"
       out of nowhere. HR won't confirm which department. His apartment's still under his name. Nobody's
       collected his mail in six weeks.
-    </div>
-
+    </div>` },
+  { minAct: 1, html: `
     <div class="qf-forum-post qf-forum-reply">
       <span class="qf-forum-user">civil_service_lifer</span>
       <span class="qf-forum-meta">2y 3mo ago</span>
       people get reassigned literally constantly, this is not a conspiracy, some of us have actual jobs in
       this industry
-    </div>
-
+    </div>` },
+  { minAct: 1, html: `
     <div class="qf-forum-post qf-forum-reply">
       <span class="qf-forum-user">exodus_insider <em>(unverified)</em></span>
       <span class="qf-forum-meta">2y 2mo ago</span>
       <span class="qf-forum-quote">&gt; Got "transferred" out of nowhere.</span>
       it's not a department. stop calling it a department. it doesn't have an org chart. it has a waiting list.
-    </div>
-
+    </div>` },
+  { minAct: 1, html: `
     <div class="qf-forum-post qf-forum-mod">
       <span class="qf-forum-user qf-forum-mod-name">mod_action_bot</span>
       <span class="qf-forum-meta">2y 2mo ago</span>
       Thread locked pending review — Rule 4 (unverifiable personnel claims).
     </div>
     <div class="qf-forum-locked-banner">🔒 THREAD LOCKED</div>
-    <div class="qf-forum-reopened-banner">🔓 Reopened by OP appeal — moderation note: personal anecdotes permitted if flaired [unverified]</div>
-
+    <div class="qf-forum-reopened-banner">🔓 Reopened by OP appeal — moderation note: personal anecdotes permitted if flaired [unverified]</div>` },
+  { minAct: 1, html: `
     <div class="qf-forum-post">
       <span class="qf-forum-user">torta_truther</span>
       <span class="qf-forum-meta">1y 9mo ago</span>
       reopened it myself. worth the ban. someone needs to be keeping a list of names. starting one in the
       wiki tab, add yours if you've got one.
-    </div>
-
-    <div class="qf-forum-post qf-forum-highlight">
-      <span class="qf-forum-user">starlight_drifter</span>
-      <span class="qf-forum-meta">1y 4mo ago · 88 upvotes</span>
-      my aunt worked comms on the Jupiter relay. before she stopped answering messages she gave me three
-      names on a call, like she wanted someone else to have them just in case. Haddad. Voss. Reyes. I looked
-      all three up after — all three show "reassigned" in the public registry, no destination listed.
-      I haven't heard from my aunt in two weeks either.
-    </div>
-
-    <div class="qf-forum-post qf-forum-reply">
-      <span class="qf-forum-user">torta_truther</span>
-      <span class="qf-forum-meta">1y 4mo ago</span>
-      pinning this to the top post. this is exactly the pattern three other people have described
-      independently now. if anyone else has names, this is the thread.
-    </div>
-
+    </div>` },
+  { minAct: 1, html: `
     <div class="qf-forum-post qf-forum-reply">
       <span class="qf-forum-user">spacefan_99</span>
       <span class="qf-forum-meta">1y 4mo ago</span>
@@ -2562,8 +2507,24 @@ function buildVoidwatchHtml() {
       <span class="qf-forum-user">spacefan_99</span>
       <span class="qf-forum-meta">1y 4mo ago</span>
       my b
-    </div>
-
+    </div>` },
+  { minAct: 2, html: `
+    <div class="qf-forum-post qf-forum-highlight">
+      <span class="qf-forum-user">starlight_drifter</span>
+      <span class="qf-forum-meta">1y 4mo ago · 88 upvotes</span>
+      my aunt worked comms on the Jupiter relay. before she stopped answering messages she gave me three
+      names on a call, like she wanted someone else to have them just in case. Haddad. Voss. Reyes. I looked
+      all three up after — all three show "reassigned" in the public registry, no destination listed.
+      I haven't heard from my aunt in two weeks either.
+    </div>` },
+  { minAct: 2, html: `
+    <div class="qf-forum-post qf-forum-reply">
+      <span class="qf-forum-user">torta_truther</span>
+      <span class="qf-forum-meta">1y 4mo ago</span>
+      pinning this to the top post. this is exactly the pattern three other people have described
+      independently now. if anyone else has names, this is the thread.
+    </div>` },
+  { minAct: 3, html: `
     <div class="qf-forum-post qf-forum-highlight">
       <span class="qf-forum-user qf-forum-new">quietroom_survivor <em>(1 post)</em></span>
       <span class="qf-forum-meta">11mo ago <span class="qf-forum-edited">· edited by moderator: content warning added</span></span>
@@ -2572,8 +2533,8 @@ function buildVoidwatchHtml() {
       specifically screen for something they call resonance sensitivity. ask why it correlates with
       EXTENDED FIELD EXPOSURE assignments. ask why nobody who scores high on it stays on a desk job for long.
       i'm not going to be able to answer replies.
-    </div>
-
+    </div>` },
+  { minAct: 3, html: `
     <div class="qf-forum-post qf-forum-reply">
       <span class="qf-forum-user">civil_service_lifer</span>
       <span class="qf-forum-meta">11mo ago</span>
@@ -2584,35 +2545,71 @@ function buildVoidwatchHtml() {
       <span class="qf-forum-meta">11mo ago</span>
       even if the account's fake, "resonance sensitivity" matches internal ECS terminology from two
       unrelated whistleblower leaks last year. that's not a phrase a troll makes up on the spot.
-    </div>
-
+    </div>` },
+  { minAct: 3, html: `
     <div class="qf-forum-post qf-forum-mod">
       <span class="qf-forum-user qf-forum-mod-name">mod_action_bot</span>
       <span class="qf-forum-meta">11mo ago</span>
       Thread locked — Rule 7 (unverified medical/personnel claims, repeat violation).
     </div>
     <div class="qf-forum-locked-banner">🔒 THREAD LOCKED</div>
-    <div class="qf-forum-reopened-banner">🔓 Reopened after community appeal — 4,200 upvotes on the appeal post. Moderation team note: we are aware.</div>
-
+    <div class="qf-forum-reopened-banner">🔓 Reopened after community appeal — 4,200 upvotes on the appeal post. Moderation team note: we are aware.</div>` },
+  { minAct: 3, html: `
     <div class="qf-forum-post">
       <span class="qf-forum-user">archive_watcher</span>
       <span class="qf-forum-meta">5mo ago</span>
       does anyone else notice the Xeno Archive translation team just stopped publishing? no announcement.
       last public paper was eight months ago. their staff directory page 404s now.
-    </div>
-
-    <div class="qf-forum-scanning">◆ loading latest replies...</div>
-
+    </div>` },
+  { minAct: 4, html: `
     <div class="qf-forum-post qf-forum-highlight">
-      <span class="qf-forum-user qf-forum-new">signal_logs_anon <em>(new account)</em></span>
-      <span class="qf-forum-meta">just now</span>
-      posting this before it gets pulled. partial activity extract, Distania Travel Group registry:
-      one vessel logged <strong>${visits}</strong> individual site check-ins across six systems this cycle,
-      ${filesFound} recovered documents cross-referenced as resonance-adjacent${allCollected ? ', full anomalous-material recovery flagged on the same manifest' : ''}.
-      no name attached to the transponder ID yet. if this is your ship — I'm sorry, and I think you already know.
-    </div>
+      <span class="qf-forum-user">torta_truther</span>
+      <span class="qf-forum-meta">6 days ago</span>
+      anyone tracking ECS traffic near Europa right now? something's different about the last few hours.
+      going quiet myself for a bit. if I don't check back in, keep the list going.
+    </div>` }
+];
+
+const VOIDWATCH_REPLY_COUNTS = { 1: '1,204', 2: '2,830', 3: '4,417', 4: '4,900+' };
+
+function buildVoidwatchHtml() {
+  const act = currentAct || 1;
+  const visiblePosts = VOIDWATCH_POSTS.filter(p => act >= p.minAct);
+  const postsHtml = visiblePosts.map(p => p.html).join('');
+  const morePending = act < 4;
+
+  // The closing post updates every single time this is opened, reflecting
+  // wherever the player's actual session stats are right now.
+  let dynamicPost = '';
+  if (act >= 2) {
+    const visits = novaRel.visits || 0;
+    const filesFound = unlockedFiles.size;
+    const allCollected = COLLECTIBLES.every(c => c.found);
+    dynamicPost = `
+      <div class="qf-forum-scanning">◆ loading latest replies...</div>
+      <div class="qf-forum-post qf-forum-highlight">
+        <span class="qf-forum-user qf-forum-new">signal_logs_anon <em>(new account)</em></span>
+        <span class="qf-forum-meta">just now</span>
+        posting this before it gets pulled. partial activity extract, Distania Travel Group registry:
+        one vessel logged <strong>${visits}</strong> individual site check-ins across six systems this cycle,
+        ${filesFound} recovered documents cross-referenced as resonance-adjacent${allCollected ? ', full anomalous-material recovery flagged on the same manifest' : ''}.
+        no name attached to the transponder ID yet. if this is your ship — I'm sorry, and I think you already know.
+      </div>`;
+  }
+
+  const pendingNotice = morePending
+    ? `<div class="qf-forum-locked-notice">Newer replies require a stronger connection to load. Check back later.</div>`
+    : '';
+
+  return `
+    <div class="qf-site-title">the "Quiet Programme" megathread (pinned)</div>
+    <div class="qf-site-meta">VoidWatch Forums — r/deepsignal — ${VOIDWATCH_REPLY_COUNTS[act] || VOIDWATCH_REPLY_COUNTS[1]} replies — locked ${act >= 3 ? '2' : '1'} time${act >= 3 ? 's' : ''}, reopened ${act >= 3 ? '2' : '1'} time${act >= 3 ? 's' : ''}</div>
+    ${postsHtml}
+    ${dynamicPost}
+    ${pendingNotice}
   `;
 }
+
 
 // This terminal is deliberately styled nothing like the ship's own console —
 // cold blue-white instead of warm green — to read as a different, unfamiliar
@@ -2749,7 +2746,7 @@ function runQuietFileReveal(parentEl, onDone) {
   function showSite(siteId) {
     const site = BROWSER_SITES[siteId];
     const content = terminal.querySelector('.qf-content');
-    const pageHtml = site.dynamic ? buildVoidwatchHtml() : site.html;
+    const pageHtml = site.html;
     content.innerHTML = `
       <div class="qf-browser-bar"><span class="qf-dot"></span>${site.url}</div>
       ${pageHtml}
@@ -2850,6 +2847,7 @@ function showFinalBlackScreen(overlay, style) {
       loginScreen.classList.add('hidden');
       travelScreen.classList.add('hidden');
       journalToggle.classList.add('hidden');
+      netlinkToggle.classList.add('hidden');
       initStartupScreen();
     });
     finalLayer.appendChild(btn);
@@ -2858,6 +2856,7 @@ function showFinalBlackScreen(overlay, style) {
 
 function showCompletedRecap() {
   journalToggle.classList.remove('hidden');
+  netlinkToggle.classList.remove('hidden');
   document.getElementById('healthWidget').classList.add('hidden');
   const isTrue = endingType === 'true';
   appendLog(`═══ CAMPAIGN COMPLETE — ${isTrue ? 'THE TRUE SIGNAL' : 'CONVERGENCE'} ═══`, 'log-act-transition');
@@ -2897,6 +2896,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   journalToggle?.addEventListener('click', renderJournal);
   document.getElementById('closeJournal')?.addEventListener('click', () => missionLogOverlay.classList.add('hidden'));
+
+  netlinkToggle?.addEventListener('click', () => {
+    netlinkContent.innerHTML = buildVoidwatchHtml();
+    netlinkOverlay.classList.remove('hidden');
+  });
+  document.getElementById('closeNetlink')?.addEventListener('click', () => netlinkOverlay.classList.add('hidden'));
 
   document.getElementById('wipeSaveBtn')?.addEventListener('click', () => {
     wipeSaveAndRestart();
