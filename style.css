@@ -1002,3 +1002,123 @@ button.traveling {
   transition: all 0.15s;
 }
 #journalToggle:hover { background: rgba(15,255,15,0.07); color: #8dfd8d; border-color: #0f4; }
+
+/* =========================================================
+   NETLINK — public forum access, available from game start
+   ========================================================= */
+#netlinkToggle {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 7.4rem;
+  padding: 0.45rem 0.95rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  background: rgba(0,10,20,0.92);
+  color: rgba(79,209,255,0.6);
+  border: 1px solid rgba(79,209,255,0.3);
+  cursor: pointer;
+  z-index: 8000;
+  letter-spacing: 0.1rem;
+  transition: all 0.15s;
+}
+#netlinkToggle:hover { background: rgba(79,209,255,0.08); color: #4fd1ff; border-color: #4fd1ff; }
+
+.netlink-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,3,10,0.97);
+  z-index: 8500;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.netlink-inner {
+  width: 100%;
+  max-width: 640px;
+  background: #050810;
+  border: 1px solid rgba(79,209,255,0.3);
+  box-shadow: 0 0 30px rgba(79,209,255,0.1);
+  padding: 1.2rem 1.4rem;
+  font-family: 'Share Tech Mono', monospace;
+  color: #cfefff;
+}
+
+.netlink-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(79,209,255,0.2);
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+.netlink-header h2 { margin: 0; font-size: 0.85rem; letter-spacing: 0.15rem; color: #4fd1ff; }
+
+.netlink-close {
+  background: transparent;
+  border: 1px solid rgba(79,209,255,0.4);
+  color: #4fd1ff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+}
+.netlink-close:hover { background: rgba(79,209,255,0.08); }
+
+.netlink-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #081018;
+  border: 1px solid rgba(79,209,255,0.2);
+  padding: 0.35rem 0.6rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.68rem;
+  color: rgba(207,239,255,0.55);
+}
+.netlink-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(79,209,255,0.3); flex-shrink: 0; }
+
+/* Shared forum/site styling — used by NETLINK (always available) and the
+   true-ending Quiet Programme browser (solnet/halcyon pages) alike. */
+@keyframes qfBlink { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
+.qf-site-title { font-weight: bold; color: #4fd1ff; font-size: 0.85rem; margin-bottom: 0.4rem; }
+.qf-site-meta { font-size: 0.65rem; color: rgba(207,239,255,0.4); margin-bottom: 0.6rem; }
+.qf-site-page { font-size: 0.78rem; line-height: 1.6; }
+.qf-job-listing { border: 1px solid rgba(255,180,48,0.25); padding: 0.6rem 0.8rem; background: rgba(20,12,0,0.3); font-size: 0.78rem; line-height: 1.6; }
+
+.qf-forum-post { border-left: 2px solid rgba(79,209,255,0.2); padding-left: 0.6rem; margin-bottom: 0.7rem; font-size: 0.78rem; line-height: 1.6; }
+.qf-forum-post.qf-forum-reply { margin-left: 1.1rem; border-left-color: rgba(79,209,255,0.12); }
+.qf-forum-post.qf-forum-mod { border-left-color: rgba(255,120,120,0.35); }
+.qf-forum-post.qf-forum-highlight { border-left-color: rgba(255,180,48,0.5); }
+.qf-forum-user { color: #7dffb0; font-size: 0.72rem; font-weight: bold; }
+.qf-forum-user.qf-forum-mod-name { color: #ff8f8f; }
+.qf-forum-user.qf-forum-new { color: #ffd97d; }
+.qf-forum-meta {
+  display: block; font-size: 0.6rem; color: rgba(207,239,255,0.3);
+  margin: 0.1rem 0 0.25rem 0; letter-spacing: 0.03rem;
+}
+.qf-forum-edited { font-style: italic; color: rgba(207,239,255,0.3); font-size: 0.6rem; }
+.qf-forum-quote {
+  display: block; border-left: 2px solid rgba(207,239,255,0.15);
+  padding-left: 0.5rem; margin: 0.3rem 0; color: rgba(207,239,255,0.45);
+  font-size: 0.72rem; font-style: italic;
+}
+.qf-forum-locked-banner {
+  font-size: 0.68rem; color: rgba(255,120,120,0.7); text-align: center;
+  border-top: 1px dashed rgba(255,120,120,0.25); border-bottom: 1px dashed rgba(255,120,120,0.25);
+  padding: 0.4rem 0; margin: 0.8rem 0; letter-spacing: 0.05rem;
+}
+.qf-forum-reopened-banner {
+  font-size: 0.68rem; color: rgba(141,253,141,0.6); text-align: center;
+  padding: 0.3rem 0; margin: 0.4rem 0 0.8rem 0; letter-spacing: 0.05rem;
+}
+.qf-forum-scanning {
+  font-size: 0.68rem; color: rgba(79,209,255,0.5); letter-spacing: 0.08rem;
+  text-align: center; padding: 0.6rem 0; animation: qfBlink 1.2s ease-in-out infinite;
+}
+.qf-forum-locked-notice {
+  font-size: 0.72rem; color: rgba(207,239,255,0.35); text-align: center;
+  padding: 1rem 0.5rem; font-style: italic; border-top: 1px dashed rgba(79,209,255,0.15); margin-top: 0.6rem;
+}
