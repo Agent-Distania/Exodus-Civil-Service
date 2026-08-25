@@ -2012,6 +2012,23 @@ function triggerEnding() {
   runEndingSequence(endingType);
 }
 
+// Dev/test only — bypasses every requirement and fires the requested ending
+// directly, so both endings can be checked without playing the full campaign.
+let devEndingTriggered = false;
+function debugTriggerEnding(forceType) {
+  if (devEndingTriggered) return;
+  devEndingTriggered = true;
+  clearAmbientTimers();
+  clearTimeout(dwellTimer);
+  Health.stopDrain();
+  NovaAI.stopIdle();
+  stopTransmissions();
+  gameCompleted = true;
+  endingType = forceType;
+  saveState();
+  runEndingSequence(forceType);
+}
+
 function runEndingSequence(type) {
   const style = document.createElement('style');
   style.textContent = ENDING_CSS;
@@ -2323,7 +2340,7 @@ const QUIET_FILE_CSS = `
     opacity: 0; transition: opacity 1.4s ease; overflow: hidden;
   }
   .glitch-stage.show { opacity: 1; }
-  .glitch-figure-wrap { position: relative; width: 260px; height: 260px; }
+  .glitch-figure-wrap { position: relative; width: min(290px, 78vw); height: min(300px, 80vw); }
   .glitch-figure-wrap svg { width: 100%; height: 100%; display: block; position: relative; z-index: 2; }
   .glitch-layer { position: absolute; inset: 0; mix-blend-mode: screen; opacity: 0.55; z-index: 1; }
   .glitch-layer.red  { filter: brightness(2) sepia(1) hue-rotate(-50deg) saturate(6); animation: glitchShiftRed 0.5s infinite; }
@@ -2784,28 +2801,22 @@ function showGlitchFigure(onDone) {
   stage.className = 'glitch-stage';
   stage.innerHTML = `
     <div class="glitch-figure-wrap jump">
-      <div class="glitch-layer red"><svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="90" r="26" fill="#0a0a0a"/>
-        <path d="M150 112 C110 120,95 150,100 190 C102 210,90 220,70 235 C90 240,110 232,118 218
-                 C122 232,118 250,105 265 L130 265 C138 248,140 228,138 212 C150 224,160 240,158 265
-                 L182 265 C184 244,176 226,165 212 C178 208,195 214,205 230 C210 216,200 195,178 188
-                 C190 165,185 135,160 118 C157 114,153 112,150 112 Z" fill="#0a0a0a"/>
+      <div class="glitch-layer red"><svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="50" r="20" fill="#0a0a0a"/>
+        <path d="M135,68 L95,95 L60,150 L75,195 L100,190 L40,300 L130,278 L150,232 L170,278 L260,300
+                 L200,190 L225,195 L240,150 L205,95 L165,68 Z" fill="#0a0a0a"/>
       </svg></div>
-      <div class="glitch-layer cyan"><svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="90" r="26" fill="#0a0a0a"/>
-        <path d="M150 112 C110 120,95 150,100 190 C102 210,90 220,70 235 C90 240,110 232,118 218
-                 C122 232,118 250,105 265 L130 265 C138 248,140 228,138 212 C150 224,160 240,158 265
-                 L182 265 C184 244,176 226,165 212 C178 208,195 214,205 230 C210 216,200 195,178 188
-                 C190 165,185 135,160 118 C157 114,153 112,150 112 Z" fill="#0a0a0a"/>
+      <div class="glitch-layer cyan"><svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="50" r="20" fill="#0a0a0a"/>
+        <path d="M135,68 L95,95 L60,150 L75,195 L100,190 L40,300 L130,278 L150,232 L170,278 L260,300
+                 L200,190 L225,195 L240,150 L205,95 L165,68 Z" fill="#0a0a0a"/>
       </svg></div>
-      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="90" r="26" fill="#050505"/>
-        <ellipse cx="145" cy="88" rx="2.6" ry="2" fill="#eafcff" opacity="0.95"/>
-        <ellipse cx="160" cy="90" rx="2.6" ry="2" fill="#eafcff" opacity="0.95"/>
-        <path d="M150 112 C110 120,95 150,100 190 C102 210,90 220,70 235 C90 240,110 232,118 218
-                 C122 232,118 250,105 265 L130 265 C138 248,140 228,138 212 C150 224,160 240,158 265
-                 L182 265 C184 244,176 226,165 212 C178 208,195 214,205 230 C210 216,200 195,178 188
-                 C190 165,185 135,160 118 C157 114,153 112,150 112 Z" fill="#050505"/>
+      <svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="50" r="20" fill="#050505"/>
+        <ellipse cx="143" cy="50" rx="2.5" ry="2" fill="#eafcff" opacity="0.95"/>
+        <ellipse cx="158" cy="52" rx="2.5" ry="2" fill="#eafcff" opacity="0.95"/>
+        <path d="M135,68 L95,95 L60,150 L75,195 L100,190 L40,300 L130,278 L150,232 L170,278 L260,300
+                 L200,190 L225,195 L240,150 L205,95 L165,68 Z" fill="#050505"/>
       </svg>
       <div class="glitch-static"></div>
       <div class="glitch-scanlines"></div>
@@ -2902,6 +2913,20 @@ window.addEventListener('DOMContentLoaded', () => {
     netlinkOverlay.classList.remove('hidden');
   });
   document.getElementById('closeNetlink')?.addEventListener('click', () => netlinkOverlay.classList.add('hidden'));
+
+  // Dev/test panel — see note above the markup in index.html.
+  const devMenu = document.getElementById('devMenu');
+  document.getElementById('devToggle')?.addEventListener('click', () => {
+    devMenu.classList.toggle('hidden');
+  });
+  document.getElementById('devNatural')?.addEventListener('click', () => {
+    devMenu.classList.add('hidden');
+    debugTriggerEnding('natural');
+  });
+  document.getElementById('devTrue')?.addEventListener('click', () => {
+    devMenu.classList.add('hidden');
+    debugTriggerEnding('true');
+  });
 
   document.getElementById('wipeSaveBtn')?.addEventListener('click', () => {
     wipeSaveAndRestart();
