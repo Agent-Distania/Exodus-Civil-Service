@@ -1122,3 +1122,54 @@ button.traveling {
   font-size: 0.72rem; color: rgba(207,239,255,0.35); text-align: center;
   padding: 1rem 0.5rem; font-style: italic; border-top: 1px dashed rgba(79,209,255,0.15); margin-top: 0.6rem;
 }
+
+/* =========================================================
+   DEV/TEST PANEL — testing only, not part of the game's UI
+   language on purpose (dashed red border, top-left corner,
+   above everything including the ending cinematics) so it's
+   never mistaken for real diegetic content.
+   ========================================================= */
+#devPanel {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 30000;
+  font-family: 'Share Tech Mono', monospace;
+}
+#devToggle {
+  background: #200000;
+  border: 1px dashed rgba(255,80,80,0.6);
+  color: #ff8080;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  letter-spacing: 0.08rem;
+}
+#devToggle:hover { background: rgba(255,80,80,0.15); }
+#devMenu {
+  margin-top: 0.4rem;
+  background: #0a0000;
+  border: 1px dashed rgba(255,80,80,0.4);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 170px;
+}
+.dev-menu-label {
+  font-size: 0.6rem;
+  color: rgba(255,120,120,0.5);
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.15rem;
+}
+#devMenu button {
+  background: transparent;
+  border: 1px solid rgba(255,80,80,0.35);
+  color: #ff9d9d;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.68rem;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+  text-align: left;
+}
+#devMenu button:hover { background: rgba(255,80,80,0.12); }
