@@ -2333,38 +2333,64 @@ const QUIET_FILE_CSS = `
   .qf-browser-bar .qf-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(79,209,255,0.3); flex-shrink: 0; }
   .qf-bookmark-list { display: flex; flex-direction: column; gap: 0.15rem; }
 
-  /* Glitch cinematic */
+  /* True-ending closing cinematic */
   .glitch-stage {
     position: fixed; inset: 0; z-index: 27000; display: flex;
     align-items: center; justify-content: center; background: #000;
     opacity: 0; transition: opacity 1.4s ease; overflow: hidden;
   }
   .glitch-stage.show { opacity: 1; }
-  .glitch-figure-wrap { position: relative; width: min(290px, 78vw); height: min(300px, 80vw); }
-  .glitch-figure-wrap svg { width: 100%; height: 100%; display: block; position: relative; z-index: 2; }
-  .glitch-layer { position: absolute; inset: 0; mix-blend-mode: screen; opacity: 0.55; z-index: 1; }
-  .glitch-layer.red  { filter: brightness(2) sepia(1) hue-rotate(-50deg) saturate(6); animation: glitchShiftRed 0.5s infinite; }
-  .glitch-layer.cyan { filter: brightness(2) sepia(1) hue-rotate(150deg) saturate(6); animation: glitchShiftCyan 0.45s infinite; }
-  @keyframes glitchShiftRed  { 0%,100%{transform:translate(0,0);} 20%{transform:translate(-3px,1px);} 50%{transform:translate(2px,-1px);} 80%{transform:translate(-1px,2px);} }
-  @keyframes glitchShiftCyan { 0%,100%{transform:translate(0,0);} 30%{transform:translate(3px,-1px);} 60%{transform:translate(-2px,1px);} 85%{transform:translate(1px,2px);} }
-  .glitch-figure-wrap.jump { animation: glitchJump 2.4s steps(1) infinite; }
-  @keyframes glitchJump {
-    0%,90% { transform: none; filter: none; }
-    91% { transform: translateX(5px); filter: contrast(1.7); }
-    93% { transform: translateX(-7px) scaleY(1.02); }
-    95% { transform: translateX(3px); }
-    97%,100% { transform: none; filter: none; }
+
+  /* Sol-system map: the ping departs Europa, leaves the frame entirely */
+  .solmap-scene { position: relative; width: min(480px, 85vw); height: min(480px, 85vw); }
+  .solmap-sun {
+    position: absolute; top: 50%; left: 50%; width: 14px; height: 14px;
+    margin: -7px; border-radius: 50%; background: #ffdca0;
+    box-shadow: 0 0 20px rgba(255,200,120,0.6);
   }
-  .glitch-static {
-    position: absolute; inset: 0; z-index: 3; pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
-    opacity: 0.1; mix-blend-mode: overlay; animation: staticFlicker 0.2s steps(2) infinite;
+  .solmap-orbit {
+    position: absolute; top: 50%; left: 50%;
+    border: 1px solid rgba(141,253,141,0.15); border-radius: 50%;
+    transform: translate(-50%, -50%);
   }
-  @keyframes staticFlicker { 0%,100%{opacity:0.06;} 50%{opacity:0.16;} }
-  .glitch-scanlines {
-    position: absolute; inset: 0; z-index: 4; pointer-events: none;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.35) 2px, rgba(0,0,0,0.35) 4px);
+  .solmap-orbit.o1 { width: 130px; height: 130px; }
+  .solmap-orbit.o2 { width: 210px; height: 210px; }
+  .solmap-orbit.o3 { width: 360px; height: 360px; }
+  .solmap-planet {
+    position: absolute; width: 6px; height: 6px; border-radius: 50%;
+    background: #8dfd8d; box-shadow: 0 0 6px rgba(15,255,15,0.6);
   }
+  .solmap-ping {
+    position: absolute; width: 5px; height: 5px; border-radius: 50%;
+    background: #fff; box-shadow: 0 0 12px #fff; opacity: 0;
+    animation: pingLeave 3s ease-out forwards; animation-delay: 0.8s;
+  }
+  @keyframes pingLeave {
+    0%   { opacity: 0; transform: translate(0,0) scale(1); }
+    8%   { opacity: 1; }
+    100% { opacity: 0; transform: translate(340px, -260px) scale(0.3); }
+  }
+  .solmap-caption {
+    position: absolute; bottom: -2rem; left: 0; right: 0; text-align: center;
+    font-size: 0.68rem; letter-spacing: 0.1rem; color: rgba(141,253,141,0.45);
+    opacity: 0; animation: capFade 1s ease forwards; animation-delay: 1.6s;
+  }
+  @keyframes capFade { to { opacity: 1; } }
+
+  /* Wider field: distant sites answering back, scattered rather than clustered */
+  .network-scene { position: relative; width: 100%; height: 100%; }
+  .network-dot {
+    position: absolute; width: 4px; height: 4px; border-radius: 50%;
+    background: #fff; box-shadow: 0 0 8px #fff; opacity: 0;
+    animation: dotAppear 0.9s ease forwards;
+  }
+  @keyframes dotAppear { to { opacity: 0.9; } }
+  .network-caption {
+    position: absolute; bottom: -2rem; left: 0; right: 0; text-align: center;
+    font-size: 0.68rem; letter-spacing: 0.1rem; color: rgba(141,253,141,0.45);
+    opacity: 0; animation: capFade 1s ease forwards; animation-delay: 3.2s;
+  }
+
   .black-fade {
     position: fixed; inset: 0; background: #000; z-index: 27500;
     opacity: 0; transition: opacity 2.6s ease; pointer-events: none;
@@ -2378,6 +2404,21 @@ const QUIET_FILE_CSS = `
   }
   .final-text-layer.show { opacity: 1; }
   .final-text-line { font-size: 1rem; letter-spacing: 0.1rem; line-height: 1.8; max-width: 560px; }
+
+  /* Post-credits stinger dialogue */
+  .stinger-header {
+    font-size: 0.65rem; letter-spacing: 0.2rem; color: rgba(255,120,120,0.5);
+    margin-bottom: 1rem; animation: qfBlink 1.4s ease-in-out infinite;
+  }
+  .stinger-line {
+    font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.8;
+    opacity: 0; transition: opacity 0.9s ease; max-width: 520px; text-align: center;
+  }
+  .stinger-line.show { opacity: 1; }
+  .stinger-speaker {
+    display: block; font-size: 0.62rem; letter-spacing: 0.15rem;
+    color: rgba(141,253,141,0.5); margin-bottom: 0.25rem;
+  }
 `;
 
 const QUIET_FILES = {
@@ -2792,38 +2833,58 @@ function finishTrueEnding(overlay, linesEl, style) {
     linesEl.appendChild(teaser);
     requestAnimationFrame(() => requestAnimationFrame(() => teaser.classList.add('show')));
 
-    setTimeout(() => showGlitchFigure(() => showFinalBlackScreen(overlay, style)), 2800);
+    setTimeout(() => showSolMapScene(() => showFinalBlackScreen(overlay, style)), 2800);
   }, 1300);
 }
 
-function showGlitchFigure(onDone) {
+// A single ping leaves Europa and the Sol system, then the view holds on a
+// wider field as other megastructure sites answer back — scattered, not
+// clustered, implying scale rather than showing anything directly.
+const NETWORK_DOT_POSITIONS = [
+  { top: '12%', left: '20%', delay: 0.2 },
+  { top: '30%', left: '75%', delay: 0.6 },
+  { top: '60%', left: '15%', delay: 1.0 },
+  { top: '75%', left: '55%', delay: 1.4 },
+  { top: '20%', left: '55%', delay: 1.8 },
+  { top: '85%', left: '80%', delay: 2.2 },
+  { top: '45%', left: '90%', delay: 2.6 },
+  { top: '55%', left: '35%', delay: 3.0 },
+  { top: '8%',  left: '65%', delay: 3.4 },
+  { top: '65%', left: '8%',  delay: 3.8 }
+];
+
+function showSolMapScene(onDone) {
   const stage = document.createElement('div');
   stage.className = 'glitch-stage';
   stage.innerHTML = `
-    <div class="glitch-figure-wrap jump">
-      <div class="glitch-layer red"><svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="50" r="20" fill="#0a0a0a"/>
-        <path d="M135,68 L95,95 L60,150 L75,195 L100,190 L40,300 L130,278 L150,232 L170,278 L260,300
-                 L200,190 L225,195 L240,150 L205,95 L165,68 Z" fill="#0a0a0a"/>
-      </svg></div>
-      <div class="glitch-layer cyan"><svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="50" r="20" fill="#0a0a0a"/>
-        <path d="M135,68 L95,95 L60,150 L75,195 L100,190 L40,300 L130,278 L150,232 L170,278 L260,300
-                 L200,190 L225,195 L240,150 L205,95 L165,68 Z" fill="#0a0a0a"/>
-      </svg></div>
-      <svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="50" r="20" fill="#050505"/>
-        <ellipse cx="143" cy="50" rx="2.5" ry="2" fill="#eafcff" opacity="0.95"/>
-        <ellipse cx="158" cy="52" rx="2.5" ry="2" fill="#eafcff" opacity="0.95"/>
-        <path d="M135,68 L95,95 L60,150 L75,195 L100,190 L40,300 L130,278 L150,232 L170,278 L260,300
-                 L200,190 L225,195 L240,150 L205,95 L165,68 Z" fill="#050505"/>
-      </svg>
-      <div class="glitch-static"></div>
-      <div class="glitch-scanlines"></div>
+    <div class="solmap-scene">
+      <div class="solmap-sun"></div>
+      <div class="solmap-orbit o1"></div>
+      <div class="solmap-orbit o2"></div>
+      <div class="solmap-orbit o3"></div>
+      <div class="solmap-planet" style="top:50%; left:calc(50% + 65px);"></div>
+      <div class="solmap-planet" style="top:50%; left:calc(50% + 105px);"></div>
+      <div class="solmap-planet" style="top:50%; left:calc(50% + 180px);"></div>
+      <div class="solmap-ping" style="top:50%; left:calc(50% + 180px);"></div>
+      <div class="solmap-caption">SIGNAL ORIGIN: EUROPA — DEPARTING SOL SYSTEM</div>
     </div>
   `;
   document.body.appendChild(stage);
   requestAnimationFrame(() => requestAnimationFrame(() => stage.classList.add('show')));
+
+  // Once the ping has cleared the system, swap to the wider field of
+  // answering sites.
+  setTimeout(() => {
+    const dots = NETWORK_DOT_POSITIONS.map(p =>
+      `<div class="network-dot" style="top:${p.top}; left:${p.left}; animation-delay:${p.delay}s;"></div>`
+    ).join('');
+    stage.innerHTML = `
+      <div class="network-scene">
+        ${dots}
+        <div class="network-caption">RESPONSES RECEIVED — SOURCE: UNKNOWN, MULTIPLE, DISTANT</div>
+      </div>
+    `;
+  }, 4600);
 
   setTimeout(() => {
     const black = document.createElement('div');
@@ -2834,8 +2895,23 @@ function showGlitchFigure(onDone) {
       stage.remove();
       onDone(black);
     }, 2700);
-  }, 3600);
+  }, 4600 + 4800);
 }
+
+// Post-credits style stinger — two unnamed researchers somewhere else
+// entirely, reacting to the same event the player just caused. Deliberately
+// disconnected from anyone the player has met, to make it read as bigger
+// than this one crew.
+const STINGER_LINES = [
+  { speaker: 'Sensor Tech',   line: 'Sensor array just logged a return ping. Not from Europa — Europa was the source. This is a reply.' },
+  { speaker: 'Duty Officer',  line: 'Reply from where?' },
+  { speaker: 'Sensor Tech',   line: "That's the problem. I'm counting sources. Six so far. Seven now. Not clustered. Scattered across the whole—" },
+  { speaker: 'Duty Officer',  line: 'The whole what?' },
+  { speaker: 'Sensor Tech',   line: "I don't have a smaller word for it than 'everywhere.'" },
+  { speaker: 'Duty Officer',  line: 'Get Command on the line. Tell them the Nexus is awake. Tell them it started at Europa.' },
+  { speaker: 'Sensor Tech',   line: "Chief Amplifier isn't going to want to hear the word 'started.'" },
+  { speaker: 'Duty Officer',  line: 'Get her anyway.' }
+];
 
 function showFinalBlackScreen(overlay, style) {
   const finalLayer = document.createElement('div');
@@ -2845,23 +2921,45 @@ function showFinalBlackScreen(overlay, style) {
   requestAnimationFrame(() => requestAnimationFrame(() => finalLayer.classList.add('show')));
 
   setTimeout(() => {
-    const btn = document.createElement('button');
-    btn.className = 'end-btn show';
-    btn.style.opacity = '1';
-    btn.textContent = '[ RETURN TO START ]';
-    btn.addEventListener('click', () => {
-      finalLayer.remove();
-      document.querySelectorAll('.black-fade').forEach(el => el.remove());
-      overlay.remove();
-      style.remove();
-      startupScreen.classList.remove('hidden');
-      loginScreen.classList.add('hidden');
-      travelScreen.classList.add('hidden');
-      journalToggle.classList.add('hidden');
-      netlinkToggle.classList.add('hidden');
-      initStartupScreen();
-    });
-    finalLayer.appendChild(btn);
+    // Fade the closing line out before cutting to the stinger scene.
+    finalLayer.classList.remove('show');
+
+    setTimeout(() => {
+      finalLayer.innerHTML = `<div class="stinger-header">◆ INTERCEPTED TRANSMISSION — SOURCE UNKNOWN</div>`;
+      finalLayer.classList.add('show');
+
+      let t = 400;
+      STINGER_LINES.forEach(entry => {
+        setTimeout(() => {
+          const row = document.createElement('div');
+          row.className = 'stinger-line';
+          row.innerHTML = `<span class="stinger-speaker">${entry.speaker}</span>${entry.line}`;
+          finalLayer.appendChild(row);
+          requestAnimationFrame(() => requestAnimationFrame(() => row.classList.add('show')));
+        }, t);
+        t += 2000;
+      });
+
+      setTimeout(() => {
+        const btn = document.createElement('button');
+        btn.className = 'end-btn show';
+        btn.style.opacity = '1';
+        btn.textContent = '[ RETURN TO START ]';
+        btn.addEventListener('click', () => {
+          finalLayer.remove();
+          document.querySelectorAll('.black-fade').forEach(el => el.remove());
+          overlay.remove();
+          style.remove();
+          startupScreen.classList.remove('hidden');
+          loginScreen.classList.add('hidden');
+          travelScreen.classList.add('hidden');
+          journalToggle.classList.add('hidden');
+          netlinkToggle.classList.add('hidden');
+          initStartupScreen();
+        });
+        finalLayer.appendChild(btn);
+      }, t + 1200);
+    }, 1300);
   }, 3200);
 }
 
