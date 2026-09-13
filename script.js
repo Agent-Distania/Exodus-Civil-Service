@@ -2384,11 +2384,24 @@ const QUIET_FILE_CSS = `
     background: #fff; box-shadow: 0 0 8px #fff; opacity: 0;
     animation: dotAppear 0.9s ease forwards;
   }
+  .network-dot.known {
+    width: 6px; height: 6px; background: #8dfd8d;
+    box-shadow: 0 0 14px rgba(15,255,15,0.8);
+    animation: dotAppearKnown 0.9s ease forwards, knownPulse 2.4s ease-in-out infinite;
+  }
   @keyframes dotAppear { to { opacity: 0.9; } }
+  @keyframes dotAppearKnown { to { opacity: 1; } }
+  @keyframes knownPulse { 0%,100% { box-shadow: 0 0 10px rgba(15,255,15,0.6); } 50% { box-shadow: 0 0 20px rgba(15,255,15,1); } }
+  .network-label {
+    position: absolute; margin-top: 8px; margin-left: 8px;
+    font-size: 0.58rem; letter-spacing: 0.05rem; color: rgba(255,255,255,0.5);
+    white-space: nowrap; opacity: 0; animation: capFade 0.8s ease forwards;
+  }
+  .network-label.known { color: #8dfd8d; text-shadow: 0 0 6px rgba(15,255,15,0.4); font-weight: bold; }
   .network-caption {
     position: absolute; bottom: -2rem; left: 0; right: 0; text-align: center;
     font-size: 0.68rem; letter-spacing: 0.1rem; color: rgba(141,253,141,0.45);
-    opacity: 0; animation: capFade 1s ease forwards; animation-delay: 3.2s;
+    opacity: 0; animation: capFade 1s ease forwards; animation-delay: 4.4s;
   }
 
   .black-fade {
@@ -2841,16 +2854,16 @@ function finishTrueEnding(overlay, linesEl, style) {
 // wider field as other megastructure sites answer back — scattered, not
 // clustered, implying scale rather than showing anything directly.
 const NETWORK_DOT_POSITIONS = [
-  { top: '12%', left: '20%', delay: 0.2 },
-  { top: '30%', left: '75%', delay: 0.6 },
-  { top: '60%', left: '15%', delay: 1.0 },
-  { top: '75%', left: '55%', delay: 1.4 },
-  { top: '20%', left: '55%', delay: 1.8 },
-  { top: '85%', left: '80%', delay: 2.2 },
-  { top: '45%', left: '90%', delay: 2.6 },
-  { top: '55%', left: '35%', delay: 3.0 },
-  { top: '8%',  left: '65%', delay: 3.4 },
-  { top: '65%', left: '8%',  delay: 3.8 }
+  { top: '12%', left: '20%', delay: 0.2, name: 'Proxima Centauri' },
+  { top: '30%', left: '75%', delay: 0.6, name: 'Tau Ceti' },
+  { top: '60%', left: '15%', delay: 1.0, name: 'Sirius' },
+  { top: '75%', left: '55%', delay: 1.4, name: "Barnard's Star" },
+  { top: '20%', left: '55%', delay: 1.8, name: 'Vega', known: true },
+  { top: '85%', left: '80%', delay: 2.2, name: 'Epsilon Eridani' },
+  { top: '45%', left: '90%', delay: 2.6, name: 'TRAPPIST-1' },
+  { top: '55%', left: '35%', delay: 3.0, name: 'Wolf 359' },
+  { top: '8%',  left: '65%', delay: 3.4, name: 'Kepler-442' },
+  { top: '65%', left: '8%',  delay: 3.8, name: '51 Pegasi' }
 ];
 
 function showSolMapScene(onDone) {
@@ -2873,15 +2886,18 @@ function showSolMapScene(onDone) {
   requestAnimationFrame(() => requestAnimationFrame(() => stage.classList.add('show')));
 
   // Once the ping has cleared the system, swap to the wider field of
-  // answering sites.
+  // answering sites — each one named, so this reads as a real galactic
+  // map instead of abstract dots in a void. Vega gets a slightly brighter,
+  // pulsing dot since it's a system the player has actually been to.
   setTimeout(() => {
-    const dots = NETWORK_DOT_POSITIONS.map(p =>
-      `<div class="network-dot" style="top:${p.top}; left:${p.left}; animation-delay:${p.delay}s;"></div>`
-    ).join('');
+    const dots = NETWORK_DOT_POSITIONS.map(p => `
+      <div class="network-dot${p.known ? ' known' : ''}" style="top:${p.top}; left:${p.left}; animation-delay:${p.delay}s;"></div>
+      <div class="network-label${p.known ? ' known' : ''}" style="top:${p.top}; left:${p.left}; animation-delay:${(p.delay + 0.35).toFixed(2)}s;">${p.name}</div>
+    `).join('');
     stage.innerHTML = `
       <div class="network-scene">
         ${dots}
-        <div class="network-caption">RESPONSES RECEIVED — SOURCE: UNKNOWN, MULTIPLE, DISTANT</div>
+        <div class="network-caption">RESPONSES RECEIVED — SOURCE: CONFIRMED, MULTIPLE, DISTANT</div>
       </div>
     `;
   }, 4600);
